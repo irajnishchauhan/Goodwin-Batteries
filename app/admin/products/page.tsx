@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Loader2, Plus, Edit2, Trash2, CheckCircle, XCircle } from "lucide-react";
+import { Loader2, Plus, Edit2, Trash2, CheckCircle, XCircle, Download } from "lucide-react";
 import Link from "next/link";
+import goodwinProducts from "@/data/goodwinProducts.json";
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [importing, setImporting] = useState(false);
 
   useEffect(() => {
     fetchProducts();
@@ -32,6 +34,43 @@ export default function AdminProductsPage() {
     }
   };
 
+  const importLocalProducts = async () => {
+    if (!confirm("This will import/update all default battery models into the database. Do you want to proceed?")) return;
+    
+    setImporting(true);
+    try {
+      const payload = goodwinProducts.map(p => ({
+        id: p.id,
+        name: p.name,
+        slug: p.slug,
+        series: p.series,
+        voltage: p.voltage,
+        ah: p.capacity, // Mapping capacity to ah
+        warranty: p.warrantyOptions.join(" / "),
+        warranty_options: p.warrantyOptions,
+        image: p.image,
+        description: p.description,
+        terminal_layout: (p as any).terminalLayout || "",
+        dimensions: (p as any).dimensions || "",
+        weight: (p as any).weight || "",
+        is_published: true,
+        is_featured: true,
+      }));
+
+      const { error } = await supabase.from("products").upsert(payload, { onConflict: 'id' });
+      
+      if (error) throw error;
+      
+      alert("Successfully imported products into database!");
+      fetchProducts();
+    } catch (err: any) {
+      console.error(err);
+      alert("Error importing products: " + err.message);
+    } finally {
+      setImporting(false);
+    }
+  };
+
   if (loading) return <div className="flex justify-center p-12"><Loader2 className="animate-spin text-brand" size={32} /></div>;
 
   return (
@@ -41,9 +80,15 @@ export default function AdminProductsPage() {
           <h1 className="text-3xl font-heading font-bold text-foreground">Products</h1>
           <p className="text-muted-foreground">Manage battery models and specifications.</p>
         </div>
-        <Link href="/admin/products/new" className="bg-brand text-white font-bold px-4 py-2 rounded-lg hover:bg-brand-dark flex items-center gap-2">
-          <Plus size={18} /> Add Product
-        </Link>
+        <div className="flex gap-4">
+          <button onClick={importLocalProducts} disabled={importing} className="bg-surface border border-border text-foreground font-bold px-4 py-2 rounded-lg hover:border-brand transition-colors flex items-center gap-2 disabled:opacity-50">
+            {importing ? <Loader2 size={18} className="animate-spin" /> : <Download size={18} />} 
+            Import Defaults
+          </button>
+          <Link href="/admin/products/new" className="bg-brand text-white font-bold px-4 py-2 rounded-lg hover:bg-brand-dark flex items-center gap-2">
+            <Plus size={18} /> Add Product
+          </Link>
+        </div>
       </div>
 
       <div className="bg-surface border border-border rounded-xl overflow-hidden shadow-sm">
@@ -72,8 +117,8 @@ export default function AdminProductsPage() {
                       </div>
                     </div>
                   </td>
-                  <td className="p-4 text-muted-foreground">{product.categories?.name}</td>
-                  <td className="p-4 text-muted-foreground">{product.ah} / {product.cca}</td>
+                  <td className="p-4 text-muted-foreground">{product.categories?.name || "Uncategorized"}</td>
+                  <td className="p-4 text-muted-foreground">{product.ah} {product.cca ? `/ ${product.cca}` : ""}</td>
                   <td className="p-4">
                     <button onClick={() => togglePublish(product.id, product.is_published)} className="flex items-center gap-2">
                       {product.is_published ? (
@@ -93,7 +138,10 @@ export default function AdminProductsPage() {
               ))}
               {products.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="p-8 text-center text-muted-foreground">No products found. Add your first product.</td>
+                  <td colSpan={5} className="p-8 text-center text-muted-foreground">
+                    No products found in the database. <br />
+                    Click "Import Defaults" to load existing Battery Models.
+                  </td>
                 </tr>
               )}
             </tbody>

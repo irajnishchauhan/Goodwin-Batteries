@@ -145,10 +145,10 @@ export default function HomePageClient({ applications, settings }: { application
                   
                   <div className="relative z-20 mt-auto p-8 flex flex-col items-start">
                     <h4 className="text-white font-heading font-bold text-2xl mb-2">{app.name}</h4>
-                    <p className="text-white/90 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-300 line-clamp-2">
+                    <p className="text-white/90 text-sm mb-4 line-clamp-2">
                       {app.description}
                     </p>
-                    <span className="text-brand text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:text-white transition-colors">
+                    <span className="text-brand text-xs font-bold uppercase tracking-widest flex items-center gap-2 transition-colors">
                       Explore Power <span aria-hidden="true" className="inline-flex"><ArrowRight size={14} /></span>
                     </span>
                   </div>

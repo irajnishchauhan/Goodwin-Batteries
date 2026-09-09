@@ -3,10 +3,13 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Loader2, Plus, Edit2, Trash2, CheckCircle, XCircle } from "lucide-react";
+import DealerModal from "@/components/admin/DealerModal";
 
 export default function AdminDealersPage() {
   const [dealers, setDealers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedDealer, setSelectedDealer] = useState<any>(null);
 
   useEffect(() => {
     fetchDealers();
@@ -40,7 +43,7 @@ export default function AdminDealersPage() {
           <h1 className="text-3xl font-heading font-bold text-foreground">Dealers & Network</h1>
           <p className="text-muted-foreground">Manage your dealer and distributor locations.</p>
         </div>
-        <button className="bg-brand text-white font-bold px-4 py-2 rounded-lg hover:bg-brand-dark flex items-center gap-2">
+        <button onClick={() => { setSelectedDealer(null); setIsModalOpen(true); }} className="bg-brand text-white font-bold px-4 py-2 rounded-lg hover:bg-brand-dark flex items-center gap-2">
           <Plus size={18} /> Add Dealer
         </button>
       </div>
@@ -83,7 +86,7 @@ export default function AdminDealersPage() {
                   </td>
                   <td className="p-4">
                     <div className="flex items-center justify-end gap-2">
-                      <button className="p-2 bg-background border border-border rounded hover:text-brand transition-colors"><Edit2 size={16} /></button>
+                      <button onClick={() => { setSelectedDealer(dealer); setIsModalOpen(true); }} className="p-2 bg-background border border-border rounded hover:text-brand transition-colors"><Edit2 size={16} /></button>
                       <button onClick={() => deleteDealer(dealer.id)} className="p-2 bg-background border border-border rounded hover:text-red-500 transition-colors"><Trash2 size={16} /></button>
                     </div>
                   </td>
@@ -98,6 +101,13 @@ export default function AdminDealersPage() {
           </table>
         </div>
       </div>
+
+      <DealerModal 
+        isOpen={isModalOpen}
+        onClose={() => { setIsModalOpen(false); setSelectedDealer(null); }}
+        dealer={selectedDealer}
+        onSuccess={fetchDealers}
+      />
     </div>
   );
 }

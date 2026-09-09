@@ -163,7 +163,7 @@ CREATE TABLE warranty_registrations (
     customer_name TEXT NOT NULL,
     mobile TEXT NOT NULL,
     email TEXT,
-    battery_model_id TEXT REFERENCES products(id) ON DELETE SET NULL,
+    battery_model_id TEXT, -- Note: Removed REFERENCES products(id) to allow local JSON products
     serial_number TEXT NOT NULL UNIQUE,
     purchase_date DATE NOT NULL,
     invoice_number TEXT,

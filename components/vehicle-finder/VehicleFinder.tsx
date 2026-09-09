@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronRight, Battery, Car, Truck, Bike, Tractor, Search, Phone, Loader2, Info, CheckCircle2, X, RotateCcw, ArrowLeft } from "lucide-react";
+import { Battery, Car, Truck, Bike, Tractor, Search, Phone, Loader2, Info, CheckCircle2, X, RotateCcw, ArrowLeft } from "lucide-react";
 import clsx from "clsx";
 import Link from "next/link";
 import { useGlobalSettings } from "@/components/GlobalSettingsProvider";

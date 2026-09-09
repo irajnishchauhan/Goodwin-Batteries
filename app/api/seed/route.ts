@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase/client"; 
+import { createClient } from "@/lib/supabase/server";
 
 export async function GET() {
   try {
+    const supabase = await createClient();
     // 1. Categories
     const categories = [
       { id: 'cat-1', name: 'Passenger Vehicles', slug: 'passenger-vehicles', description: 'Reliable starting power for demanding journeys.', image: '/assets/products/placeholder-passenger.webp' },

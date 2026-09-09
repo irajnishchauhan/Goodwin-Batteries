@@ -10,7 +10,11 @@
     "application": "Two Wheeler",
     "warrantyOptions": ["12 Months", "18 Months", "48 Months"],
     "image": "/assets/products/goodwin-12vgw-tz4lb.png",
-    "description": "Reliable starting power designed for Indian riding conditions."
+    "description": "Reliable starting power designed for Indian riding conditions.",
+    "dimensions": "113 x 70 x 85 mm",
+    "weight": "1.45 kg",
+    "terminalLayout": "Right Positive (+)",
+    "datasheet": "/assets/datasheets/gw-tz4lb-datasheet.pdf"
   },
   {
     "id": "prod-xl5lb",
@@ -23,7 +27,11 @@
     "application": "Two Wheeler",
     "warrantyOptions": ["12 Months", "18 Months", "48 Months"],
     "image": "/assets/products/goodwin-12vgw-xl5lb.png",
-    "description": "High performance battery providing quick and consistent starts."
+    "description": "High performance battery providing quick and consistent starts.",
+    "dimensions": "120 x 60 x 130 mm",
+    "weight": "1.80 kg",
+    "terminalLayout": "Right Positive (+)",
+    "datasheet": "/assets/datasheets/gw-xl5lb-datasheet.pdf"
   },
   {
     "id": "prod-xl25lc",
@@ -36,7 +44,11 @@
     "application": "Two Wheeler",
     "warrantyOptions": ["12 Months", "18 Months", "48 Months"],
     "image": "/assets/products/goodwin-12gw-xl2-5lc.png",
-    "description": "Compact and powerful battery optimized for kick-start and basic electricals."
+    "description": "Compact and powerful battery optimized for kick-start and basic electricals.",
+    "dimensions": "80 x 70 x 105 mm",
+    "weight": "0.95 kg",
+    "terminalLayout": "Left Positive (+)",
+    "datasheet": "/assets/datasheets/gw-xl2-5lc-datasheet.pdf"
   },
   {
     "id": "prod-tz5lb",
@@ -49,6 +61,10 @@
     "application": "Two Wheeler",
     "warrantyOptions": ["12 Months", "18 Months", "48 Months"],
     "image": "/assets/products/goodwin-12vgw-tz5lb.png",
-    "description": "Advanced power delivery for modern two wheelers with extra electronics."
+    "description": "Advanced power delivery for modern two wheelers with extra electronics.",
+    "dimensions": "113 x 70 x 105 mm",
+    "weight": "1.75 kg",
+    "terminalLayout": "Right Positive (+)",
+    "datasheet": "/assets/datasheets/gw-tz5lb-datasheet.pdf"
   }
 ]

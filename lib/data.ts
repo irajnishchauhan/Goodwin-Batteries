@@ -82,9 +82,10 @@ export const getProducts = unstable_cache(
       image: p.image,
       description: p.description,
       features: [],
-      terminalLayout: "",
-      dimensions: "",
-      weight: ""
+      terminalLayout: (p as any).terminalLayout || "",
+      dimensions: (p as any).dimensions || "",
+      weight: (p as any).weight || "",
+      datasheet: (p as any).datasheet || ""
     }));
     
     return [...localProducts, ...dbProducts];
@@ -115,9 +116,10 @@ export const getProductBySlug = unstable_cache(
         image: localProduct.image,
         description: localProduct.description,
         features: [],
-        terminalLayout: "",
-        dimensions: "",
-        weight: ""
+        terminalLayout: (localProduct as any).terminalLayout || "",
+        dimensions: (localProduct as any).dimensions || "",
+        weight: (localProduct as any).weight || "",
+        datasheet: (localProduct as any).datasheet || ""
       };
     }
 

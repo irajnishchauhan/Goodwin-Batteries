@@ -5,12 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Premium Automotive + Industrial Technology */
-  --color-brand: #39B54A; /* Action Green */
-  --color-brand-dark: #218C32;
-  --color-silver: #A7ADB5; /* Metallic/Silver - Engineering */
-  --color-blue: #174A8B; /* Supporting Blue */
-
+  /* Goodwin Automotive Palette */
+  --color-brand: #00843D; /* Primary brand colour */
+  --color-brand-dark: #006830; 
+  --color-accent: #F9C900; /* Yellow / Gold Accent */
+  
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
@@ -35,83 +34,98 @@
 }
 
 :root {
-  --surface: #FFFFFF;
-  --surface-hover: #F5F7F9;
-  --border: #A7ADB5;
-  --background: #F5F7F9;
-  --foreground: #17212B;
+  --background: #F5F5F5; /* Light Grey */
+  --surface: #FFFFFF; /* White */
+  --surface-hover: #F0F0F0;
+  --border: #E5E7EB;
+  
+  --foreground: #111111; /* Black / Near Black */
+  --muted: #F5F5F5;
+  --muted-foreground: #333333; /* Dark Grey */
+  
   --card: #FFFFFF;
-  --card-foreground: #17212B;
+  --card-foreground: #111111;
   --popover: #FFFFFF;
-  --popover-foreground: #17212B;
-  --primary: #39B54A;
+  --popover-foreground: #111111;
+  
+  --primary: #00843D; /* Green */
   --primary-foreground: #FFFFFF;
-  --secondary: #0B1F33;
+  --secondary: #333333; /* Dark Grey */
   --secondary-foreground: #FFFFFF;
-  --muted: #F5F7F9;
-  --muted-foreground: #475467;
-  --accent: #174A8B;
-  --accent-foreground: #FFFFFF;
+  
+  --accent: #F9C900; /* Yellow / Gold */
+  --accent-foreground: #111111;
+  
   --destructive: #EF4444;
-  --input: #A7ADB5;
-  --ring: #39B54A;
+  --input: #E5E7EB;
+  --ring: #00843D;
+  
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
+  
   --radius: 0.625rem;
+  
   --sidebar: #FFFFFF;
-  --sidebar-foreground: #17212B;
-  --sidebar-primary: #39B54A;
+  --sidebar-foreground: #111111;
+  --sidebar-primary: #00843D;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F5F7F9;
-  --sidebar-accent-foreground: #17212B;
-  --sidebar-border: #A7ADB5;
-  --sidebar-ring: #39B54A;
+  --sidebar-accent: #F5F5F5;
+  --sidebar-accent-foreground: #111111;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #00843D;
 }
 
 .dark {
-  --background: #07131F;
-  --foreground: #F5F7F9;
-  --surface: #0B1F33;
-  --surface-hover: #17212B;
-  --border: rgba(167, 173, 181, 0.2);
-  --card: #0B1F33;
-  --card-foreground: #F5F7F9;
-  --popover: #0B1F33;
-  --popover-foreground: #F5F7F9;
-  --primary: #39B54A;
+  --background: #111111; /* Black / Near Black */
+  --foreground: #FFFFFF; /* White */
+  --surface: #1A1A1A; 
+  --surface-hover: #333333; /* Dark Grey */
+  --border: rgba(255, 255, 255, 0.15);
+  
+  --card: #1A1A1A;
+  --card-foreground: #FFFFFF;
+  --popover: #1A1A1A;
+  --popover-foreground: #FFFFFF;
+  
+  --primary: #00843D; /* Green */
   --primary-foreground: #FFFFFF;
-  --secondary: #174A8B;
+  --secondary: #333333;
   --secondary-foreground: #FFFFFF;
-  --muted: #17212B;
-  --muted-foreground: #A7ADB5;
-  --accent: #174A8B;
-  --accent-foreground: #FFFFFF;
+  
+  --muted: #1A1A1A;
+  --muted-foreground: #E5E7EB; /* Light Grey */
+  
+  --accent: #F9C900; /* Yellow / Gold */
+  --accent-foreground: #111111;
+  
   --destructive: #EF4444;
-  --input: rgba(167, 173, 181, 0.2);
-  --ring: #39B54A;
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #00843D;
+  
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --sidebar: #0B1F33;
-  --sidebar-foreground: #F5F7F9;
-  --sidebar-primary: #39B54A;
+  
+  --sidebar: #111111;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #00843D;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #17212B;
-  --sidebar-accent-foreground: #F5F7F9;
-  --sidebar-border: rgba(167, 173, 181, 0.2);
-  --sidebar-ring: #39B54A;
+  --sidebar-accent: #333333;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: rgba(255, 255, 255, 0.15);
+  --sidebar-ring: #00843D;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --surface: #0B1F33;
-    --surface-hover: #17212B;
-    --border: rgba(167, 173, 181, 0.2);
+    --surface: #1A1A1A;
+    --surface-hover: #333333;
+    --border: rgba(255, 255, 255, 0.15);
   }
 }
 
@@ -128,7 +142,7 @@ body {
   background: var(--background); 
 }
 ::-webkit-scrollbar-thumb {
-  background: #3f3f46; 
+  background: var(--muted-foreground); 
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -144,7 +158,7 @@ body {
 }
 
 .dark .glass {
-  background: rgba(9, 9, 11, 0.7);
+  background: rgba(17, 17, 17, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 

@@ -60,7 +60,7 @@ export default function HomePageClient({ applications, settings }: { application
                 Find Your Battery
               </Link>
               <Link href="/products" className="bg-white/10 text-white border border-white/20 px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 backdrop-blur-md">
-                Explore Products <ArrowRight size={18} />
+                Explore Products <span aria-hidden="true" className="inline-flex"><ArrowRight size={18} /></span>
               </Link>
             </div>
           </motion.div>
@@ -114,7 +114,7 @@ export default function HomePageClient({ applications, settings }: { application
               <h3 className="text-4xl md:text-5xl font-heading font-bold text-foreground">Power for every application</h3>
             </div>
             <Link href="/products" className="text-brand font-bold hover:text-brand-dark flex items-center gap-2 whitespace-nowrap">
-              View All Categories <ChevronRight size={18} />
+              View All Categories <span aria-hidden="true" className="inline-flex"><ChevronRight size={18} /></span>
             </Link>
           </div>
 
@@ -150,7 +150,7 @@ export default function HomePageClient({ applications, settings }: { application
                       {app.description}
                     </p>
                     <span className="text-brand text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:text-white transition-colors">
-                      Explore Power <ArrowRight size={14} />
+                      Explore Power <span aria-hidden="true" className="inline-flex"><ArrowRight size={14} /></span>
                     </span>
                   </div>
                 </Link>

@@ -126,7 +126,7 @@ export async function getVehicleTypes(): Promise<VehicleType[]> {
 }
 
 export async function getVehicleBrands(): Promise<VehicleBrand[]> {
-  const { data, error } = await supabase.from("vehicle_brands").select("*").order("display_order", { ascending: true });
+  const { data, error } = await supabase.from("manufacturers").select("*").order("display_order", { ascending: true });
   if (error) {
     console.error("Error fetching vehicle brands:", error);
     return [];

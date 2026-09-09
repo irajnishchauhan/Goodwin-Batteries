@@ -1,7 +1,8 @@
-import { dealers } from "@/data/mock";
+import { getDealers } from "@/lib/data";
 import { Search, MapPin, Phone, Clock, Navigation } from "lucide-react";
 
-export default function DealersLocatorPage() {
+export default async function DealersLocatorPage() {
+  const dealers = await getDealers();
   return (
     <div className="flex flex-col w-full min-h-screen pt-20">
       <section className="bg-background py-16 border-b border-border">

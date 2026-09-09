@@ -354,17 +354,17 @@ export default function VehicleFinder() {
       <div className="flex items-center justify-between bg-surface-hover px-4 py-3 border-b border-border">
         <div className="flex text-xs font-bold uppercase tracking-wider text-gray-500 overflow-x-auto whitespace-nowrap hide-scrollbar shrink-0">
           <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 1 ? "text-brand" : "")} onClick={() => setStep(1)}>Type</span>
-          <ChevronRight size={14} className="mx-2 shrink-0" />
+          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
           <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 2 ? "text-brand" : "")} onClick={() => step >= 2 && setStep(2)}>Brand</span>
-          <ChevronRight size={14} className="mx-2 shrink-0" />
+          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
           <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 3 ? "text-brand" : "")} onClick={() => step >= 3 && setStep(3)}>Model</span>
-          <ChevronRight size={14} className="mx-2 shrink-0" />
+          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
           <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 4 ? "text-brand" : "")} onClick={() => step >= 4 && setStep(4)}>Variant</span>
-          <ChevronRight size={14} className="mx-2 shrink-0" />
+          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
           <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 5 ? "text-brand" : "")} onClick={() => step >= 5 && setStep(5)}>Fuel</span>
-          <ChevronRight size={14} className="mx-2 shrink-0" />
+          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
           <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 6 ? "text-brand" : "")} onClick={() => step >= 6 && setStep(6)}>Year</span>
-          <ChevronRight size={14} className="mx-2 shrink-0" />
+          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
           <span className={clsx(step === 7 ? "text-brand" : "")}>Result</span>
         </div>
         

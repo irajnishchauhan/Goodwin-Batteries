@@ -3,14 +3,21 @@
 import { useState } from "react";
 import { ChevronRight, ShieldCheck, Upload, CheckCircle2, Loader2 } from "lucide-react";
 import Link from "next/link";
-import { products } from "@/data/mock";
 import { supabase } from "@/lib/supabase";
+import { useEffect } from "react";
 
 export default function WarrantyRegistrationPage() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [warrantyId, setWarrantyId] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [products, setProducts] = useState<any[]>([]);
   
+  useEffect(() => {
+    supabase.from('products').select('id, name, ah').eq('is_published', true).order('name').then(({ data }) => {
+      if (data) setProducts(data);
+    });
+  }, []);
+
   const [formData, setFormData] = useState({
     customer_name: "",
     mobile: "",

@@ -2,13 +2,21 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Loader2, Calendar, ShieldCheck, AlertTriangle } from "lucide-react";
+import { Loader2, Calendar, ShieldCheck, AlertTriangle, Edit2, Trash2 } from "lucide-react";
+import WarrantyModal from "@/components/admin/WarrantyModal";
+import ClaimModal from "@/components/admin/ClaimModal";
 
 export default function AdminWarrantiesPage() {
   const [activeTab, setActiveTab] = useState<"registrations" | "claims">("registrations");
   const [registrations, setRegistrations] = useState<any[]>([]);
   const [claims, setClaims] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  
+  const [selectedReg, setSelectedReg] = useState<any>(null);
+  const [isRegModalOpen, setIsRegModalOpen] = useState(false);
+  
+  const [selectedClaim, setSelectedClaim] = useState<any>(null);
+  const [isClaimModalOpen, setIsClaimModalOpen] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -36,6 +44,20 @@ export default function AdminWarrantiesPage() {
     const newStatus = currentStatus === 'Pending Review' ? 'Under Inspection' : currentStatus === 'Under Inspection' ? 'Approved' : currentStatus === 'Approved' ? 'Rejected' : 'Pending Review';
     await supabase.from("warranty_claims").update({ status: newStatus }).eq("id", id);
     fetchData();
+  };
+
+  const deleteReg = async (id: string) => {
+    if (confirm("Are you sure you want to delete this warranty registration?")) {
+      await supabase.from("warranty_registrations").delete().eq("id", id);
+      fetchData();
+    }
+  };
+
+  const deleteClaim = async (id: string) => {
+    if (confirm("Are you sure you want to delete this warranty claim?")) {
+      await supabase.from("warranty_claims").delete().eq("id", id);
+      fetchData();
+    }
   };
 
   if (loading) return <div className="flex justify-center p-12"><Loader2 className="animate-spin text-brand" size={32} /></div>;
@@ -88,6 +110,10 @@ export default function AdminWarrantiesPage() {
                   <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono bg-background border border-border px-3 py-1.5 rounded">
                     <Calendar size={14} />
                     {new Date(reg.created_at).toLocaleString()}
+                  </div>
+                  <div className="flex gap-2">
+                    <button onClick={() => { setSelectedReg(reg); setIsRegModalOpen(true); }} className="p-1.5 bg-background border border-border rounded hover:text-brand transition-colors"><Edit2 size={16} /></button>
+                    <button onClick={() => deleteReg(reg.id)} className="p-1.5 bg-background border border-border rounded hover:text-red-500 transition-colors"><Trash2 size={16} /></button>
                   </div>
                 </div>
               </div>
@@ -166,6 +192,10 @@ export default function AdminWarrantiesPage() {
                     <Calendar size={14} />
                     {new Date(claim.created_at).toLocaleString()}
                   </div>
+                  <div className="flex gap-2">
+                    <button onClick={() => { setSelectedClaim(claim); setIsClaimModalOpen(true); }} className="p-1.5 bg-background border border-border rounded hover:text-brand transition-colors"><Edit2 size={16} /></button>
+                    <button onClick={() => deleteClaim(claim.id)} className="p-1.5 bg-background border border-border rounded hover:text-red-500 transition-colors"><Trash2 size={16} /></button>
+                  </div>
                 </div>
               </div>
 
@@ -203,6 +233,20 @@ export default function AdminWarrantiesPage() {
           )}
         </div>
       )}
+
+      <WarrantyModal 
+        isOpen={isRegModalOpen}
+        onClose={() => { setIsRegModalOpen(false); setSelectedReg(null); }}
+        registration={selectedReg}
+        onSuccess={fetchData}
+      />
+      
+      <ClaimModal 
+        isOpen={isClaimModalOpen}
+        onClose={() => { setIsClaimModalOpen(false); setSelectedClaim(null); }}
+        claim={selectedClaim}
+        onSuccess={fetchData}
+      />
     </div>
   );
 }

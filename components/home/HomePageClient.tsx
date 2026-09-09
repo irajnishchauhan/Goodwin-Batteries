@@ -181,11 +181,11 @@ export default function HomePageClient({ applications, settings }: { application
       </section>
 
       {/* 4.6 TESTIMONIALS */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-navy">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-sm font-bold tracking-widest text-brand uppercase mb-3">Customer Reviews</h2>
-            <h3 className="text-4xl md:text-5xl font-heading font-bold text-foreground">Why drivers trust Goodwin</h3>
+            <h3 className="text-4xl md:text-5xl font-heading font-bold text-white">Why drivers trust Goodwin</h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -194,17 +194,17 @@ export default function HomePageClient({ applications, settings }: { application
               { name: "Vikram M.", location: "Gurugram", text: "Using Goodwin for my commercial fleet. The durability is unmatched on tough roads." },
               { name: "Priya K.", location: "Noida", text: "Excellent customer service and transparent pricing. Highly recommend their doorstep delivery." }
             ].map((review, i) => (
-              <div key={i} className="bg-surface border border-border p-8 rounded-2xl flex flex-col gap-4 shadow-sm hover:shadow-xl hover:border-brand/30 transition-all">
-                <div className="flex gap-1 text-yellow-400">
+              <div key={i} className="bg-navy-dark border border-silver/20 p-8 rounded-2xl flex flex-col gap-4 shadow-sm hover:shadow-xl hover:border-brand/30 transition-all">
+                <div className="flex gap-1 text-brand">
                   <Star fill="currentColor" size={20} />
                   <Star fill="currentColor" size={20} />
                   <Star fill="currentColor" size={20} />
                   <Star fill="currentColor" size={20} />
                   <Star fill="currentColor" size={20} />
                 </div>
-                <p className="text-foreground leading-relaxed italic">"{review.text}"</p>
-                <div className="mt-auto pt-6 border-t border-border">
-                  <span className="font-bold block text-foreground">{review.name}</span>
+                <p className="text-white leading-relaxed italic">"{review.text}"</p>
+                <div className="mt-auto pt-6 border-t border-silver/20">
+                  <span className="font-bold block text-white">{review.name}</span>
                   <span className="text-sm text-silver block">{review.location}</span>
                 </div>
               </div>

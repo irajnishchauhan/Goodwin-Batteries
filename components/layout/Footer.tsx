@@ -17,7 +17,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           {/* Brand Info */}
           <div className="flex flex-col gap-6">
-            <Link href="/" className="inline-block">
+            <Link href="/" className="inline-flex items-center gap-3">
+              <Image 
+                src="/assets/logo/tilak.svg" 
+                alt="Tirupati Tilak" 
+                width={28} 
+                height={32} 
+                className="object-contain"
+              />
               <Image 
                 src="/assets/logo/Goodwin.png" 
                 alt={settings?.company_name || "Goodwin Batteries"} 

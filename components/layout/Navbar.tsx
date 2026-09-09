@@ -46,6 +46,14 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 z-50">
           <Image 
+            src="/assets/logo/tilak.svg" 
+            alt="Tirupati Tilak" 
+            width={24} 
+            height={28} 
+            className="object-contain"
+            priority
+          />
+          <Image 
             src="/assets/logo/Goodwin.png" 
             alt={settings?.company_name || "Goodwin Batteries"} 
             width={160} 

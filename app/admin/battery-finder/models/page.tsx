@@ -134,7 +134,7 @@ export default function ModelsManager() {
                   </td>
                   <td className="py-4 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <button onClick={() => { setIsEditing(model.id); setEditForm(model); }} className="p-2 hover:bg-background rounded text-blue-500"><Edit2 size={16} /></button>
+                      <button onClick={() => { setIsEditing(model.id); setEditForm(model); }} className="p-2 hover:bg-background rounded text-brand"><Edit2 size={16} /></button>
                       <button onClick={() => handleDelete(model.id)} className="p-2 hover:bg-background rounded text-red-500"><Trash2 size={16} /></button>
                     </div>
                   </td>

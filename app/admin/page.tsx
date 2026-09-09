@@ -57,7 +57,7 @@ export default function AdminDashboard() {
           value={loading ? "-" : stats.products} 
           icon={<Package size={24} />} 
           trend="+2 this month"
-          color="bg-blue-500"
+          color="bg-brand"
         />
         <StatCard 
           title="Active Dealers" 

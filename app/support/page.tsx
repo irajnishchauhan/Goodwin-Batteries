@@ -107,7 +107,7 @@ export default function SupportPage() {
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Need Immediate Assistance?</h2>
           <p className="text-lg text-white/90 mb-8">Our customer care executives are available on WhatsApp and phone during business hours.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href={`https://wa.me/91${GOODWIN_CONFIG.whatsapp}`} target="_blank" rel="noopener noreferrer" className="bg-white text-black px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-gray-100 transition-colors">
+            <a href={`https://wa.me/91${GOODWIN_CONFIG.whatsapp}`} target="_blank" rel="noopener noreferrer" className="bg-white text-navy px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-silver/20 transition-colors">
               Chat on WhatsApp
             </a>
             <a href={`tel:+91${GOODWIN_CONFIG.phone}`} className="bg-transparent border-2 border-white text-white px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-white/10 transition-colors">

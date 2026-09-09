@@ -136,7 +136,7 @@ export default function VariantsManager() {
                   </td>
                   <td className="py-4 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <button onClick={() => { setIsEditing(variant.id); setEditForm(variant); }} className="p-2 hover:bg-background rounded text-blue-500"><Edit2 size={16} /></button>
+                      <button onClick={() => { setIsEditing(variant.id); setEditForm(variant); }} className="p-2 hover:bg-background rounded text-brand"><Edit2 size={16} /></button>
                       <button onClick={() => handleDelete(variant.id)} className="p-2 hover:bg-background rounded text-red-500"><Trash2 size={16} /></button>
                     </div>
                   </td>

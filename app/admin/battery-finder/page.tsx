@@ -64,7 +64,7 @@ export default function BatteryFinderOverview() {
   }
 
   const statCards = [
-    { label: "Vehicle Types", value: stats.types, icon: <Box size={24} className="text-blue-500" />, href: "/admin/battery-finder/types" },
+    { label: "Vehicle Types", value: stats.types, icon: <Box size={24} className="text-brand" />, href: "/admin/battery-finder/types" },
     { label: "Brands", value: stats.brands, icon: <Tag size={24} className="text-purple-500" />, href: "/admin/battery-finder/brands" },
     { label: "Models", value: stats.models, icon: <Car size={24} className="text-emerald-500" />, href: "/admin/battery-finder/models" },
     { label: "Variants", value: stats.variants, icon: <Hash size={24} className="text-orange-500" />, href: "/admin/battery-finder/variants" },

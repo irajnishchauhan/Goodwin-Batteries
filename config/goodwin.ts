@@ -5,9 +5,9 @@ export const GOODWIN_CONFIG = {
   description: "India's everyday power choice. Reliable, affordable, trusted.",
   
   // Contact Information
-  phone: "9811122334", // Placeholder updated to Delhi number from mock
-  alternatePhone: null,
-  whatsapp: "9811122334",
+  phone: "9667724411",
+  alternatePhone: "9220404411",
+  whatsapp: "9667724411",
   email: "customercare@goodwinbatteries.in",
   supportEmail: "customercare@goodwinbatteries.in",
   

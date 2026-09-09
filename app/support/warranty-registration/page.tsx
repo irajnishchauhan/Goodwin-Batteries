@@ -187,7 +187,7 @@ export default function WarrantyRegistrationPage() {
                     >
                       <option value="">Select Battery Model</option>
                       {products.map(p => (
-                        <option key={p.id} value={p.id}>{p.name} ({p.capacity})</option>
+                        <option key={p.id} value={p.id}>{p.name} ({p.ah})</option>
                       ))}
                     </select>
                   </div>

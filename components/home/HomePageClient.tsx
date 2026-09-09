@@ -167,12 +167,12 @@ export default function HomePageClient({ applications, settings }: { application
         <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
           <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
              {["Maruti Suzuki", "Hyundai", "Tata Motors", "Mahindra", "Kia", "Toyota", "Honda", "Renault"].map((brand, i) => (
-               <li key={i} className="text-2xl md:text-4xl font-heading font-bold text-gray-300 dark:text-gray-800 uppercase tracking-widest hover:text-brand dark:hover:text-brand transition-colors cursor-default whitespace-nowrap">
+               <li key={i} className="text-2xl md:text-4xl font-heading font-bold text-silver/40 uppercase tracking-widest hover:text-brand transition-colors cursor-default whitespace-nowrap">
                  {brand}
                </li>
              ))}
              {["Maruti Suzuki", "Hyundai", "Tata Motors", "Mahindra", "Kia", "Toyota", "Honda", "Renault"].map((brand, i) => (
-               <li key={i+10} className="text-2xl md:text-4xl font-heading font-bold text-gray-300 dark:text-gray-800 uppercase tracking-widest hover:text-brand dark:hover:text-brand transition-colors cursor-default whitespace-nowrap" aria-hidden="true">
+               <li key={i+10} className="text-2xl md:text-4xl font-heading font-bold text-silver/40 uppercase tracking-widest hover:text-brand transition-colors cursor-default whitespace-nowrap" aria-hidden="true">
                  {brand}
                </li>
              ))}

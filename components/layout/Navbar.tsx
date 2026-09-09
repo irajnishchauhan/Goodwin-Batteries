@@ -128,7 +128,7 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="py-3 text-lg font-bold border-b border-border/50 text-foreground"
+                    className="py-3 text-lg font-bold border-b border-silver/20 text-white hover:text-brand transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -139,7 +139,7 @@ export default function Navbar() {
               <div className="flex flex-col gap-3 mt-4">
                 <Link
                   href="/dealer-distributor"
-                  className="py-3 px-4 border border-border text-center rounded font-bold uppercase text-sm"
+                  className="py-3 px-4 border border-silver/50 text-white text-center rounded font-bold uppercase text-sm hover:bg-white/10 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Become a Dealer

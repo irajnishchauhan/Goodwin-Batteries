@@ -20,8 +20,12 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://goodwinbatteries.in'),
   title: `${GOODWIN_CONFIG.companyName} | ${GOODWIN_CONFIG.tagline}`,
   description: GOODWIN_CONFIG.description,
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default async function RootLayout({

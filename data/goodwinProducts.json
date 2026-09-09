@@ -1,0 +1,54 @@
+[
+  {
+    "id": "prod-tz4lb",
+    "name": "GW-TZ4LB",
+    "series": "Goodwin SMF",
+    "slug": "gw-tz4lb",
+    "voltage": "12V",
+    "capacity": "4Ah",
+    "technology": "SMF / Maintenance Free",
+    "application": "Two Wheeler",
+    "warrantyOptions": ["12 Months", "18 Months", "48 Months"],
+    "image": "/assets/products/goodwin-4smf5-torch-4v-5ah.png",
+    "description": "Reliable starting power designed for Indian riding conditions."
+  },
+  {
+    "id": "prod-xl5lb",
+    "name": "GW-XL5LB",
+    "series": "Goodwin SMF",
+    "slug": "gw-xl5lb",
+    "voltage": "12V",
+    "capacity": "5Ah",
+    "technology": "SMF / Maintenance Free",
+    "application": "Two Wheeler",
+    "warrantyOptions": ["12 Months", "18 Months", "48 Months"],
+    "image": "/assets/products/goodwin-12vgw-xl5lb.png",
+    "description": "High performance battery providing quick and consistent starts."
+  },
+  {
+    "id": "prod-xl25lc",
+    "name": "GW-XL2.5LC",
+    "series": "Goodwin SMF",
+    "slug": "gw-xl2-5lc",
+    "voltage": "12V",
+    "capacity": "2.5Ah",
+    "technology": "SMF / Maintenance Free",
+    "application": "Two Wheeler",
+    "warrantyOptions": ["12 Months", "18 Months", "48 Months"],
+    "image": "/assets/products/goodwin-4smf5-torch-4v-5ah.png",
+    "description": "Compact and powerful battery optimized for kick-start and basic electricals."
+  },
+  {
+    "id": "prod-tz5lb",
+    "name": "GW-TZ5LB",
+    "series": "Goodwin SMF",
+    "slug": "gw-tz5lb",
+    "voltage": "12V",
+    "capacity": "5Ah",
+    "technology": "SMF / Maintenance Free",
+    "application": "Two Wheeler",
+    "warrantyOptions": ["12 Months", "18 Months", "48 Months"],
+    "image": "/assets/products/goodwin-12vgw-tz4lb.png",
+    "description": "Advanced power delivery for modern two wheelers with extra electronics."
+  }
+]

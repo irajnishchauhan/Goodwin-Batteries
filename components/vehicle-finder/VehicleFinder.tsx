@@ -1,36 +1,40 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronRight, Battery, Car, Truck, Bike, Tractor, Search, Phone, Loader2, Info, CheckCircle2, X, RotateCcw } from "lucide-react";
+import { ChevronRight, Battery, Car, Truck, Bike, Tractor, Search, Phone, Loader2, Info, CheckCircle2, X, RotateCcw, ArrowLeft } from "lucide-react";
 import clsx from "clsx";
 import Link from "next/link";
-import { supabase } from "@/lib/supabase";
 import { useGlobalSettings } from "@/components/GlobalSettingsProvider";
+
+import vehicleFitments from "@/data/vehicleFitments.json";
+import goodwinProducts from "@/data/goodwinProducts.json";
 
 export default function VehicleFinder() {
   const settings = useGlobalSettings();
-  const [step, setStep] = useState<1 | 2 | 3 | 4 | 5>(1);
+  const [step, setStep] = useState<1 | 2 | 3 | 4 | 5 | 6 | 7>(1);
   const [loading, setLoading] = useState(false);
-  const [loadingText, setLoadingText] = useState("Searching Database...");
+  const [loadingText, setLoadingText] = useState("Initializing...");
 
   // Data Options
-  const [types, setTypes] = useState<any[]>([]);
-  const [brands, setBrands] = useState<any[]>([]);
-  const [models, setModels] = useState<any[]>([]);
-  const [variants, setVariants] = useState<any[]>([]);
-  const [fuels, setFuels] = useState<any[]>([]);
+  const [types, setTypes] = useState<string[]>([]);
+  const [brands, setBrands] = useState<string[]>([]);
+  const [models, setModels] = useState<string[]>([]);
+  const [variants, setVariants] = useState<string[]>([]);
+  const [fuels, setFuels] = useState<string[]>([]);
   const [years, setYears] = useState<string[]>([]);
   
   const [selections, setSelections] = useState({
-    typeId: "", typeName: "",
-    brandId: "", brandName: "",
-    modelId: "", modelName: "",
-    variantId: "", variantName: ""
+    type: "",
+    brand: "",
+    model: "",
+    variant: "",
+    fuel: "",
+    year: ""
   });
 
   // Results
-  const [fitmentRecords, setFitmentRecords] = useState<any[]>([]);
   const [recommendedProduct, setRecommendedProduct] = useState<any | null>(null);
+  const [fitmentStatus, setFitmentStatus] = useState<"verified" | "unverified">("verified");
 
   // Search
   const [searchQuery, setSearchQuery] = useState("");
@@ -43,31 +47,27 @@ export default function VehicleFinder() {
   const [leadSubmitting, setLeadSubmitting] = useState(false);
 
   useEffect(() => {
-    loadTypes();
+    // Initial load of Types
+    const uniqueTypes = Array.from(new Set(vehicleFitments.map(f => f.type))).sort();
+    setTypes(uniqueTypes);
   }, []);
-
-  async function loadTypes() {
-    setLoading(true);
-    setLoadingText("Loading vehicle types...");
-    const { data } = await supabase.from("vehicle_types").select("*").order("display_order");
-    setTypes(data || []);
-    setLoading(false);
-  }
 
   const resetFinder = () => {
     setStep(1);
-    setSelections({
-      typeId: "", typeName: "",
-      brandId: "", brandName: "",
-      modelId: "", modelName: "",
-      variantId: "", variantName: ""
-    });
+    setSelections({ type: "", brand: "", model: "", variant: "", fuel: "", year: "" });
     setRecommendedProduct(null);
     setSearchQuery("");
     setSearchResults([]);
+    setLeadSubmitted(false);
   };
 
-  const handleSearch = async (query: string) => {
+  const goBack = () => {
+    if (step > 1) {
+      setStep((prev) => (prev - 1) as any);
+    }
+  };
+
+  const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (query.length < 2) {
       setSearchResults([]);
@@ -75,88 +75,169 @@ export default function VehicleFinder() {
     }
     
     setIsSearching(true);
-    // Search Manufacturers, Models
-    const { data: modelsData } = await supabase
-      .from("vehicle_models")
-      .select("*, brand:manufacturer_id(*)")
-      .ilike("name", `%${query}%`)
-      .limit(10);
+    // Find matching models
+    const matches = vehicleFitments.filter(f => 
+      f.model.toLowerCase().includes(query.toLowerCase()) || 
+      f.brand.toLowerCase().includes(query.toLowerCase())
+    );
+    
+    // Deduplicate by brand + model
+    const uniqueMatches = [];
+    const seen = new Set();
+    for (const m of matches) {
+      const key = `${m.brand}-${m.model}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        uniqueMatches.push(m);
+      }
+      if (uniqueMatches.length >= 10) break;
+    }
       
-    setSearchResults(modelsData || []);
+    setSearchResults(uniqueMatches);
     setIsSearching(false);
   };
 
-  const selectSearchResult = async (model: any) => {
+  const selectSearchResult = (fitment: any) => {
     setSearchQuery("");
     setSearchResults([]);
     setSelections(s => ({ 
       ...s, 
-      typeId: model.brand.vehicle_type_id, typeName: "Selected via Search", 
-      brandId: model.brand.id, brandName: model.brand.name, 
-      modelId: model.id, modelName: model.name,
-      variantId: ""
+      type: fitment.type, 
+      brand: fitment.brand, 
+      model: fitment.model,
+      variant: "", fuel: "", year: ""
     }));
+    
     setStep(4);
     setLoading(true);
     setLoadingText("Loading variants...");
-    const { data } = await supabase.from("vehicle_variants").select("*").eq("model_id", model.id).order("name");
-    setVariants(data || []);
-    setLoading(false);
+    
+    setTimeout(() => {
+      const v = Array.from(new Set(vehicleFitments
+        .filter(f => f.type === fitment.type && f.brand === fitment.brand && f.model === fitment.model)
+        .map(f => f.variant)
+      ));
+      setVariants(v.sort());
+      setLoading(false);
+    }, 250);
   };
 
-  const handleTypeSelect = async (id: string, name: string) => {
-    setSelections(s => ({ ...s, typeId: id, typeName: name, brandId: "", modelId: "", variantId: "" }));
+  const handleTypeSelect = (type: string) => {
+    setSelections(s => ({ ...s, type, brand: "", model: "", variant: "", fuel: "", year: "" }));
     setStep(2);
     setLoading(true);
     setLoadingText("Loading brands...");
-    const { data } = await supabase.from("manufacturers").select("*").eq("vehicle_type_id", id).order("name");
-    setBrands(data || []);
-    setLoading(false);
+    setTimeout(() => {
+      const b = Array.from(new Set(vehicleFitments.filter(f => f.type === type).map(f => f.brand)));
+      setBrands(b.sort());
+      setLoading(false);
+    }, 250);
   };
 
-  const handleBrandSelect = async (id: string, name: string) => {
-    setSelections(s => ({ ...s, brandId: id, brandName: name, modelId: "", variantId: "" }));
+  const handleBrandSelect = (brand: string) => {
+    setSelections(s => ({ ...s, brand, model: "", variant: "", fuel: "", year: "" }));
     setStep(3);
     setLoading(true);
     setLoadingText("Loading models...");
-    const { data } = await supabase.from("vehicle_models").select("*").eq("manufacturer_id", id).order("name");
-    setModels(data || []);
-    setLoading(false);
+    setTimeout(() => {
+      const m = Array.from(new Set(vehicleFitments.filter(f => f.type === selections.type && f.brand === brand).map(f => f.model)));
+      setModels(m.sort());
+      setLoading(false);
+    }, 250);
   };
 
-  const handleModelSelect = async (id: string, name: string) => {
-    setSelections(s => ({ ...s, modelId: id, modelName: name, variantId: "" }));
+  const handleModelSelect = (model: string) => {
+    setSelections(s => ({ ...s, model, variant: "", fuel: "", year: "" }));
     setStep(4);
     setLoading(true);
     setLoadingText("Loading variants...");
-    const { data } = await supabase.from("vehicle_variants").select("*").eq("model_id", id).order("name");
-    setVariants(data || []);
-    setLoading(false);
+    setTimeout(() => {
+      const v = Array.from(new Set(vehicleFitments
+        .filter(f => f.type === selections.type && f.brand === selections.brand && f.model === model)
+        .map(f => f.variant)
+      ));
+      setVariants(v.sort());
+      setLoading(false);
+    }, 250);
   };
 
-  const handleVariantSelect = async (id: string, name: string) => {
-    setSelections(s => ({ ...s, variantId: id, variantName: name }));
+  const handleVariantSelect = (variant: string) => {
+    setSelections(s => ({ ...s, variant, fuel: "", year: "" }));
+    setStep(5);
+    setLoading(true);
+    setLoadingText("Loading fuel types...");
+    setTimeout(() => {
+      const fList = Array.from(new Set(vehicleFitments
+        .filter(f => f.type === selections.type && f.brand === selections.brand && f.model === selections.model && f.variant === variant)
+        .map(f => f.fuel)
+      ));
+      setFuels(fList.sort());
+      setLoading(false);
+    }, 250);
+  };
+
+  const handleFuelSelect = (fuel: string) => {
+    setSelections(s => ({ ...s, fuel, year: "" }));
+    setStep(6);
+    setLoading(true);
+    setLoadingText("Loading years...");
+    setTimeout(() => {
+      const f = vehicleFitments.find(f => 
+        f.type === selections.type && 
+        f.brand === selections.brand && 
+        f.model === selections.model && 
+        f.variant === selections.variant && 
+        f.fuel === fuel
+      );
+      if (f) {
+        const y = [];
+        for (let i = f.yearTo; i >= f.yearFrom; i--) {
+          y.push(i.toString());
+        }
+        setYears(y);
+      } else {
+        setYears([]);
+      }
+      setLoading(false);
+    }, 250);
+  };
+
+  const handleYearSelect = (year: string) => {
+    setSelections(s => ({ ...s, year }));
+    setStep(7);
     setLoading(true);
     setLoadingText("Finding compatible Goodwin battery...");
     
-    // Fetch the single variant to get recommended_battery_id
-    const { data } = await supabase.from("vehicle_variants")
-      .select("*, product:recommended_battery_id(*)")
-      .eq("id", id)
-      .single();
+    setTimeout(() => {
+      const f = vehicleFitments.find(f => 
+        f.type === selections.type && 
+        f.brand === selections.brand && 
+        f.model === selections.model && 
+        f.variant === selections.variant && 
+        f.fuel === selections.fuel
+      );
       
-    if (data && data.product) {
-      setRecommendedProduct(data.product);
-    } else {
-      setRecommendedProduct(null);
-    }
-    setStep(5);
-    setLoading(false);
+      if (f && f.verificationStatus === "verified" && f.batteryProductId) {
+        const prod = goodwinProducts.find(p => p.id === f.batteryProductId);
+        if (prod) {
+          setRecommendedProduct(prod);
+          setFitmentStatus("verified");
+        } else {
+          setRecommendedProduct(null);
+          setFitmentStatus("unverified");
+        }
+      } else {
+        setRecommendedProduct(null);
+        setFitmentStatus("unverified");
+      }
+      
+      setLoading(false);
+    }, 500);
   };
 
   const getIconForType = (typeName: string) => {
     if (typeName.includes("Passenger") || typeName.includes("Car")) return <Car size={32} />;
-    if (typeName.includes("Two") || typeName.includes("Bike")) return <Bike size={32} />;
+    if (typeName.includes("Two") || typeName.includes("Bike") || typeName.includes("Motorcycle") || typeName.includes("Scooter")) return <Bike size={32} />;
     if (typeName.includes("Commercial") || typeName.includes("Truck")) return <Truck size={32} />;
     if (typeName.includes("Tractor")) return <Tractor size={32} />;
     return <Battery size={32} />;
@@ -165,37 +246,21 @@ export default function VehicleFinder() {
   const submitLead = async (e: React.FormEvent) => {
     e.preventDefault();
     setLeadSubmitting(true);
-    
-    const enquiryId = `GWB-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
-    
-    const payload = {
-      enquiry_id: enquiryId,
-      vehicle_type: selections.typeName,
-      brand: selections.brandName,
-      model: selections.modelName,
-      variant: selections.variantName,
-      fuel: "N/A",
-      year: "N/A",
-      recommended_product_id: recommendedProduct?.id || null,
-      customer_name: leadForm.name,
-      phone: leadForm.phone,
-      email: leadForm.email,
-    };
-
-    await supabase.from("battery_finder_leads").insert(payload);
-    
-    setLeadSubmitting(false);
-    setLeadSubmitted(true);
+    setTimeout(() => {
+      setLeadSubmitting(false);
+      setLeadSubmitted(true);
+    }, 800);
   };
 
   const whatsappMessage = encodeURIComponent(
     `Hello Goodwin Batteries,\n\nI used the Battery Finder and need a battery for:\n\n` +
-    `Vehicle: ${selections.brandName}\n` +
-    `Model: ${selections.modelName}\n` +
-    `Variant: ${selections.variantName}\n\n` +
+    `Vehicle: ${selections.brand} ${selections.model}\n` +
+    `Variant: ${selections.variant}\n` +
+    `Fuel: ${selections.fuel}\n` +
+    `Year: ${selections.year}\n\n` +
     (recommendedProduct ? 
-      `Recommended Goodwin Battery:\n${recommendedProduct.name}\n${recommendedProduct.voltage} / ${recommendedProduct.ah}\n\n` :
-      ``
+      `Recommended Goodwin Battery:\n${recommendedProduct.name}\n${recommendedProduct.voltage} / ${recommendedProduct.capacity}\n\n` :
+      `The database showed this as Unverified. Can you please help me find the exact match?\n\n`
     ) +
     `Please confirm availability and price.`
   );
@@ -203,7 +268,7 @@ export default function VehicleFinder() {
   const whatsappUrl = `https://wa.me/${settings?.whatsapp_main || "919667724411"}?text=${whatsappMessage}`;
 
   return (
-    <div className="bg-navy rounded-2xl shadow-2xl border border-silver/20 overflow-hidden min-h-[400px] flex flex-col relative">
+    <div className="bg-navy rounded-2xl shadow-2xl border border-silver/20 overflow-hidden min-h-[500px] flex flex-col relative">
       {/* Header */}
       <div className="bg-transparent text-white p-6 md:p-8 flex items-center justify-between shrink-0 relative border-b border-silver/10">
         <div>
@@ -240,7 +305,7 @@ export default function VehicleFinder() {
                     onClick={() => selectSearchResult(res)}
                     className="w-full text-left px-4 py-3 border-b border-border hover:bg-brand/10 hover:text-brand text-foreground text-sm font-medium transition-colors"
                   >
-                    {res.brand?.name} {res.name}
+                    {res.brand} {res.model}
                   </button>
                 ))
               ) : (
@@ -253,19 +318,23 @@ export default function VehicleFinder() {
 
       {/* Breadcrumbs & Reset */}
       <div className="flex items-center justify-between bg-navy-dark px-6 py-4 border-b border-silver/20">
-        <div className="flex text-xs font-bold uppercase tracking-widest text-silver overflow-x-auto whitespace-nowrap hide-scrollbar shrink-0 items-center">
+        <div className="flex text-[10px] sm:text-xs font-bold uppercase tracking-widest text-silver overflow-x-auto whitespace-nowrap hide-scrollbar shrink-0 items-center">
           <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 1 ? "text-brand" : "")} onClick={() => setStep(1)}>Type</span>
-          <span className="w-4 h-px bg-silver/30 mx-2" />
+          <span className="w-2 sm:w-4 h-px bg-silver/30 mx-1 sm:mx-2" />
           <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 2 ? "text-brand" : "")} onClick={() => step >= 2 && setStep(2)}>Brand</span>
-          <span className="w-4 h-px bg-silver/30 mx-2" />
+          <span className="w-2 sm:w-4 h-px bg-silver/30 mx-1 sm:mx-2" />
           <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 3 ? "text-brand" : "")} onClick={() => step >= 3 && setStep(3)}>Model</span>
-          <span className="w-4 h-px bg-silver/30 mx-2" />
+          <span className="w-2 sm:w-4 h-px bg-silver/30 mx-1 sm:mx-2" />
           <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 4 ? "text-brand" : "")} onClick={() => step >= 4 && setStep(4)}>Variant</span>
-          <span className="w-4 h-px bg-silver/30 mx-2" />
-          <span className={clsx(step === 5 ? "text-brand" : "")}>Result</span>
+          <span className="w-2 sm:w-4 h-px bg-silver/30 mx-1 sm:mx-2" />
+          <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 5 ? "text-brand" : "")} onClick={() => step >= 5 && setStep(5)}>Fuel</span>
+          <span className="w-2 sm:w-4 h-px bg-silver/30 mx-1 sm:mx-2" />
+          <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 6 ? "text-brand" : "")} onClick={() => step >= 6 && setStep(6)}>Year</span>
+          <span className="w-2 sm:w-4 h-px bg-silver/30 mx-1 sm:mx-2" />
+          <span className={clsx(step === 7 ? "text-brand" : "")}>Result</span>
         </div>
         
-        <button onClick={resetFinder} className="text-silver hover:text-white flex items-center gap-1 text-xs font-bold uppercase tracking-widest transition-colors shrink-0 ml-4">
+        <button onClick={resetFinder} className="text-silver hover:text-white flex items-center gap-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-colors shrink-0 ml-4">
           <RotateCcw size={14} /> Restart
         </button>
       </div>
@@ -273,103 +342,138 @@ export default function VehicleFinder() {
       {/* Main Content Area */}
       <div className="bg-surface m-0 md:m-4 md:rounded-xl p-6 md:p-8 flex-1 flex flex-col relative min-h-[350px]">
         {loading && (
-          <div className="absolute inset-0 z-10 bg-surface/80 backdrop-blur-sm flex flex-col items-center justify-center">
+          <div className="absolute inset-0 z-10 bg-surface/80 backdrop-blur-sm flex flex-col items-center justify-center rounded-xl">
             <Loader2 size={40} className="animate-spin text-brand mb-4" />
             <p className="text-foreground font-bold tracking-widest uppercase text-sm">{loadingText}</p>
           </div>
         )}
 
+        {/* Back Button (Mobile friendly) */}
+        {step > 1 && step < 7 && !loading && (
+          <button onClick={goBack} className="absolute top-4 left-4 md:top-6 md:left-6 flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors text-sm font-bold tracking-wider uppercase z-10">
+            <ArrowLeft size={16} /> Back
+          </button>
+        )}
+
         {/* Step 1: Type */}
         {step === 1 && (
-          <div className="animate-in fade-in slide-in-from-right-4 duration-300">
+          <div className="animate-in fade-in slide-in-from-right-4 duration-300 pt-8 md:pt-0">
             <h4 className="text-lg font-bold mb-6 text-center text-foreground">Select Vehicle Type</h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {types.map((vt) => (
                 <button
-                  key={vt.id}
-                  onClick={() => handleTypeSelect(vt.id, vt.name)}
+                  key={vt}
+                  onClick={() => handleTypeSelect(vt)}
                   className="flex flex-col items-center justify-center p-6 border border-silver/30 rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-foreground group bg-background"
                 >
                   <div className="text-silver group-hover:text-brand transition-colors mb-3">
-                    {getIconForType(vt.name)}
+                    {getIconForType(vt)}
                   </div>
-                  <span className="font-semibold text-sm text-center">{vt.name}</span>
+                  <span className="font-semibold text-sm text-center">{vt}</span>
                 </button>
               ))}
             </div>
             {types.length === 0 && !loading && (
-              <div className="text-center py-10 text-muted-foreground">Database is currently empty.</div>
+              <div className="text-center py-10 text-muted-foreground bg-background rounded-xl border border-border">Database is currently empty.</div>
             )}
           </div>
         )}
 
         {/* Step 2: Brand */}
         {step === 2 && (
-          <div className="animate-in fade-in slide-in-from-right-4 duration-300">
+          <div className="animate-in fade-in slide-in-from-right-4 duration-300 pt-8 md:pt-0">
             <h4 className="text-lg font-bold mb-6 text-center text-foreground">Select Brand</h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
               {brands.map((brand) => (
                 <button
-                  key={brand.id}
-                  onClick={() => handleBrandSelect(brand.id, brand.name)}
-                  className="py-4 px-6 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground flex flex-col items-center justify-center"
+                  key={brand}
+                  onClick={() => handleBrandSelect(brand)}
+                  className="py-4 px-4 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground flex flex-col items-center justify-center"
                 >
-                  <span>{brand.name}</span>
+                  <span>{brand}</span>
                 </button>
               ))}
             </div>
-            {brands.length === 0 && !loading && (
-              <div className="text-center py-10 text-muted-foreground font-bold bg-surface-hover rounded-xl border border-border">No brands found for {selections.typeName}.</div>
-            )}
           </div>
         )}
 
         {/* Step 3: Model */}
         {step === 3 && (
-          <div className="animate-in fade-in slide-in-from-right-4 duration-300">
-            <h4 className="text-lg font-bold mb-6 text-center text-foreground">Select {selections.brandName} Model</h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="animate-in fade-in slide-in-from-right-4 duration-300 pt-8 md:pt-0">
+            <h4 className="text-lg font-bold mb-6 text-center text-foreground">Select {selections.brand} Model</h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
               {models.map((model) => (
                 <button
-                  key={model.id}
-                  onClick={() => handleModelSelect(model.id, model.name)}
-                  className="py-4 px-6 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground"
+                  key={model}
+                  onClick={() => handleModelSelect(model)}
+                  className="py-4 px-4 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground"
                 >
-                  {model.name}
+                  {model}
                 </button>
               ))}
             </div>
-            {models.length === 0 && !loading && (
-              <div className="text-center py-10 text-muted-foreground font-bold bg-surface-hover rounded-xl border border-border">No models found for {selections.brandName}.</div>
-            )}
           </div>
         )}
 
         {/* Step 4: Variant */}
         {step === 4 && (
-          <div className="animate-in fade-in slide-in-from-right-4 duration-300">
+          <div className="animate-in fade-in slide-in-from-right-4 duration-300 pt-8 md:pt-0">
             <h4 className="text-lg font-bold mb-6 text-center text-foreground">Select Variant</h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
               {variants.map((variant) => (
                 <button
-                  key={variant.id}
-                  onClick={() => handleVariantSelect(variant.id, variant.name)}
-                  className="py-4 px-6 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground flex flex-col"
+                  key={variant}
+                  onClick={() => handleVariantSelect(variant)}
+                  className="py-4 px-4 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground flex flex-col"
                 >
-                  <span>{variant.name}</span>
+                  <span>{variant}</span>
                 </button>
               ))}
             </div>
-            {variants.length === 0 && !loading && (
-              <div className="text-center py-10 text-muted-foreground font-bold bg-surface-hover rounded-xl border border-border">No variants found for {selections.modelName}.</div>
-            )}
           </div>
         )}
 
-        {/* Step 5: Result - Success */}
-        {step === 5 && recommendedProduct && (
+        {/* Step 5: Fuel */}
+        {step === 5 && (
+          <div className="animate-in fade-in slide-in-from-right-4 duration-300 pt-8 md:pt-0">
+            <h4 className="text-lg font-bold mb-6 text-center text-foreground">Select Fuel Type</h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {fuels.map((fuel) => (
+                <button
+                  key={fuel}
+                  onClick={() => handleFuelSelect(fuel)}
+                  className="py-6 px-6 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground flex flex-col items-center justify-center gap-2"
+                >
+                  <span className="text-2xl">{fuel === "Electric" ? "⚡" : "⛽"}</span>
+                  <span>{fuel}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Step 6: Year */}
+        {step === 6 && (
+          <div className="animate-in fade-in slide-in-from-right-4 duration-300 pt-8 md:pt-0">
+            <h4 className="text-lg font-bold mb-6 text-center text-foreground">Select Manufacturing Year</h4>
+            <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3">
+              {years.map((year) => (
+                <button
+                  key={year}
+                  onClick={() => handleYearSelect(year)}
+                  className="py-4 px-2 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground"
+                >
+                  {year}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Step 7: Result - VERIFIED MATCH */}
+        {step === 7 && fitmentStatus === "verified" && recommendedProduct && (
           <div className="animate-in zoom-in-95 duration-500 flex flex-col items-center">
-            <h4 className="text-xl font-bold mb-6 text-center text-foreground uppercase tracking-widest text-sm">Your Recommended Goodwin Battery</h4>
+            <h4 className="text-xl font-bold mb-6 text-center text-foreground uppercase tracking-widest text-sm">Your Goodwin Battery</h4>
             
             <div className="w-full max-w-2xl bg-background border border-silver rounded-2xl p-6 flex flex-col md:flex-row items-center gap-8 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-brand text-white px-4 py-1 text-xs font-bold rounded-bl-lg">VERIFIED MATCH</div>
@@ -389,7 +493,7 @@ export default function VehicleFinder() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                   <div className="bg-surface px-3 py-2 rounded-lg border border-border text-center">
                     <span className="text-xs text-muted-foreground block mb-0.5 uppercase tracking-wider">Capacity</span>
-                    <span className="font-bold text-foreground">{recommendedProduct.ah || "N/A"}</span>
+                    <span className="font-bold text-foreground">{recommendedProduct.capacity || "N/A"}</span>
                   </div>
                   <div className="bg-surface px-3 py-2 rounded-lg border border-border text-center">
                     <span className="text-xs text-muted-foreground block mb-0.5 uppercase tracking-wider">Voltage</span>
@@ -397,67 +501,68 @@ export default function VehicleFinder() {
                   </div>
                   <div className="bg-brand/10 px-3 py-2 rounded-lg border border-brand/20 text-center sm:col-span-1 col-span-2">
                     <span className="text-xs text-brand block mb-0.5 uppercase tracking-wider">Warranty</span>
-                    <span className="font-bold text-brand">{recommendedProduct.warranty_options?.length ? recommendedProduct.warranty_options.join(" / ") : (recommendedProduct.warranty || "N/A")}</span>
+                    <span className="font-bold text-brand">{recommendedProduct.warrantyOptions?.length ? recommendedProduct.warrantyOptions.join(" / ") : "N/A"}</span>
                   </div>
                 </div>
 
                 <div className="bg-surface-hover rounded p-3 mb-6 border border-border text-xs text-muted-foreground text-left">
                   <span className="font-bold block text-foreground mb-1">Recommended for:</span>
-                  {selections.brandName} {selections.modelName} {selections.variantName}
+                  {selections.brand} {selections.model} ({selections.variant}) - {selections.fuel} - {selections.year}
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link href={`/products/${recommendedProduct.slug}`} className="bg-background border-2 border-border text-foreground hover:border-brand hover:text-brand px-6 py-3 rounded-lg font-bold w-full transition-all text-center flex-1">
-                    View Product
+                    View Battery
                   </Link>
                   <a href={whatsappUrl} target="_blank" rel="noreferrer" className="bg-brand text-white hover:bg-brand-dark px-6 py-3 rounded-lg font-bold w-full transition-all flex items-center justify-center gap-2 flex-1 shadow-lg shadow-brand/20">
-                    <Phone size={18} /> Enquire
+                    <Phone size={18} /> Chat on WhatsApp
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Optional Lead Capture */}
-            {!leadSubmitted && (
-              <div className="w-full max-w-2xl mt-8 bg-surface border border-border rounded-2xl p-6">
-                <h5 className="font-bold text-foreground mb-2">Want help with your battery?</h5>
-                <p className="text-sm text-muted-foreground mb-4">Leave your details and a Goodwin expert will guide you.</p>
-                <form onSubmit={submitLead} className="flex flex-col sm:flex-row gap-3">
-                  <input type="text" placeholder="Name" required value={leadForm.name} onChange={e=>setLeadForm({...leadForm, name: e.target.value})} className="flex-1 bg-background border border-border rounded-lg p-3 text-sm text-foreground" />
-                  <input type="tel" placeholder="Phone Number" required value={leadForm.phone} onChange={e=>setLeadForm({...leadForm, phone: e.target.value})} className="flex-1 bg-background border border-border rounded-lg p-3 text-sm text-foreground" />
-                  <button type="submit" disabled={leadSubmitting} className="bg-foreground text-background px-6 py-3 rounded-lg font-bold text-sm whitespace-nowrap disabled:opacity-50">
-                    {leadSubmitting ? "Saving..." : "Get Assistance"}
-                  </button>
-                </form>
+            {/* Why this battery */}
+            <div className="w-full max-w-2xl mt-8 pt-8 border-t border-border">
+              <h5 className="font-bold text-foreground mb-4 text-center">Why this battery?</h5>
+              <div className="flex flex-wrap justify-center gap-3">
+                <span className="bg-surface-hover text-muted-foreground border border-border px-4 py-2 rounded-full text-sm">Maintenance-free</span>
+                <span className="bg-surface-hover text-muted-foreground border border-border px-4 py-2 rounded-full text-sm">Spill-proof design</span>
+                <span className="bg-surface-hover text-muted-foreground border border-border px-4 py-2 rounded-full text-sm">Vibration resistant</span>
+                <span className="bg-surface-hover text-muted-foreground border border-border px-4 py-2 rounded-full text-sm">Reliable starting power</span>
+                <span className="bg-surface-hover text-muted-foreground border border-border px-4 py-2 rounded-full text-sm">Designed for Indian riding conditions</span>
               </div>
-            )}
-            
-            {leadSubmitted && (
-              <div className="w-full max-w-2xl mt-8 bg-green-500/10 border border-green-500/30 rounded-2xl p-4 text-center text-green-600 font-bold flex items-center justify-center gap-2">
-                <CheckCircle2 size={20} /> Details saved! We will contact you shortly.
-              </div>
-            )}
+            </div>
           </div>
         )}
 
-        {/* Step 5: Empty State / No Match */}
-        {step === 5 && !recommendedProduct && (
-          <div className="animate-in zoom-in-95 duration-500 flex flex-col items-center py-10">
+        {/* Step 7: Empty State / UNVERIFIED MATCH */}
+        {step === 7 && fitmentStatus === "unverified" && (
+          <div className="animate-in zoom-in-95 duration-500 flex flex-col items-center py-6">
             <div className="w-20 h-20 bg-surface border border-border rounded-full flex items-center justify-center mb-6">
               <Info size={32} className="text-brand" />
             </div>
-            <h4 className="text-2xl font-heading font-bold mb-4 text-center text-foreground uppercase tracking-wider">We couldn't find a verified match</h4>
+            <h4 className="text-2xl font-heading font-bold mb-4 text-center text-foreground uppercase tracking-wider">Unverified Fitment</h4>
+            <p className="text-foreground font-bold mb-2 text-center text-lg">
+              Goodwin battery fitment for this vehicle is currently being verified.
+            </p>
             <p className="text-muted-foreground mb-8 max-w-md text-center leading-relaxed">
-              We don't want to recommend the wrong battery. Please contact Goodwin Batteries and our team will confirm the correct battery for your <strong>{selections.brandName} {selections.modelName} {selections.variantName}</strong>.
+              We do not want to recommend the wrong battery. For your <strong>{selections.brand} {selections.model} {selections.variant}</strong> ({selections.fuel}, {selections.year}), please contact our experts directly.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 w-full max-w-xl mb-10">
               <a href={whatsappUrl} target="_blank" rel="noreferrer" className="bg-brand text-white hover:bg-brand-dark px-6 py-4 rounded-xl font-bold transition-all w-full flex items-center justify-center gap-2 shadow-lg shadow-brand/20">
                 <Phone size={20} /> WhatsApp Goodwin
               </a>
-              <a href={`tel:${settings?.phone_sales || "+919667724411"}`} className="bg-surface border-2 border-border text-foreground hover:border-brand hover:text-brand px-6 py-4 rounded-xl font-bold transition-all w-full flex items-center justify-center gap-2">
-                <Phone size={20} /> Call Sales
-              </a>
+              <Link href="/contact" className="bg-surface border-2 border-border text-foreground hover:border-brand hover:text-brand px-6 py-4 rounded-xl font-bold transition-all w-full flex items-center justify-center gap-2">
+                Contact Support
+              </Link>
+            </div>
+            
+            <div className="pt-8 border-t border-border w-full max-w-xl text-center">
+               <p className="text-sm text-muted-foreground mb-4">Or explore our entire range of batteries</p>
+               <Link href="/products" className="inline-block bg-navy text-white px-8 py-3 rounded-lg font-bold hover:bg-navy-dark transition-colors">
+                  Browse Goodwin Batteries
+               </Link>
             </div>
           </div>
         )}

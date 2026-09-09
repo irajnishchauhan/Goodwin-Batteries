@@ -9,7 +9,7 @@ import { useGlobalSettings } from "@/components/GlobalSettingsProvider";
 
 export default function VehicleFinder() {
   const settings = useGlobalSettings();
-  const [step, setStep] = useState<1 | 2 | 3 | 4 | 5 | 6 | 7>(1);
+  const [step, setStep] = useState<1 | 2 | 3 | 4 | 5>(1);
   const [loading, setLoading] = useState(false);
   const [loadingText, setLoadingText] = useState("Searching Database...");
 
@@ -21,14 +21,11 @@ export default function VehicleFinder() {
   const [fuels, setFuels] = useState<any[]>([]);
   const [years, setYears] = useState<string[]>([]);
   
-  // Selected State
   const [selections, setSelections] = useState({
     typeId: "", typeName: "",
     brandId: "", brandName: "",
     modelId: "", modelName: "",
-    variantId: "", variantName: "",
-    fuelId: "", fuelName: "",
-    year: ""
+    variantId: "", variantName: ""
   });
 
   // Results
@@ -52,7 +49,7 @@ export default function VehicleFinder() {
   async function loadTypes() {
     setLoading(true);
     setLoadingText("Loading vehicle types...");
-    const { data } = await supabase.from("vehicle_types").select("*").eq("active", true).order("display_order");
+    const { data } = await supabase.from("vehicle_types").select("*").order("display_order");
     setTypes(data || []);
     setLoading(false);
   }
@@ -63,9 +60,7 @@ export default function VehicleFinder() {
       typeId: "", typeName: "",
       brandId: "", brandName: "",
       modelId: "", modelName: "",
-      variantId: "", variantName: "",
-      fuelId: "", fuelName: "",
-      year: ""
+      variantId: "", variantName: ""
     });
     setRecommendedProduct(null);
     setSearchQuery("");
@@ -80,12 +75,11 @@ export default function VehicleFinder() {
     }
     
     setIsSearching(true);
-    // Search Brands, Models
+    // Search Manufacturers, Models
     const { data: modelsData } = await supabase
       .from("vehicle_models")
-      .select("*, brand:brand_id(*)")
+      .select("*, brand:manufacturer_id(*)")
       .ilike("name", `%${query}%`)
-      .eq("active", true)
       .limit(10);
       
     setSearchResults(modelsData || []);
@@ -100,155 +94,64 @@ export default function VehicleFinder() {
       typeId: model.brand.vehicle_type_id, typeName: "Selected via Search", 
       brandId: model.brand.id, brandName: model.brand.name, 
       modelId: model.id, modelName: model.name,
-      variantId: "", fuelId: "", year: "" 
+      variantId: ""
     }));
     setStep(4);
     setLoading(true);
     setLoadingText("Loading variants...");
-    const { data } = await supabase.from("vehicle_variants").select("*").eq("model_id", model.id).eq("active", true).order("name");
+    const { data } = await supabase.from("vehicle_variants").select("*").eq("model_id", model.id).order("name");
     setVariants(data || []);
     setLoading(false);
   };
 
   const handleTypeSelect = async (id: string, name: string) => {
-    setSelections(s => ({ ...s, typeId: id, typeName: name, brandId: "", modelId: "", variantId: "", fuelId: "", year: "" }));
+    setSelections(s => ({ ...s, typeId: id, typeName: name, brandId: "", modelId: "", variantId: "" }));
     setStep(2);
     setLoading(true);
     setLoadingText("Loading brands...");
-    const { data } = await supabase.from("vehicle_brands").select("*").eq("vehicle_type_id", id).eq("active", true).order("name");
+    const { data } = await supabase.from("manufacturers").select("*").eq("vehicle_type_id", id).order("name");
     setBrands(data || []);
     setLoading(false);
   };
 
   const handleBrandSelect = async (id: string, name: string) => {
-    setSelections(s => ({ ...s, brandId: id, brandName: name, modelId: "", variantId: "", fuelId: "", year: "" }));
+    setSelections(s => ({ ...s, brandId: id, brandName: name, modelId: "", variantId: "" }));
     setStep(3);
     setLoading(true);
     setLoadingText("Loading models...");
-    const { data } = await supabase.from("vehicle_models").select("*").eq("brand_id", id).eq("active", true).order("name");
+    const { data } = await supabase.from("vehicle_models").select("*").eq("manufacturer_id", id).order("name");
     setModels(data || []);
     setLoading(false);
   };
 
   const handleModelSelect = async (id: string, name: string) => {
-    setSelections(s => ({ ...s, modelId: id, modelName: name, variantId: "", fuelId: "", year: "" }));
+    setSelections(s => ({ ...s, modelId: id, modelName: name, variantId: "" }));
     setStep(4);
     setLoading(true);
     setLoadingText("Loading variants...");
-    const { data } = await supabase.from("vehicle_variants").select("*").eq("model_id", id).eq("active", true).order("name");
+    const { data } = await supabase.from("vehicle_variants").select("*").eq("model_id", id).order("name");
     setVariants(data || []);
     setLoading(false);
   };
 
   const handleVariantSelect = async (id: string, name: string) => {
-    setSelections(s => ({ ...s, variantId: id, variantName: name, fuelId: "", year: "" }));
+    setSelections(s => ({ ...s, variantId: id, variantName: name }));
     setLoading(true);
     setLoadingText("Finding compatible Goodwin battery...");
     
-    // Fetch compatibility records for this variant
-    const { data } = await supabase.from("vehicle_battery_fitments")
-      .select("*, product:goodwin_product_id(*), fuel:fuel_type_id(*)")
-      .eq("variant_id", id)
-      .eq("public_visible", true)
-      .eq("fitment_status", "VERIFIED");
+    // Fetch the single variant to get recommended_battery_id
+    const { data } = await supabase.from("vehicle_variants")
+      .select("*, product:recommended_battery_id(*)")
+      .eq("id", id)
+      .single();
       
-    const records = data || [];
-    setFitmentRecords(records);
-
-    if (records.length === 0) {
-      setRecommendedProduct(null);
-      setStep(7);
-      setLoading(false);
-      return;
-    }
-
-    // Extract unique fuels
-    const uniqueFuelMap = new Map();
-    records.forEach(r => {
-      if (r.fuel) uniqueFuelMap.set(r.fuel.id, r.fuel);
-    });
-    
-    const uniqueFuels = Array.from(uniqueFuelMap.values());
-    setFuels(uniqueFuels);
-
-    if (uniqueFuels.length === 1) {
-      await handleFuelSelect(uniqueFuels[0].id, uniqueFuels[0].name, records);
-    } else if (uniqueFuels.length === 0) {
-      // No fuel specified, go to years
-      await handleFuelSelect("Any", "Any", records);
-    } else {
-      setStep(5);
-      setLoading(false);
-    }
-  };
-
-  const handleFuelSelect = async (fuelId: string, fuelName: string, currentRecords = fitmentRecords) => {
-    setSelections(s => ({ ...s, fuelId, fuelName, year: "" }));
-    
-    const filteredRecords = fuelId === "Any" 
-      ? currentRecords 
-      : currentRecords.filter(r => r.fuel_type_id === fuelId);
-    
-    if (filteredRecords.length === 0) {
-      setRecommendedProduct(null);
-      setStep(7);
-      return;
-    }
-
-    const uniqueYears = new Set<string>();
-    filteredRecords.forEach(r => {
-      if (!r.year_start && !r.year_end) {
-        uniqueYears.add("All Years");
-      } else {
-        const start = r.year_start || 2000;
-        const end = r.year_end || new Date().getFullYear();
-        for (let y = end; y >= start; y--) {
-          uniqueYears.add(y.toString());
-        }
-      }
-    });
-
-    const yearsArr = Array.from(uniqueYears).sort((a, b) => {
-      if (a === "All Years") return -1;
-      if (b === "All Years") return 1;
-      return b.localeCompare(a);
-    });
-    
-    setYears(yearsArr);
-
-    if (yearsArr.length === 1) {
-      handleYearSelect(yearsArr[0], filteredRecords);
-    } else if (yearsArr.length === 0) {
-      setRecommendedProduct(filteredRecords[0].product);
-      setStep(7);
-    } else {
-      setStep(6);
-      setLoading(false);
-    }
-  };
-
-  const handleYearSelect = (year: string, currentRecords = fitmentRecords) => {
-    setSelections(s => ({ ...s, year }));
-    setStep(7);
-    
-    const match = currentRecords.find(r => {
-      const fuelMatch = r.fuel_type_id === selections.fuelId || selections.fuelId === "Any";
-      let yearMatch = true;
-      if (year !== "All Years" && r.year_start && r.year_end) {
-        const y = parseInt(year);
-        yearMatch = y >= r.year_start && y <= r.year_end;
-      }
-      return fuelMatch && yearMatch;
-    });
-
-    if (match && match.product) {
-      setRecommendedProduct(match.product);
-    } else if (currentRecords.length > 0 && currentRecords[0].product) {
-      // Fallback to first if strict year match fails but we have records
-      setRecommendedProduct(currentRecords[0].product);
+    if (data && data.product) {
+      setRecommendedProduct(data.product);
     } else {
       setRecommendedProduct(null);
     }
+    setStep(5);
+    setLoading(false);
   };
 
   const getIconForType = (typeName: string) => {
@@ -271,8 +174,8 @@ export default function VehicleFinder() {
       brand: selections.brandName,
       model: selections.modelName,
       variant: selections.variantName,
-      fuel: selections.fuelName,
-      year: selections.year,
+      fuel: "N/A",
+      year: "N/A",
       recommended_product_id: recommendedProduct?.id || null,
       customer_name: leadForm.name,
       phone: leadForm.phone,
@@ -289,9 +192,7 @@ export default function VehicleFinder() {
     `Hello Goodwin Batteries,\n\nI used the Battery Finder and need a battery for:\n\n` +
     `Vehicle: ${selections.brandName}\n` +
     `Model: ${selections.modelName}\n` +
-    `Variant: ${selections.variantName}\n` +
-    (selections.fuelName && selections.fuelName !== "Any" ? `Fuel: ${selections.fuelName}\n` : "") +
-    (selections.year && selections.year !== "All Years" ? `Year: ${selections.year}\n\n` : "\n") +
+    `Variant: ${selections.variantName}\n\n` +
     (recommendedProduct ? 
       `Recommended Goodwin Battery:\n${recommendedProduct.name}\n${recommendedProduct.voltage} / ${recommendedProduct.ah}\n\n` :
       ``
@@ -361,11 +262,7 @@ export default function VehicleFinder() {
           <span className="w-4 h-px bg-silver/30 mx-2" />
           <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 4 ? "text-brand" : "")} onClick={() => step >= 4 && setStep(4)}>Variant</span>
           <span className="w-4 h-px bg-silver/30 mx-2" />
-          <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 5 ? "text-brand" : "")} onClick={() => step >= 5 && setStep(5)}>Fuel</span>
-          <span className="w-4 h-px bg-silver/30 mx-2" />
-          <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 6 ? "text-brand" : "")} onClick={() => step >= 6 && setStep(6)}>Year</span>
-          <span className="w-4 h-px bg-silver/30 mx-2" />
-          <span className={clsx(step === 7 ? "text-brand" : "")}>Result</span>
+          <span className={clsx(step === 5 ? "text-brand" : "")}>Result</span>
         </div>
         
         <button onClick={resetFinder} className="text-silver hover:text-white flex items-center gap-1 text-xs font-bold uppercase tracking-widest transition-colors shrink-0 ml-4">
@@ -469,44 +366,8 @@ export default function VehicleFinder() {
           </div>
         )}
 
-        {/* Step 5: Fuel Type */}
-        {step === 5 && (
-          <div className="animate-in fade-in slide-in-from-right-4 duration-300">
-            <h4 className="text-lg font-bold mb-6 text-center text-foreground">Select Fuel Type</h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {fuels.map((fuel) => (
-                <button
-                  key={fuel.id}
-                  onClick={() => handleFuelSelect(fuel.id, fuel.name)}
-                  className="py-4 px-6 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground"
-                >
-                  {fuel.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Step 6: Year */}
-        {step === 6 && (
-          <div className="animate-in fade-in slide-in-from-right-4 duration-300">
-            <h4 className="text-lg font-bold mb-6 text-center text-foreground">Select Year</h4>
-            <div className="grid grid-cols-3 md:grid-cols-4 gap-4 max-h-[250px] overflow-y-auto pr-2">
-              {years.map((year) => (
-                <button
-                  key={year}
-                  onClick={() => handleYearSelect(year)}
-                  className="py-3 px-4 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground text-sm"
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Step 7: Result - Success */}
-        {step === 7 && recommendedProduct && (
+        {/* Step 5: Result - Success */}
+        {step === 5 && recommendedProduct && (
           <div className="animate-in zoom-in-95 duration-500 flex flex-col items-center">
             <h4 className="text-xl font-bold mb-6 text-center text-foreground uppercase tracking-widest text-sm">Your Recommended Goodwin Battery</h4>
             
@@ -542,7 +403,7 @@ export default function VehicleFinder() {
 
                 <div className="bg-surface-hover rounded p-3 mb-6 border border-border text-xs text-gray-500 text-left">
                   <span className="font-bold block text-foreground mb-1">Recommended for:</span>
-                  {selections.brandName} {selections.modelName} {selections.variantName} {selections.year !== "All Years" && selections.year ? `(${selections.year})` : ""}
+                  {selections.brandName} {selections.modelName} {selections.variantName}
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -579,8 +440,8 @@ export default function VehicleFinder() {
           </div>
         )}
 
-        {/* Step 7: Empty State / No Match */}
-        {step === 7 && !recommendedProduct && (
+        {/* Step 5: Empty State / No Match */}
+        {step === 5 && !recommendedProduct && (
           <div className="animate-in zoom-in-95 duration-500 flex flex-col items-center py-10">
             <div className="w-20 h-20 bg-surface border border-border rounded-full flex items-center justify-center mb-6">
               <Info size={32} className="text-brand" />

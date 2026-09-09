@@ -23,9 +23,9 @@ export default function HomePageClient({ applications, settings }: { application
       <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-surface pt-20">
         <div className="absolute inset-0 z-0">
           <picture>
-            <source media="(max-width: 768px)" srcSet={settings?.hero_image_mobile || "/assets/hero/hero_composite_mobile.webp"} />
+            <source media="(max-width: 768px)" srcSet={settings?.hero_image_mobile || "/assets/hero/hero_stunning.jpg"} />
             <img 
-              src={settings?.hero_image_desktop || "/assets/hero/hero_composite_desktop.webp"} 
+              src={settings?.hero_image_desktop || "/assets/hero/hero_stunning.jpg"} 
               alt={settings?.hero_image_alt || "Goodwin Batteries Premium Range"} 
               className="w-full h-full object-cover"
             />

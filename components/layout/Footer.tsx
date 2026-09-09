@@ -9,7 +9,7 @@ export default function Footer() {
   const settings = useGlobalSettings();
 
   return (
-    <footer className="bg-navy pt-20 pb-10 border-t border-silver/10 relative overflow-hidden">
+    <footer className="bg-surface pt-20 pb-10 border-t border-border relative overflow-hidden">
       {/* Decorative gradient */}
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-brand/5 blur-[120px] rounded-full pointer-events-none" />
       
@@ -56,36 +56,36 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-heading font-bold mb-6 text-lg">Explore</h4>
+            <h4 className="text-foreground font-heading font-bold mb-6 text-lg">Explore</h4>
             <ul className="flex flex-col gap-3">
-              <li><Link href="/products" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Products</Link></li>
-              <li><Link href="/battery-finder" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find Your Battery</Link></li>
-              <li><Link href="/applications" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Applications</Link></li>
-              <li><Link href="/why-goodwin" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Why Goodwin</Link></li>
-              <li><Link href="/about" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> About Us</Link></li>
+              <li><Link href="/products" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Products</Link></li>
+              <li><Link href="/battery-finder" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find Your Battery</Link></li>
+              <li><Link href="/applications" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Applications</Link></li>
+              <li><Link href="/why-goodwin" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Why Goodwin</Link></li>
+              <li><Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> About Us</Link></li>
             </ul>
           </div>
 
           {/* Network & Support */}
           <div>
-            <h4 className="text-white font-heading font-bold mb-6 text-lg">Support & Network</h4>
+            <h4 className="text-foreground font-heading font-bold mb-6 text-lg">Support & Network</h4>
             <ul className="flex flex-col gap-3">
-              <li><Link href="/dealer-distributor" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Become a Dealer</Link></li>
-              <li><Link href="/dealers" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find a Dealer</Link></li>
-              <li><Link href="/support" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Warranty Support</Link></li>
-              <li><Link href="/battery-care" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Battery Care</Link></li>
-              <li><Link href="/contact" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Contact Us</Link></li>
+              <li><Link href="/dealer-distributor" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Become a Dealer</Link></li>
+              <li><Link href="/dealers" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find a Dealer</Link></li>
+              <li><Link href="/support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Warranty Support</Link></li>
+              <li><Link href="/battery-care" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Battery Care</Link></li>
+              <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Contact Us</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-heading font-bold mb-6 text-lg">Contact Us</h4>
+            <h4 className="text-foreground font-heading font-bold mb-6 text-lg">Contact Us</h4>
             <ul className="flex flex-col gap-4">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
-                  <strong className="text-white">Head Office:</strong><br />
+                  <strong className="text-foreground">Head Office:</strong><br />
                   Shop No. 51, Gokhale Market,<br />
                   Opposite Tis Hazari Court, Delhi – 110054
                 </span>
@@ -93,7 +93,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
-                  <strong className="text-white">Corporate Office:</strong><br />
+                  <strong className="text-foreground">Corporate Office:</strong><br />
                   202, 2nd Floor – Samiksh Landmark,<br />
                   Near Choithram Circle, A.B. Road, Indore – 452012
                 </span>
@@ -101,15 +101,15 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-brand shrink-0" />
                 <div className="flex flex-col text-sm text-muted-foreground">
-                  <span><strong className="text-white">Sales:</strong> <a href="tel:9667724411" className="hover:text-white transition-colors">96677 24411</a></span>
-                  <span className="mt-1"><strong className="text-white">Support:</strong> <a href="tel:9220404411" className="hover:text-white transition-colors">92204 04411</a></span>
+                  <span><strong className="text-foreground">Sales:</strong> <a href="tel:9667724411" className="hover:text-foreground transition-colors">96677 24411</a></span>
+                  <span className="mt-1"><strong className="text-foreground">Support:</strong> <a href="tel:9220404411" className="hover:text-foreground transition-colors">92204 04411</a></span>
                 </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-brand shrink-0" />
                 <div className="flex flex-col text-sm text-muted-foreground">
-                  <span><strong className="text-white">Sales:</strong> <a href="mailto:sales@goodwinbatteries.com" className="hover:text-white transition-colors">sales@goodwinbatteries.com</a></span>
-                  <span className="mt-1"><strong className="text-white">Support:</strong> <a href="mailto:support@goodwinbatteries.com" className="hover:text-white transition-colors">support@goodwinbatteries.com</a></span>
+                  <span><strong className="text-foreground">Sales:</strong> <a href="mailto:sales@goodwinbatteries.com" className="hover:text-foreground transition-colors">sales@goodwinbatteries.com</a></span>
+                  <span className="mt-1"><strong className="text-foreground">Support:</strong> <a href="mailto:support@goodwinbatteries.com" className="hover:text-foreground transition-colors">support@goodwinbatteries.com</a></span>
                 </div>
               </li>
             </ul>
@@ -117,13 +117,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} {settings?.company_name || "Goodwin Batteries"}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="text-xs text-muted-foreground hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="text-xs text-muted-foreground hover:text-white transition-colors">Terms & Conditions</Link>
+            <Link href="/privacy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Terms & Conditions</Link>
           </div>
         </div>
       </div>

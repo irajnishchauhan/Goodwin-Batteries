@@ -20,7 +20,7 @@ export default function HomePageClient({ applications, settings }: { application
     <div className="flex flex-col w-full">
       
       {/* 1. HERO SECTION */}
-      <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-navy pt-20">
+      <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-surface pt-20">
         <div className="absolute inset-0 z-0">
           <picture>
             <source media="(max-width: 768px)" srcSet={settings?.hero_image_mobile || "/assets/hero/hero_composite_mobile.webp"} />
@@ -30,8 +30,8 @@ export default function HomePageClient({ applications, settings }: { application
               className="w-full h-full object-cover"
             />
           </picture>
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/60 to-transparent z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-surface/90 via-surface/60 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent z-10" />
         </div>
 
         <div className="container relative z-20 flex flex-col items-start pt-12">
@@ -41,16 +41,16 @@ export default function HomePageClient({ applications, settings }: { application
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 bg-white/5 backdrop-blur-md mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-white/5 backdrop-blur-md mb-6">
               <span className="w-2 h-2 rounded-full bg-brand animate-pulse" />
-              <span className="text-white text-xs font-bold tracking-widest uppercase">Premium Automotive Batteries</span>
+              <span className="text-foreground text-xs font-bold tracking-widest uppercase">Premium Automotive Batteries</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.1] tracking-tight mb-6 uppercase">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground leading-[1.1] tracking-tight mb-6 uppercase">
               POWERING <span className="text-brand">EVERY JOURNEY.</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-silver mb-10 max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed">
               Reliable battery solutions engineered for cars, commercial vehicles, tractors and industrial applications.
             </p>
             
@@ -58,7 +58,7 @@ export default function HomePageClient({ applications, settings }: { application
               <Link href="#battery-finder" className="bg-brand text-white px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-all flex items-center justify-center gap-2">
                 Find Your Battery
               </Link>
-              <Link href="/products" className="bg-transparent text-white border border-silver/50 px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-white/5 transition-all flex items-center justify-center gap-2 backdrop-blur-md">
+              <Link href="/products" className="bg-transparent text-foreground border border-border px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-white/5 transition-all flex items-center justify-center gap-2 backdrop-blur-md">
                 Explore Products <span aria-hidden="true" className="inline-flex"><ArrowRight size={18} /></span>
               </Link>
             </div>
@@ -67,7 +67,7 @@ export default function HomePageClient({ applications, settings }: { application
       </section>
 
       {/* 2. TRUST / BRAND STATS */}
-      <section className="bg-navy py-16 border-b border-silver/10 relative z-30 -mt-8">
+      <section className="bg-surface py-16 border-b border-border relative z-30 -mt-8">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {trustStats.map((stat, i) => (
@@ -77,13 +77,13 @@ export default function HomePageClient({ applications, settings }: { application
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-navy-dark border border-silver/20 p-8 rounded-xl hover:border-brand/50 transition-colors group shadow-lg"
+                className="bg-background border border-border p-8 rounded-xl hover:border-brand/50 transition-colors group shadow-lg"
               >
                 <div className="text-brand mb-6 bg-brand/10 w-16 h-16 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                   {stat.icon}
                 </div>
-                <h4 className="text-white font-bold text-xl mb-3">{stat.title}</h4>
-                <p className="text-silver text-sm leading-relaxed">{stat.desc}</p>
+                <h4 className="text-foreground font-bold text-xl mb-3">{stat.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">{stat.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -144,11 +144,11 @@ export default function HomePageClient({ applications, settings }: { application
                   )}
                   
                   <div className="relative z-20 mt-auto p-8 flex flex-col items-start">
-                    <h4 className="text-white font-heading font-bold text-2xl mb-2">{app.name}</h4>
-                    <p className="text-white/80 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-300 line-clamp-2">
+                    <h4 className="text-foreground font-heading font-bold text-2xl mb-2">{app.name}</h4>
+                    <p className="text-muted-foreground text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-300 line-clamp-2">
                       {app.description}
                     </p>
-                    <span className="text-brand text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:text-white transition-colors">
+                    <span className="text-brand text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:text-foreground transition-colors">
                       Explore Power <span aria-hidden="true" className="inline-flex"><ArrowRight size={14} /></span>
                     </span>
                   </div>
@@ -167,12 +167,12 @@ export default function HomePageClient({ applications, settings }: { application
         <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
           <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
              {["Maruti Suzuki", "Hyundai", "Tata Motors", "Mahindra", "Kia", "Toyota", "Honda", "Renault"].map((brand, i) => (
-               <li key={i} className="text-2xl md:text-4xl font-heading font-bold text-silver/40 uppercase tracking-widest hover:text-brand transition-colors cursor-default whitespace-nowrap">
+               <li key={i} className="text-2xl md:text-4xl font-heading font-bold text-muted-foreground/40 uppercase tracking-widest hover:text-brand transition-colors cursor-default whitespace-nowrap">
                  {brand}
                </li>
              ))}
              {["Maruti Suzuki", "Hyundai", "Tata Motors", "Mahindra", "Kia", "Toyota", "Honda", "Renault"].map((brand, i) => (
-               <li key={i+10} className="text-2xl md:text-4xl font-heading font-bold text-silver/40 uppercase tracking-widest hover:text-brand transition-colors cursor-default whitespace-nowrap" aria-hidden="true">
+               <li key={i+10} className="text-2xl md:text-4xl font-heading font-bold text-muted-foreground/40 uppercase tracking-widest hover:text-brand transition-colors cursor-default whitespace-nowrap" aria-hidden="true">
                  {brand}
                </li>
              ))}
@@ -181,11 +181,11 @@ export default function HomePageClient({ applications, settings }: { application
       </section>
 
       {/* 4.6 TESTIMONIALS */}
-      <section className="py-24 bg-navy">
+      <section className="py-24 bg-surface">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-sm font-bold tracking-widest text-brand uppercase mb-3">Customer Reviews</h2>
-            <h3 className="text-4xl md:text-5xl font-heading font-bold text-white">Why drivers trust Goodwin</h3>
+            <h3 className="text-4xl md:text-5xl font-heading font-bold text-foreground">Why drivers trust Goodwin</h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -194,7 +194,7 @@ export default function HomePageClient({ applications, settings }: { application
               { name: "Vikram M.", location: "Gurugram", text: "Using Goodwin for my commercial fleet. The durability is unmatched on tough roads." },
               { name: "Priya K.", location: "Noida", text: "Excellent customer service and transparent pricing. Highly recommend their doorstep delivery." }
             ].map((review, i) => (
-              <div key={i} className="bg-navy-dark border border-silver/20 p-8 rounded-2xl flex flex-col gap-4 shadow-sm hover:shadow-xl hover:border-brand/30 transition-all">
+              <div key={i} className="bg-background border border-border p-8 rounded-2xl flex flex-col gap-4 shadow-sm hover:shadow-xl hover:border-brand/30 transition-all">
                 <div className="flex gap-1 text-brand">
                   <Star fill="currentColor" size={20} />
                   <Star fill="currentColor" size={20} />
@@ -202,10 +202,10 @@ export default function HomePageClient({ applications, settings }: { application
                   <Star fill="currentColor" size={20} />
                   <Star fill="currentColor" size={20} />
                 </div>
-                <p className="text-white leading-relaxed italic">"{review.text}"</p>
-                <div className="mt-auto pt-6 border-t border-silver/20">
-                  <span className="font-bold block text-white">{review.name}</span>
-                  <span className="text-sm text-silver block">{review.location}</span>
+                <p className="text-foreground leading-relaxed italic">"{review.text}"</p>
+                <div className="mt-auto pt-6 border-t border-border">
+                  <span className="font-bold block text-foreground">{review.name}</span>
+                  <span className="text-sm text-muted-foreground block">{review.location}</span>
                 </div>
               </div>
             ))}
@@ -214,45 +214,45 @@ export default function HomePageClient({ applications, settings }: { application
       </section>
 
       {/* 5. DEALER / DISTRIBUTOR CTA */}
-      <section className="py-24 bg-navy relative overflow-hidden">
+      <section className="py-24 bg-surface relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full bg-brand/10 blur-[150px] pointer-events-none" />
         
         <div className="container relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="max-w-2xl">
             <h2 className="text-sm font-bold tracking-widest text-brand uppercase mb-3">Partner With Us</h2>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">GROW WITH GOODWIN</h2>
-            <p className="text-lg text-silver mb-8 leading-relaxed">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">GROW WITH GOODWIN</h2>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Join the Goodwin network and build your business with a growing, premium battery brand. Benefit from robust marketing support, superior products, and high margins.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/dealer-distributor" className="bg-brand text-white px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-colors text-center">
                 Become a Dealer
               </Link>
-              <Link href="/dealer-distributor" className="bg-transparent text-white border border-silver/50 px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-white/10 transition-colors text-center">
+              <Link href="/dealer-distributor" className="bg-transparent text-foreground border border-border px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-white/10 transition-colors text-center">
                 Become a Distributor
               </Link>
             </div>
           </div>
           
-          <div className="w-full max-w-md bg-navy-dark border border-silver/20 rounded-2xl p-8 shadow-2xl">
-            <h4 className="text-2xl font-bold text-white mb-6">Quick Enquiry</h4>
+          <div className="w-full max-w-md bg-background border border-border rounded-2xl p-8 shadow-2xl">
+            <h4 className="text-2xl font-bold text-foreground mb-6">Quick Enquiry</h4>
             <QuickEnquiryForm />
           </div>
         </div>
       </section>
 
       {/* 6. FINAL CTA */}
-      <section className="py-24 bg-navy-dark border-t border-silver/10 text-center">
+      <section className="py-24 bg-background border-t border-border text-center">
         <div className="container max-w-4xl">
-          <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">READY TO POWER YOUR JOURNEY?</h2>
-          <p className="text-xl md:text-2xl text-silver mb-10">
+          <h2 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6">READY TO POWER YOUR JOURNEY?</h2>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-10">
             Find the right Goodwin battery for your vehicle or application today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/battery-finder" className="bg-brand text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-all hover:scale-105 shadow-xl">
               Find Your Battery
             </Link>
-            <Link href="/contact" className="bg-transparent border border-silver text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-white/10 transition-colors">
+            <Link href="/contact" className="bg-transparent border border-border text-foreground px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-white/10 transition-colors">
               Contact Goodwin
             </Link>
           </div>

@@ -73,7 +73,7 @@ Please contact me regarding my enquiry.`;
         placeholder="Your Name" 
         value={formData.name}
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        className="w-full bg-navy-dark border border-white/10 rounded p-3 text-white focus:outline-none focus:border-brand" 
+        className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand" 
       />
       <input 
         type="tel" 
@@ -81,26 +81,26 @@ Please contact me regarding my enquiry.`;
         placeholder="Phone Number" 
         value={formData.mobile}
         onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-        className="w-full bg-navy-dark border border-white/10 rounded p-3 text-white focus:outline-none focus:border-brand" 
+        className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand" 
       />
       <input 
         type="text" 
         placeholder="City" 
         value={formData.city}
         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-        className="w-full bg-navy-dark border border-white/10 rounded p-3 text-white focus:outline-none focus:border-brand" 
+        className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand" 
       />
       <input 
         type="text" 
         placeholder="Vehicle Make/Model (Optional)" 
         value={formData.vehicle}
         onChange={(e) => setFormData({ ...formData, vehicle: e.target.value })}
-        className="w-full bg-navy-dark border border-white/10 rounded p-3 text-white focus:outline-none focus:border-brand" 
+        className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand" 
       />
       <select
         value={formData.callbackTime}
         onChange={(e) => setFormData({ ...formData, callbackTime: e.target.value })}
-        className="w-full bg-navy-dark border border-white/10 rounded p-3 text-white focus:outline-none focus:border-brand appearance-none"
+        className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand appearance-none"
       >
         <option value="" disabled>Preferred Callback Time</option>
         <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
@@ -112,12 +112,12 @@ Please contact me regarding my enquiry.`;
         placeholder="What are you looking for?" 
         value={formData.requirement}
         onChange={(e) => setFormData({ ...formData, requirement: e.target.value })}
-        className="w-full bg-navy-dark border border-white/10 rounded p-3 text-white focus:outline-none focus:border-brand resize-none h-24" 
+        className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand resize-none h-24" 
       />
       <button 
         type="submit" 
         disabled={loading}
-        className="w-full bg-white text-navy font-bold uppercase tracking-wider p-4 rounded mt-2 hover:bg-silver/20 hover:text-white transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+        className="w-full bg-white text-foreground font-bold uppercase tracking-wider p-4 rounded mt-2 hover:bg-silver/20 hover:text-foreground transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
       >
         {loading ? <Loader2 size={18} className="animate-spin" /> : "Submit Request"}
       </button>

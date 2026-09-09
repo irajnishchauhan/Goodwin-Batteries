@@ -8,10 +8,8 @@
   /* Premium Automotive + Industrial Technology */
   --color-brand: #39B54A; /* Action Green */
   --color-brand-dark: #218C32;
-  --color-navy: #0B1F33; /* Deep Navy - Authority */
   --color-silver: #A7ADB5; /* Metallic/Silver - Engineering */
   --color-blue: #174A8B; /* Supporting Blue */
-  --color-navy-dark: #07131F; /* Dark Background */
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);

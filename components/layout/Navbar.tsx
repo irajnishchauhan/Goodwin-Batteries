@@ -37,7 +37,7 @@ export default function Navbar() {
       className={clsx(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out border-b border-transparent",
         {
-          "bg-navy/95 backdrop-blur-md shadow-lg border-silver/10 py-3": isScrolled,
+          "bg-surface/95 backdrop-blur-md shadow-lg border-border py-3": isScrolled,
           "bg-transparent py-5": !isScrolled,
         }
       )}
@@ -64,7 +64,7 @@ export default function Navbar() {
                   href={link.href}
                   className={clsx(
                     "text-sm font-semibold tracking-wide transition-colors relative group",
-                    pathname === link.href ? "text-brand" : "text-gray-200 hover:text-white"
+                    pathname === link.href ? "text-brand" : "text-gray-200 hover:text-foreground"
                   )}
                 >
                   {link.name}
@@ -82,13 +82,13 @@ export default function Navbar() {
 
         {/* Actions */}
         <div className="hidden lg:flex items-center gap-4">
-          <button className="text-gray-200 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors">
+          <button className="text-gray-200 hover:text-foreground p-2 rounded-full hover:bg-white/10 transition-colors">
             <Search size={20} />
           </button>
           
           <Link
             href="/dealer-distributor"
-            className="text-xs font-bold uppercase tracking-wider text-white border border-white/20 hover:border-white/50 px-4 py-2 rounded flex items-center gap-2 transition-all hover:bg-white/5"
+            className="text-xs font-bold uppercase tracking-wider text-foreground border border-border hover:border-white/50 px-4 py-2 rounded flex items-center gap-2 transition-all hover:bg-white/5"
           >
             <Briefcase size={14} />
             Become a Dealer
@@ -105,7 +105,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden z-50 text-white p-2"
+          className="lg:hidden z-50 text-foreground p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -122,13 +122,13 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="absolute top-full left-0 w-full lg:hidden flex flex-col"
           >
-            <div className="container py-6 flex flex-col gap-4 bg-navy border-b border-silver/20 shadow-2xl">
+            <div className="container py-6 flex flex-col gap-4 bg-surface border-b border-border shadow-2xl">
               <nav className="flex flex-col gap-2">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="py-3 text-lg font-bold border-b border-silver/20 text-white hover:text-brand transition-colors"
+                    className="py-3 text-lg font-bold border-b border-border text-foreground hover:text-brand transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -139,7 +139,7 @@ export default function Navbar() {
               <div className="flex flex-col gap-3 mt-4">
                 <Link
                   href="/dealer-distributor"
-                  className="py-3 px-4 border border-silver/50 text-white text-center rounded font-bold uppercase text-sm hover:bg-white/10 transition-colors"
+                  className="py-3 px-4 border border-border text-foreground text-center rounded font-bold uppercase text-sm hover:bg-white/10 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Become a Dealer

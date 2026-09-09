@@ -71,15 +71,15 @@ export default function FAQPage() {
   return (
     <div className="flex flex-col w-full min-h-screen pt-20">
       {/* Header */}
-      <section className="bg-zinc-950 py-20 border-b border-white/5 relative overflow-hidden">
+      <section className="bg-surface py-20 border-b border-border relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/3 h-full bg-brand/10 blur-[100px] pointer-events-none" />
         <div className="container relative z-10">
           <div className="flex items-center gap-2 text-sm text-gray-500 font-bold mb-6 tracking-wider uppercase">
             <Link href="/support" className="hover:text-brand transition-colors">Support</Link>
             <ChevronRight size={14} />
-            <span className="text-white">FAQ</span>
+            <span className="text-foreground">FAQ</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
             FREQUENTLY ASKED <span className="text-brand">QUESTIONS</span>
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl">

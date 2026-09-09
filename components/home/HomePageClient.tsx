@@ -20,7 +20,7 @@ export default function HomePageClient({ applications, settings }: { application
     <div className="flex flex-col w-full">
       
       {/* 1. HERO SECTION */}
-      <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-zinc-950 pt-20">
+      <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-surface pt-20">
         <div className="absolute inset-0 z-0">
           <picture>
             <source media="(max-width: 768px)" srcSet={settings?.hero_image_mobile || "/assets/hero/hero_composite_mobile.webp"} />
@@ -215,14 +215,14 @@ export default function HomePageClient({ applications, settings }: { application
       </section>
 
       {/* 5. DEALER / DISTRIBUTOR CTA */}
-      <section className="py-24 bg-zinc-950 relative overflow-hidden">
+      <section className="py-24 bg-surface relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full bg-brand/10 blur-[150px] pointer-events-none" />
         
         <div className="container relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="max-w-2xl">
             <h2 className="text-sm font-bold tracking-widest text-brand uppercase mb-3">Partner With Us</h2>
-            <h3 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">GROW WITH GOODWIN</h3>
-            <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">GROW WITH GOODWIN</h2>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Join the Goodwin network and build your business with a growing, premium battery brand. Benefit from robust marketing support, superior products, and high margins.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">

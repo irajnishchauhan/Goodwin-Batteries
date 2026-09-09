@@ -31,17 +31,17 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-950 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-surface relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-brand/10 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-brand/5 blur-[100px] pointer-events-none" />
       
-      <div className="w-full max-w-md bg-surface border border-border rounded-2xl p-8 shadow-2xl relative z-10">
+      <div className="w-full max-w-md p-8 bg-background border border-border rounded-2xl shadow-2xl relative z-10 mx-4">
         <div className="flex flex-col items-center mb-8">
           <div className="w-16 h-16 bg-brand text-white font-bold flex items-center justify-center rounded-xl text-3xl mb-4 shadow-lg shadow-brand/20">
             G
           </div>
-          <h1 className="text-2xl font-bold text-foreground">Goodwin CMS</h1>
-          <p className="text-gray-500 text-sm mt-1">Sign in to manage your website</p>
+          <h1 className="text-3xl font-heading font-bold text-foreground mb-2">Admin Login</h1>
+          <p className="text-muted-foreground text-sm">Secure access to Goodwin ERP</p>
         </div>
 
         {error && (

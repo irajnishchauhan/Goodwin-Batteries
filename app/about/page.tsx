@@ -6,14 +6,14 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col w-full min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="bg-zinc-950 py-20 border-b border-white/10 relative overflow-hidden">
+      <section className="bg-surface py-20 border-b border-border relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full bg-brand/10 blur-[100px] pointer-events-none" />
         <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-foreground mb-6">
               DRIVING POWER, <span className="text-brand">DELIVERING TRUST.</span>
             </h1>
-            <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
+            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
               We are committed to providing robust, technologically advanced, and long-lasting energy storage solutions that empower Indian industries, vehicles, and everyday lives.
             </p>
           </div>

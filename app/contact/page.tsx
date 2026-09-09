@@ -46,10 +46,10 @@ export default function ContactPage() {
 
   return (
     <div className="flex flex-col w-full min-h-screen pt-20">
-      <section className="bg-zinc-950 py-20 border-b border-white/10 relative overflow-hidden">
+      <section className="bg-surface py-20 border-b border-border relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full bg-brand/10 blur-[100px] pointer-events-none" />
         <div className="container relative z-10 text-center max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-foreground mb-6">
             CONTACT <span className="text-brand">GOODWIN</span>
           </h1>
           <p className="text-gray-400 text-lg md:text-xl leading-relaxed">

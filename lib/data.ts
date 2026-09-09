@@ -159,7 +159,19 @@ export const getApplications = unstable_cache(
       console.error("Error fetching applications:", error);
       return [];
     }
-    return data || [];
+    
+    // Map locally generated premium category images
+    const localImageMap: Record<string, string> = {
+      "Passenger Vehicles": "/assets/categories/passenger-vehicles.jpg",
+      "Two Wheelers": "/assets/categories/two-wheelers.jpg",
+      "Commercial Heavy Duty": "/assets/categories/commercial-heavy-duty.jpg",
+      "Agricultural & Tractors": "/assets/categories/agricultural-tractors.jpg"
+    };
+
+    return (data || []).map((app: any) => ({
+      ...app,
+      image: localImageMap[app.name] || app.image
+    }));
   },
   ['applications'],
   { revalidate: 3600, tags: ['applications'] }

@@ -1,12 +1,12 @@
 import { Product, Category, VehicleType, VehicleBrand, VehicleModel, VehicleVariant, Dealer, FuelType, VehicleYear, VehicleBatteryFitment } from "@/types";
 
 export const categories: Category[] = [
-  { id: "cat-1", name: "Passenger Vehicles", slug: "passenger-vehicles", description: "Reliable starting power for demanding journeys.", image: "/assets/products/goodwin-12gw-xl2-5lc.png" },
-  { id: "cat-2", name: "Two Wheelers", slug: "two-wheelers", description: "Quick starts and consistent performance for bikes and scooters.", image: "/assets/products/goodwin-12vgw-tz4lb.png" },
-  { id: "cat-3", name: "Commercial Vehicles", slug: "commercial-vehicles", description: "Heavy-duty power for trucks and commercial transport.", image: "/assets/products/goodwin-12sv-xl2-5lc-side.png" },
-  { id: "cat-4", name: "Tractors", slug: "tractors", description: "Built for tough agricultural environments.", image: "/assets/products/goodwin-12vgw-xl5lb.png" },
-  { id: "cat-5", name: "Three Wheelers", slug: "three-wheelers", description: "Dependable energy for continuous city driving.", image: "/assets/products/goodwin-4smf5-torch-4v-5ah.png" },
-  { id: "cat-6", name: "Industrial & UPS", slug: "industrial", description: "High-capacity power for stationary and industrial use.", image: "/assets/products/goodwin-12smf8-ups-12v-8ah.png" }
+  { id: "cat-1", name: "Passenger Vehicles", slug: "passenger-vehicles", description: "Reliable starting power for demanding journeys.", image: "/assets/categories/passenger-vehicles.jpg" },
+  { id: "cat-2", name: "Two Wheelers", slug: "two-wheelers", description: "Quick starts and consistent performance for bikes and scooters.", image: "/assets/categories/two-wheelers.jpg" },
+  { id: "cat-3", name: "Commercial Vehicles", slug: "commercial-vehicles", description: "Heavy-duty power for trucks and commercial transport.", image: "/assets/categories/commercial-heavy-duty.jpg" },
+  { id: "cat-4", name: "Tractors", slug: "tractors", description: "Built for tough agricultural environments.", image: "/assets/categories/agricultural-tractors.jpg" },
+  { id: "cat-5", name: "Three Wheelers", slug: "three-wheelers", description: "Dependable energy for continuous city driving.", image: "/assets/categories/three-wheelers.jpg" },
+  { id: "cat-6", name: "Industrial & UPS", slug: "industrial", description: "High-capacity power for stationary and industrial use.", image: "/assets/categories/industrial.jpg" }
 ];
 
 export const products: Product[] = [

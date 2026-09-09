@@ -1,5 +1,6 @@
 import { categories } from "@/data/mock";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Settings } from "lucide-react";
 
 export default function ApplicationsPage() {
@@ -22,8 +23,17 @@ export default function ApplicationsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((cat, index) => (
               <div key={cat.id} className="group relative rounded-2xl overflow-hidden bg-surface border border-border shadow-lg flex flex-col h-[400px]">
-                {/* Image Placeholder */}
-                <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800 transition-transform duration-700 group-hover:scale-105" />
+                {/* Background Image */}
+                {cat.image ? (
+                  <Image 
+                    src={cat.image} 
+                    alt={cat.name} 
+                    fill 
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800 transition-transform duration-700 group-hover:scale-105" />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10" />
                 
                 <div className="relative z-20 mt-auto p-8 flex flex-col items-start w-full">

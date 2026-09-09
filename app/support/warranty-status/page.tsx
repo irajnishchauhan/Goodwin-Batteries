@@ -1,28 +1,59 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronRight, Search, Activity, Package, Wrench, CheckCircle2 } from "lucide-react";
+import { ChevronRight, Search, Activity, Package, Wrench, CheckCircle2, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
 export default function WarrantyStatusPage() {
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<"idle" | "searching" | "found" | "not_found">("idle");
+  const [result, setResult] = useState<any>(null);
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!query.trim()) return;
     
     setStatus("searching");
+    const upperQuery = query.trim().toUpperCase();
     
-    // Mock Supabase lookup
-    setTimeout(() => {
-      // Mock logic: if it starts with GW-, it's found
-      if (query.toUpperCase().startsWith("GW-")) {
+    try {
+      // Check Claims
+      let { data: claimData } = await supabase
+        .from('warranty_claims')
+        .select('*')
+        .or(`id.eq.${upperQuery},serial_number.eq.${upperQuery}`)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      // Check Registrations
+      let { data: regData } = await supabase
+        .from('warranty_registrations')
+        .select('*')
+        .or(`id.eq.${upperQuery},serial_number.eq.${upperQuery}`)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      // If we found a claim but no reg (maybe wasn't registered online), or we found a reg but no claim
+      // Let's combine them into a single result object for rendering
+      if (claimData || regData) {
+        setResult({
+          claim: claimData,
+          registration: regData,
+          type: claimData ? 'Claim' : 'Registration',
+          id: claimData?.id || regData?.id,
+          status: claimData?.status || regData?.status || 'Active'
+        });
         setStatus("found");
       } else {
         setStatus("not_found");
       }
-    }, 1500);
+    } catch (err) {
+      console.error("Error fetching status:", err);
+      setStatus("not_found");
+    }
   };
 
   return (
@@ -63,9 +94,9 @@ export default function WarrantyStatusPage() {
               <button 
                 type="submit"
                 disabled={status === "searching" || !query.trim()}
-                className="bg-brand text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-brand-dark transition-all disabled:opacity-70 disabled:cursor-not-allowed whitespace-nowrap"
+                className="bg-brand text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-brand-dark transition-all disabled:opacity-70 flex items-center justify-center gap-2 whitespace-nowrap min-w-[180px]"
               >
-                {status === "searching" ? "Searching..." : "Track Status"}
+                {status === "searching" ? <><Loader2 size={18} className="animate-spin" /> Searching...</> : "Track Status"}
               </button>
             </form>
           </div>
@@ -75,7 +106,7 @@ export default function WarrantyStatusPage() {
             <div className="text-center py-12 animate-in fade-in">
               <Activity size={48} className="text-muted-foreground mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-foreground mb-2">Record Not Found</h3>
-              <p className="text-muted-foreground mb-6">We couldn&apos;t find a warranty claim matching that Ticket ID and Phone Number. Please check the details and try again, or <Link href="/contact" className="text-brand hover:underline">contact support</Link>.</p>
+              <p className="text-muted-foreground mb-6">We couldn&apos;t find a warranty or claim matching that ID. Please check the details and try again, or <Link href="/contact" className="text-brand hover:underline">contact support</Link>.</p>
               <div className="flex justify-center gap-4">
                 <Link href="/support/warranty-registration" className="text-brand font-bold hover:underline">Register New Warranty</Link>
                 <span className="text-muted-foreground">•</span>
@@ -84,46 +115,44 @@ export default function WarrantyStatusPage() {
             </div>
           )}
 
-          {status === "found" && (
+          {status === "found" && result && (
             <div className="animate-in slide-in-from-bottom-4 duration-500">
               <div className="bg-surface border border-border rounded-2xl overflow-hidden shadow-xl">
                 <div className="bg-surface-hover border-b border-border p-6 flex items-center justify-between">
                   <div>
-                    <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold mb-1">Record Found</p>
-                    <p className="text-xl font-mono font-bold text-foreground">{query.toUpperCase()}</p>
+                    <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold mb-1">Record Found - {result.type}</p>
+                    <p className="text-xl font-mono font-bold text-foreground">{result.id}</p>
                   </div>
-                  <div className="bg-green-500/10 text-green-500 px-4 py-1.5 rounded-full text-sm font-bold flex items-center gap-2">
-                    <CheckCircle2 size={16} /> Active
+                  <div className={`px-4 py-1.5 rounded-full text-sm font-bold flex items-center gap-2 ${
+                    result.status === 'Rejected' ? 'bg-red-500/10 text-red-500' :
+                    result.status === 'Approved' ? 'bg-green-500/10 text-green-500' :
+                    result.status === 'Pending Review' || result.status === 'Under Inspection' ? 'bg-yellow-500/10 text-yellow-500' :
+                    'bg-green-500/10 text-green-500'
+                  }`}>
+                    {result.status === 'Active' || result.status === 'Registered' || result.status === 'Approved' ? <CheckCircle2 size={16} /> : <Activity size={16} />} 
+                    {result.status}
                   </div>
                 </div>
                 
                 <div className="p-8">
                   <h4 className="text-lg font-bold text-foreground mb-6">Status Timeline</h4>
                   
-                  {/* Timeline Mock */}
                   <div className="relative border-l-2 border-border ml-4 space-y-8">
-                    <div className="relative pl-8">
-                      <div className="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-brand border-4 border-surface" />
-                      <h5 className="font-bold text-foreground">Warranty Registered</h5>
-                      <p className="text-sm text-muted-foreground mb-1">12 Oct 2024, 10:30 AM</p>
-                      <p className="text-sm text-muted-foreground">Battery model Goodwin DuraMax 65 successfully registered to Rahul Sharma.</p>
-                    </div>
-                    
-                    {query.includes("CLM") && (
+                    {result.registration && (
                       <div className="relative pl-8">
                         <div className="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-brand border-4 border-surface" />
-                        <h5 className="font-bold text-foreground">Claim Submitted</h5>
-                        <p className="text-sm text-muted-foreground mb-1">15 Nov 2024, 02:15 PM</p>
-                        <p className="text-sm text-muted-foreground">Claim regarding low cranking power submitted and pending review.</p>
+                        <h5 className="font-bold text-foreground">Warranty Registered</h5>
+                        <p className="text-sm text-muted-foreground mb-1">{new Date(result.registration.created_at).toLocaleString()}</p>
+                        <p className="text-sm text-muted-foreground">Battery Serial {result.registration.serial_number} successfully registered to {result.registration.customer_name}.</p>
                       </div>
                     )}
-
-                    {query.includes("CLM") && (
+                    
+                    {result.claim && (
                       <div className="relative pl-8">
                         <div className="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-yellow-500 border-4 border-surface" />
-                        <h5 className="font-bold text-yellow-500">Under Inspection</h5>
-                        <p className="text-sm text-muted-foreground mb-1">16 Nov 2024, 09:00 AM</p>
-                        <p className="text-sm text-muted-foreground">The battery is currently being inspected at the authorized dealer location.</p>
+                        <h5 className="font-bold text-yellow-500">Claim Submitted</h5>
+                        <p className="text-sm text-muted-foreground mb-1">{new Date(result.claim.created_at).toLocaleString()}</p>
+                        <p className="text-sm text-muted-foreground">Claim regarding "{result.claim.issue_description}" was submitted. Current status: {result.claim.status}.</p>
                       </div>
                     )}
                   </div>

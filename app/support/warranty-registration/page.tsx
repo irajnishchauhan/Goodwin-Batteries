@@ -1,24 +1,67 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronRight, ShieldCheck, Upload, CheckCircle2 } from "lucide-react";
+import { ChevronRight, ShieldCheck, Upload, CheckCircle2, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { products } from "@/data/mock";
+import { supabase } from "@/lib/supabase";
 
 export default function WarrantyRegistrationPage() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [warrantyId, setWarrantyId] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  
+  const [formData, setFormData] = useState({
+    customer_name: "",
+    mobile: "",
+    email: "",
+    battery_model_id: "",
+    serial_number: "",
+    purchase_date: "",
+    invoice_number: "",
+    dealer_name: "",
+    vehicle_reg_number: "",
+    vehicle_make_model: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
+    setErrorMessage("");
     
-    // Mock Supabase insertion
-    setTimeout(() => {
-      setStatus("success");
+    try {
       const randomNum = Math.floor(100000 + Math.random() * 900000);
-      setWarrantyId(`GW-WTY-2026-${randomNum}`);
-    }, 1500);
+      const generatedId = `GW-WTY-${new Date().getFullYear()}-${randomNum}`;
+      
+      const { error } = await supabase.from('warranty_registrations').insert({
+        id: generatedId,
+        customer_name: formData.customer_name,
+        mobile: formData.mobile,
+        email: formData.email,
+        battery_model_id: formData.battery_model_id,
+        serial_number: formData.serial_number.toUpperCase(),
+        purchase_date: formData.purchase_date,
+        invoice_number: formData.invoice_number,
+        dealer_name: formData.dealer_name,
+        vehicle_reg_number: formData.vehicle_reg_number.toUpperCase(),
+        vehicle_make_model: formData.vehicle_make_model,
+        status: 'Registered'
+      });
+
+      if (error) {
+        if (error.code === '23505') {
+          throw new Error("This serial number has already been registered.");
+        }
+        throw error;
+      }
+      
+      setWarrantyId(generatedId);
+      setStatus("success");
+    } catch (err: any) {
+      console.error(err);
+      setErrorMessage(err.message || "Failed to register warranty. Please try again.");
+      setStatus("error");
+    }
   };
 
   if (status === "success") {
@@ -83,6 +126,12 @@ export default function WarrantyRegistrationPage() {
               </div>
             </div>
 
+            {status === "error" && (
+              <div className="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-xl mb-8">
+                {errorMessage}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Customer Details */}
               <div>
@@ -90,15 +139,36 @@ export default function WarrantyRegistrationPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Full Name</label>
-                    <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="e.g. Rahul Sharma" />
+                    <input 
+                      required 
+                      type="text" 
+                      value={formData.customer_name}
+                      onChange={(e) => setFormData({...formData, customer_name: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" 
+                      placeholder="e.g. Rahul Sharma" 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Mobile Number</label>
-                    <input required type="tel" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="+91" />
+                    <input 
+                      required 
+                      type="tel" 
+                      value={formData.mobile}
+                      onChange={(e) => setFormData({...formData, mobile: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" 
+                      placeholder="+91" 
+                    />
                   </div>
                   <div className="md:col-span-2">
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Email Address</label>
-                    <input required type="email" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="rahul@example.com" />
+                    <input 
+                      required 
+                      type="email" 
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" 
+                      placeholder="rahul@example.com" 
+                    />
                   </div>
                 </div>
               </div>
@@ -109,28 +179,60 @@ export default function WarrantyRegistrationPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Battery Model</label>
-                    <select required className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors appearance-none">
+                    <select 
+                      required 
+                      value={formData.battery_model_id}
+                      onChange={(e) => setFormData({...formData, battery_model_id: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors appearance-none"
+                    >
                       <option value="">Select Battery Model</option>
                       {products.map(p => (
-                        <option key={p.id} value={p.id}>{p.name} ({p.ah})</option>
+                        <option key={p.id} value={p.id}>{p.name} ({p.capacity})</option>
                       ))}
                     </select>
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Serial Number</label>
-                    <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors uppercase" placeholder="e.g. GW-12345678" />
+                    <input 
+                      required 
+                      type="text" 
+                      value={formData.serial_number}
+                      onChange={(e) => setFormData({...formData, serial_number: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors uppercase" 
+                      placeholder="e.g. GW-12345678" 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Date of Purchase</label>
-                    <input required type="date" className="w-full bg-background border border-border rounded p-3 text-muted-foreground focus:outline-none focus:border-brand transition-colors" />
+                    <input 
+                      required 
+                      type="date" 
+                      value={formData.purchase_date}
+                      onChange={(e) => setFormData({...formData, purchase_date: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-muted-foreground focus:outline-none focus:border-brand transition-colors" 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Invoice Number</label>
-                    <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="Invoice No." />
+                    <input 
+                      required 
+                      type="text" 
+                      value={formData.invoice_number}
+                      onChange={(e) => setFormData({...formData, invoice_number: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" 
+                      placeholder="Invoice No." 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Dealer Name</label>
-                    <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="Name of the shop/dealer" />
+                    <input 
+                      required 
+                      type="text" 
+                      value={formData.dealer_name}
+                      onChange={(e) => setFormData({...formData, dealer_name: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" 
+                      placeholder="Name of the shop/dealer" 
+                    />
                   </div>
                 </div>
               </div>
@@ -141,28 +243,25 @@ export default function WarrantyRegistrationPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Vehicle Registration Number</label>
-                    <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors uppercase" placeholder="e.g. DL 1C AB 1234" />
+                    <input 
+                      required 
+                      type="text" 
+                      value={formData.vehicle_reg_number}
+                      onChange={(e) => setFormData({...formData, vehicle_reg_number: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors uppercase" 
+                      placeholder="e.g. DL 1C AB 1234" 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Vehicle Make & Model</label>
-                    <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="e.g. Maruti Swift" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Documents */}
-              <div>
-                <h3 className="text-lg font-bold text-foreground mb-4 uppercase tracking-wider text-sm">Documents</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-brand transition-colors cursor-pointer bg-background">
-                    <Upload size={24} className="mx-auto mb-2 text-muted-foreground" />
-                    <p className="text-sm font-semibold text-foreground mb-1">Upload Invoice</p>
-                    <p className="text-xs text-muted-foreground">PDF, JPG or PNG (Max 5MB)</p>
-                  </div>
-                  <div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-brand transition-colors cursor-pointer bg-background">
-                    <Upload size={24} className="mx-auto mb-2 text-muted-foreground" />
-                    <p className="text-sm font-semibold text-foreground mb-1">Upload Battery Photo (Optional)</p>
-                    <p className="text-xs text-muted-foreground">Showing serial number clearly</p>
+                    <input 
+                      required 
+                      type="text" 
+                      value={formData.vehicle_make_model}
+                      onChange={(e) => setFormData({...formData, vehicle_make_model: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" 
+                      placeholder="e.g. Maruti Swift" 
+                    />
                   </div>
                 </div>
               </div>
@@ -172,9 +271,9 @@ export default function WarrantyRegistrationPage() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="bg-brand text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="bg-brand text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-all disabled:opacity-70 flex items-center gap-2"
                 >
-                  {status === "submitting" ? "Registering..." : "Register Warranty"}
+                  {status === "submitting" ? <><Loader2 size={18} className="animate-spin" /> Registering...</> : "Register Warranty"}
                 </button>
               </div>
             </form>

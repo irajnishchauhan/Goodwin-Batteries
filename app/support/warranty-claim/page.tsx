@@ -1,23 +1,55 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronRight, Upload, CheckCircle2, AlertTriangle } from "lucide-react";
+import { ChevronRight, Upload, CheckCircle2, AlertTriangle, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
 export default function WarrantyClaimPage() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [claimId, setClaimId] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [formData, setFormData] = useState({
+    warranty_id: "",
+    serial_number: "",
+    customer_name: "",
+    mobile: "",
+    dealer_name: "",
+    issue_description: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
+    setErrorMessage("");
     
-    // Mock Supabase insertion
-    setTimeout(() => {
-      setStatus("success");
+    try {
       const randomNum = Math.floor(100000 + Math.random() * 900000);
-      setClaimId(`GW-CLM-2026-${randomNum}`);
-    }, 1500);
+      const generatedId = `GW-CLM-${new Date().getFullYear()}-${randomNum}`;
+      
+      const { error } = await supabase.from('warranty_claims').insert({
+        id: generatedId,
+        warranty_id: formData.warranty_id || null,
+        serial_number: formData.serial_number.toUpperCase(),
+        customer_name: formData.customer_name,
+        mobile: formData.mobile,
+        dealer_name: formData.dealer_name,
+        issue_description: formData.issue_description,
+        status: 'Pending Review'
+      });
+
+      if (error) {
+        throw error;
+      }
+      
+      setClaimId(generatedId);
+      setStatus("success");
+    } catch (err: any) {
+      console.error(err);
+      setErrorMessage(err.message || "Failed to submit claim. Please try again.");
+      setStatus("error");
+    }
   };
 
   if (status === "success") {
@@ -82,6 +114,12 @@ export default function WarrantyClaimPage() {
               </div>
             </div>
 
+            {status === "error" && (
+              <div className="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-xl mb-8">
+                {errorMessage}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Core Details */}
               <div>
@@ -89,11 +127,24 @@ export default function WarrantyClaimPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Warranty ID (Optional)</label>
-                    <input type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors uppercase" placeholder="e.g. GW-WTY-..." />
+                    <input 
+                      type="text" 
+                      value={formData.warranty_id}
+                      onChange={(e) => setFormData({...formData, warranty_id: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors uppercase" 
+                      placeholder="e.g. GW-WTY-..." 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Battery Serial Number *</label>
-                    <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors uppercase" placeholder="e.g. GW-12345678" />
+                    <input 
+                      required 
+                      type="text" 
+                      value={formData.serial_number}
+                      onChange={(e) => setFormData({...formData, serial_number: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors uppercase" 
+                      placeholder="e.g. GW-12345678" 
+                    />
                   </div>
                 </div>
               </div>
@@ -104,15 +155,36 @@ export default function WarrantyClaimPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Full Name *</label>
-                    <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="e.g. Rahul Sharma" />
+                    <input 
+                      required 
+                      type="text" 
+                      value={formData.customer_name}
+                      onChange={(e) => setFormData({...formData, customer_name: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" 
+                      placeholder="e.g. Rahul Sharma" 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Mobile Number *</label>
-                    <input required type="tel" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="+91" />
+                    <input 
+                      required 
+                      type="tel" 
+                      value={formData.mobile}
+                      onChange={(e) => setFormData({...formData, mobile: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" 
+                      placeholder="+91" 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Dealer Name *</label>
-                    <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="Name of the shop/dealer" />
+                    <input 
+                      required 
+                      type="text" 
+                      value={formData.dealer_name}
+                      onChange={(e) => setFormData({...formData, dealer_name: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" 
+                      placeholder="Name of the shop/dealer" 
+                    />
                   </div>
                 </div>
               </div>
@@ -123,24 +195,14 @@ export default function WarrantyClaimPage() {
                 <div className="grid grid-cols-1 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-muted-foreground mb-2">Describe the Problem *</label>
-                    <textarea required rows={4} className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="Please describe the issue you are facing with the battery..."></textarea>
-                  </div>
-                </div>
-              </div>
-
-              {/* Documents */}
-              <div>
-                <h3 className="text-lg font-bold text-foreground mb-4 uppercase tracking-wider text-sm">Supporting Documents</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-brand transition-colors cursor-pointer bg-background">
-                    <Upload size={24} className="mx-auto mb-2 text-muted-foreground" />
-                    <p className="text-sm font-semibold text-foreground mb-1">Upload Original Invoice *</p>
-                    <p className="text-xs text-muted-foreground">Required if not registered online</p>
-                  </div>
-                  <div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-brand transition-colors cursor-pointer bg-background">
-                    <Upload size={24} className="mx-auto mb-2 text-muted-foreground" />
-                    <p className="text-sm font-semibold text-foreground mb-1">Upload Photo/Video of Issue</p>
-                    <p className="text-xs text-muted-foreground">Optional but helps speed up the process</p>
+                    <textarea 
+                      required 
+                      rows={4} 
+                      value={formData.issue_description}
+                      onChange={(e) => setFormData({...formData, issue_description: e.target.value})}
+                      className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" 
+                      placeholder="Please describe the issue you are facing with the battery..."
+                    ></textarea>
                   </div>
                 </div>
               </div>
@@ -149,9 +211,9 @@ export default function WarrantyClaimPage() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="bg-brand text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-all disabled:opacity-70 disabled:cursor-not-allowed w-full md:w-auto ml-auto"
+                  className="bg-brand text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-all disabled:opacity-70 flex items-center gap-2 w-full md:w-auto ml-auto"
                 >
-                  {status === "submitting" ? "Submitting Claim..." : "Submit Claim"}
+                  {status === "submitting" ? <><Loader2 size={18} className="animate-spin" /> Submitting Claim...</> : "Submit Claim"}
                 </button>
               </div>
             </form>

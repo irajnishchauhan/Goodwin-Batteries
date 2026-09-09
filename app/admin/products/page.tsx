@@ -13,15 +13,7 @@ export default function AdminProductsPage() {
 
   useEffect(() => {
     fetchProducts();
-    cleanupOldProducts();
   }, []);
-
-  async function cleanupOldProducts() {
-    console.log("Cleaning up old products...");
-    // The old test products start with 'p-'
-    await supabase.from("products").delete().like("id", "p-%");
-    fetchProducts();
-  }
 
   async function fetchProducts() {
     setLoading(true);

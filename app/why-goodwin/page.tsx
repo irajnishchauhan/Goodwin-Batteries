@@ -12,7 +12,7 @@ export default function WhyGoodwinPage() {
 
   return (
     <div className="flex flex-col w-full min-h-screen pt-20">
-      <section className="bg-black py-20 border-b border-white/10 relative overflow-hidden">
+      <section className="bg-zinc-950 py-20 border-b border-white/10 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full bg-brand/10 blur-[100px] pointer-events-none" />
         <div className="container relative z-10">
           <div className="max-w-3xl">
@@ -50,7 +50,7 @@ export default function WhyGoodwinPage() {
           <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
             Upgrade your vehicle's power source today and experience unparalleled reliability on every journey.
           </p>
-          <a href="/battery-finder" className="inline-block bg-black text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-gray-900 transition-all shadow-xl">
+          <a href="/battery-finder" className="inline-block bg-brand text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-all shadow-xl">
             Find Your Battery
           </a>
         </div>

@@ -20,7 +20,7 @@ export default function HomePageClient({ applications, settings }: { application
     <div className="flex flex-col w-full">
       
       {/* 1. HERO SECTION */}
-      <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-black pt-20">
+      <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-zinc-950 pt-20">
         <div className="absolute inset-0 z-0">
           <picture>
             <source media="(max-width: 768px)" srcSet={settings?.hero_image_mobile || "/assets/hero/hero_composite_mobile.webp"} />
@@ -215,7 +215,7 @@ export default function HomePageClient({ applications, settings }: { application
       </section>
 
       {/* 5. DEALER / DISTRIBUTOR CTA */}
-      <section className="py-24 bg-black relative overflow-hidden">
+      <section className="py-24 bg-zinc-950 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full bg-brand/10 blur-[150px] pointer-events-none" />
         
         <div className="container relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -250,10 +250,10 @@ export default function HomePageClient({ applications, settings }: { application
             Find the right Goodwin battery for your vehicle or application today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/battery-finder" className="bg-black text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-gray-900 transition-all hover:scale-105 shadow-xl">
+            <Link href="/battery-finder" className="bg-brand text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-all hover:scale-105 shadow-xl">
               Find Your Battery
             </Link>
-            <Link href="/contact" className="bg-transparent border-2 border-black text-black px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-black/10 transition-colors">
+            <Link href="/contact" className="bg-transparent border-2 border-brand text-brand px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand/10 transition-colors">
               Contact Goodwin
             </Link>
           </div>

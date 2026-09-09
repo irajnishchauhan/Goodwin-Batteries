@@ -31,7 +31,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-zinc-950 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-brand/10 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-brand/5 blur-[100px] pointer-events-none" />
       

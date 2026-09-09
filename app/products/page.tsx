@@ -11,7 +11,7 @@ export default async function ProductsPage() {
   return (
     <div className="flex flex-col w-full min-h-screen pt-20">
       {/* Header */}
-      <section className="bg-black py-16 border-b border-white/10 relative overflow-hidden">
+      <section className="bg-zinc-950 py-20 border-b border-white/10 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full bg-brand/10 blur-[100px] pointer-events-none" />
         <div className="container relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 bg-white/5 backdrop-blur-md mb-6">

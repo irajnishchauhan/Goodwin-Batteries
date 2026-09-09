@@ -74,8 +74,10 @@ CREATE TABLE products (
     terminal_layout TEXT,
     dimensions TEXT,
     weight TEXT,
-    display_order INTEGER DEFAULT 0,
+    is_featured BOOLEAN DEFAULT false,
     is_published BOOLEAN DEFAULT true,
+    warranty_options TEXT[],
+    application TEXT[],
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 

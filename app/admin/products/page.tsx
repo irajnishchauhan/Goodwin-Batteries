@@ -48,6 +48,7 @@ export default function AdminProductsPage() {
         ah: p.capacity, // Mapping capacity to ah
         warranty: p.warrantyOptions.join(" / "),
         warranty_options: p.warrantyOptions,
+        application: [p.application],
         image: p.image,
         description: p.description,
         terminal_layout: (p as any).terminalLayout || "",

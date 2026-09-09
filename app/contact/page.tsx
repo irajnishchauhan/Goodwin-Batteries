@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, ExternalLink, Loader2 } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ExternalLink, Loader2, ArrowRight } from "lucide-react";
 import { useGlobalSettings } from "@/components/GlobalSettingsProvider";
 import { supabase } from "@/lib/supabase";
 
@@ -124,6 +124,38 @@ export default function ContactPage() {
                       <h4 className="font-bold text-foreground mb-1">Email Us</h4>
                       <a href="mailto:sales@goodwinbatteries.com" className="text-muted-foreground leading-relaxed hover:text-brand transition-colors block mb-1">sales@goodwinbatteries.com (Sales)</a>
                       <a href="mailto:support@goodwinbatteries.com" className="text-muted-foreground leading-relaxed hover:text-brand transition-colors block">support@goodwinbatteries.com (Support)</a>
+                    </div>
+                  </div>
+
+                  {/* Social Links */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-surface border border-border rounded-xl flex items-center justify-center shrink-0">
+                      <ExternalLink size={24} className="text-brand" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-foreground mb-3">Connect With Us</h4>
+                      <div className="flex flex-wrap gap-2">
+                        <a href="https://facebook.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border rounded-lg text-sm font-bold hover:bg-brand hover:text-white transition-colors">Facebook</a>
+                        <a href="https://instagram.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border rounded-lg text-sm font-bold hover:bg-brand hover:text-white transition-colors">Instagram</a>
+                        <a href="https://youtube.com/@goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border rounded-lg text-sm font-bold hover:bg-brand hover:text-white transition-colors">YouTube</a>
+                        <a href="https://twitter.com/goodwinbattery" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border rounded-lg text-sm font-bold hover:bg-brand hover:text-white transition-colors">Twitter (X)</a>
+                        <a href="https://linkedin.com/company/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border rounded-lg text-sm font-bold hover:bg-brand hover:text-white transition-colors">LinkedIn</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Shop Online */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-surface border border-border rounded-xl flex items-center justify-center shrink-0">
+                      <ExternalLink size={24} className="text-brand" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-foreground mb-3">Shop Online</h4>
+                      <div className="flex flex-col gap-2">
+                        <a href="https://www.amazon.in/s?k=goodwin+batteries" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-brand transition-colors text-sm font-bold flex items-center gap-2">Amazon Store <ArrowRight size={14} /></a>
+                        <a href="https://www.flipkart.com/search?q=goodwin%20batteries" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-brand transition-colors text-sm font-bold flex items-center gap-2">Flipkart Store <ArrowRight size={14} /></a>
+                        <a href="https://www.indiamart.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-brand transition-colors text-sm font-bold flex items-center gap-2">IndiaMart Profile <ArrowRight size={14} /></a>
+                      </div>
                     </div>
                   </div>
 

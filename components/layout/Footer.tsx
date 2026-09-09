@@ -35,35 +35,46 @@ export default function Footer() {
               Powering every journey. Reliable battery solutions engineered to keep your vehicle, business, and machines powered with confidence.
             </p>
 
-            <div className="flex items-center gap-4">
-              {settings?.facebook_url && (
-                <a href={settings.facebook_url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading">
-                  Fb
-                </a>
-              )}
-              {settings?.instagram_url && (
-                <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading">
-                  Ig
-                </a>
-              )}
-              {settings?.youtube_url && (
-                <a href={settings.youtube_url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading">
-                  Yt
-                </a>
-              )}
+            <div className="flex flex-wrap gap-2">
+              <a href="https://facebook.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading" title="Facebook">
+                Fb
+              </a>
+              <a href="https://instagram.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading" title="Instagram">
+                Ig
+              </a>
+              <a href="https://youtube.com/@goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading" title="YouTube">
+                Yt
+              </a>
+              <a href="https://twitter.com/goodwinbattery" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading" title="Twitter/X">
+                X
+              </a>
+              <a href="https://linkedin.com/company/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading" title="LinkedIn">
+                In
+              </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-foreground font-heading font-bold mb-6 text-lg">Explore</h4>
-            <ul className="flex flex-col gap-3">
+          {/* Quick Links & Shop */}
+          <div className="flex flex-col gap-8">
+            <div>
+              <h4 className="text-foreground font-heading font-bold mb-4 text-lg">Shop Online</h4>
+              <ul className="flex flex-col gap-3">
+                <li><a href="https://www.amazon.in/s?k=goodwin+batteries" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-brand hover:text-brand-dark transition-colors flex items-center gap-2 group">Amazon Store <ArrowRight size={14} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/></a></li>
+                <li><a href="https://www.flipkart.com/search?q=goodwin%20batteries" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-brand hover:text-brand-dark transition-colors flex items-center gap-2 group">Flipkart Store <ArrowRight size={14} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/></a></li>
+                <li><a href="https://www.indiamart.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-brand hover:text-brand-dark transition-colors flex items-center gap-2 group">IndiaMart Profile <ArrowRight size={14} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/></a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-foreground font-heading font-bold mb-4 text-lg">Explore</h4>
+              <ul className="flex flex-col gap-3">
               <li><Link href="/products" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Products</Link></li>
               <li><Link href="/battery-finder" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find Your Battery</Link></li>
               <li><Link href="/applications" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Applications</Link></li>
               <li><Link href="/why-goodwin" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Why Goodwin</Link></li>
               <li><Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> About Us</Link></li>
             </ul>
+          </div>
           </div>
 
           {/* Network & Support */}

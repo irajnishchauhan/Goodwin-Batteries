@@ -25,7 +25,7 @@ export default function NotFound() {
             <Link href="/products" className="w-full sm:w-auto bg-surface border border-border text-foreground px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:border-brand transition-all flex items-center justify-center gap-2">
               <Battery size={18} /> Browse Products
             </Link>
-            <Link href="/find-your-battery" className="w-full sm:w-auto bg-surface border border-border text-foreground px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:border-brand transition-all flex items-center justify-center gap-2">
+            <Link href="/battery-finder" className="w-full sm:w-auto bg-surface border border-border text-foreground px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:border-brand transition-all flex items-center justify-center gap-2">
               <Search size={18} /> Battery Finder
             </Link>
           </div>

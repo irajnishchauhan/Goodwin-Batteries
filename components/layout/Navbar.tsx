@@ -95,7 +95,7 @@ export default function Navbar() {
           </Link>
           
           <Link
-            href="/find-your-battery"
+            href="/battery-finder"
             className="text-xs font-bold uppercase tracking-wider bg-brand text-white px-5 py-2.5 rounded flex items-center gap-2 shadow-lg shadow-brand/20 hover:bg-brand-dark transition-all hover:-translate-y-0.5"
           >
             <BatteryCharging size={16} />
@@ -145,7 +145,7 @@ export default function Navbar() {
                   Become a Dealer
                 </Link>
                 <Link
-                  href="/find-your-battery"
+                  href="/battery-finder"
                   className="py-3 px-4 bg-brand text-white text-center rounded font-bold uppercase text-sm"
                   onClick={() => setMobileMenuOpen(false)}
                 >

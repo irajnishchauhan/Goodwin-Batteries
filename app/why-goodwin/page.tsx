@@ -50,7 +50,7 @@ export default function WhyGoodwinPage() {
           <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
             Upgrade your vehicle's power source today and experience unparalleled reliability on every journey.
           </p>
-          <a href="/find-your-battery" className="inline-block bg-black text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-gray-900 transition-all shadow-xl">
+          <a href="/battery-finder" className="inline-block bg-black text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-gray-900 transition-all shadow-xl">
             Find Your Battery
           </a>
         </div>

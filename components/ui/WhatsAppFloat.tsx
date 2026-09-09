@@ -14,7 +14,7 @@ export default function WhatsAppFloat() {
     const slug = pathname.split("/").pop();
     const formattedName = slug ? slug.split("-").join(" ").toUpperCase() : "this product";
     message = `Hello Goodwin Batteries, I am interested in ${formattedName}. Please share more details.`;
-  } else if (pathname === "/find-your-battery") {
+  } else if (pathname === "/battery-finder") {
     message = "Hello Goodwin Batteries, I need help finding the right battery for my vehicle.";
   } else if (pathname === "/dealers") {
     message = "Hello Goodwin Batteries, I want to find a Goodwin Batteries dealer near me.";

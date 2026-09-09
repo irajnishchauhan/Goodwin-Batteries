@@ -250,7 +250,7 @@ export default function HomePageClient({ applications, settings }: { application
             Find the right Goodwin battery for your vehicle or application today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/find-your-battery" className="bg-black text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-gray-900 transition-all hover:scale-105 shadow-xl">
+            <Link href="/battery-finder" className="bg-black text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-gray-900 transition-all hover:scale-105 shadow-xl">
               Find Your Battery
             </Link>
             <Link href="/contact" className="bg-transparent border-2 border-black text-black px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-black/10 transition-colors">

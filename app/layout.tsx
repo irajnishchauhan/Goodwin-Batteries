@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit, Geist } from "next/font/google";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import ClientLayoutWrapper from "@/components/layout/ClientLayoutWrapper";
 import { getGlobalSettings } from "@/lib/data";
 import { GlobalSettingsProvider } from "@/components/GlobalSettingsProvider";
 import { GOODWIN_CONFIG } from "@/config/goodwin";
@@ -40,12 +38,9 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col font-sans text-foreground bg-background">
         <GlobalSettingsProvider settings={settings}>
-          <Navbar />
-          <main className="flex-1 w-full flex flex-col">
+          <ClientLayoutWrapper>
             {children}
-          </main>
-          <Footer />
-          <WhatsAppFloat />
+          </ClientLayoutWrapper>
           {settings && (
             <script
               type="application/ld+json"

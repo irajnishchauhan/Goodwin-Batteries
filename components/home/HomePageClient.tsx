@@ -205,7 +205,7 @@ export default function HomePageClient({ applications, settings }: { application
                 <p className="text-foreground leading-relaxed italic">"{review.text}"</p>
                 <div className="mt-auto pt-6 border-t border-border">
                   <span className="font-bold block text-foreground">{review.name}</span>
-                  <span className="text-sm text-gray-500 block">{review.location}</span>
+                  <span className="text-sm text-silver block">{review.location}</span>
                 </div>
               </div>
             ))}

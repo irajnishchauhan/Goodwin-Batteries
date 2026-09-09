@@ -58,11 +58,11 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-heading font-bold mb-6 text-lg">Explore</h4>
             <ul className="flex flex-col gap-3">
-              <li><Link href="/products" className="text-sm hover:text-brand transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Products</Link></li>
-              <li><Link href="/battery-finder" className="text-sm hover:text-brand transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find Your Battery</Link></li>
-              <li><Link href="/applications" className="text-sm hover:text-brand transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Applications</Link></li>
-              <li><Link href="/why-goodwin" className="text-sm hover:text-brand transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Why Goodwin</Link></li>
-              <li><Link href="/about" className="text-sm hover:text-brand transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> About Us</Link></li>
+              <li><Link href="/products" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Products</Link></li>
+              <li><Link href="/battery-finder" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find Your Battery</Link></li>
+              <li><Link href="/applications" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Applications</Link></li>
+              <li><Link href="/why-goodwin" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Why Goodwin</Link></li>
+              <li><Link href="/about" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> About Us</Link></li>
             </ul>
           </div>
 
@@ -70,11 +70,11 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-heading font-bold mb-6 text-lg">Support & Network</h4>
             <ul className="flex flex-col gap-3">
-              <li><Link href="/dealer-distributor" className="text-sm hover:text-brand transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Become a Dealer</Link></li>
-              <li><Link href="/dealers" className="text-sm hover:text-brand transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find a Dealer</Link></li>
-              <li><Link href="/support" className="text-sm hover:text-brand transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Warranty Support</Link></li>
-              <li><Link href="/battery-care" className="text-sm hover:text-brand transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Battery Care</Link></li>
-              <li><Link href="/contact" className="text-sm hover:text-brand transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Contact Us</Link></li>
+              <li><Link href="/dealer-distributor" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Become a Dealer</Link></li>
+              <li><Link href="/dealers" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find a Dealer</Link></li>
+              <li><Link href="/support" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Warranty Support</Link></li>
+              <li><Link href="/battery-care" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Battery Care</Link></li>
+              <li><Link href="/contact" className="text-sm text-silver hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Contact Us</Link></li>
             </ul>
           </div>
 

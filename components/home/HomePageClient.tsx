@@ -20,7 +20,7 @@ export default function HomePageClient({ applications, settings }: { application
     <div className="flex flex-col w-full">
       
       {/* 1. HERO SECTION */}
-      <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-surface pt-20">
+      <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-navy pt-20">
         <div className="absolute inset-0 z-0">
           <picture>
             <source media="(max-width: 768px)" srcSet={settings?.hero_image_mobile || "/assets/hero/hero_composite_mobile.webp"} />
@@ -30,8 +30,8 @@ export default function HomePageClient({ applications, settings }: { application
               className="w-full h-full object-cover"
             />
           </picture>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/60 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent z-10" />
         </div>
 
         <div className="container relative z-20 flex flex-col items-start pt-12">
@@ -46,20 +46,19 @@ export default function HomePageClient({ applications, settings }: { application
               <span className="text-white text-xs font-bold tracking-widest uppercase">Premium Automotive Batteries</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-8xl font-heading font-bold text-white leading-[1.1] tracking-tight mb-6">
-              POWER THAT <br className="hidden md:block" />
-              <span className="text-brand">MOVES YOU</span> FORWARD.
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.1] tracking-tight mb-6 uppercase">
+              POWERING <span className="text-brand">EVERY JOURNEY.</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
-              Reliable battery solutions engineered to keep your journey, business and machines powered with confidence.
+            <p className="text-lg md:text-xl text-silver mb-10 max-w-2xl leading-relaxed">
+              Reliable battery solutions engineered for cars, commercial vehicles, tractors and industrial applications.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="#battery-finder" className="bg-brand text-white px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-brand/30">
+              <Link href="#battery-finder" className="bg-brand text-white px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-all flex items-center justify-center gap-2">
                 Find Your Battery
               </Link>
-              <Link href="/products" className="bg-white/10 text-white border border-white/20 px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 backdrop-blur-md">
+              <Link href="/products" className="bg-transparent text-white border border-silver/50 px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-white/5 transition-all flex items-center justify-center gap-2 backdrop-blur-md">
                 Explore Products <span aria-hidden="true" className="inline-flex"><ArrowRight size={18} /></span>
               </Link>
             </div>
@@ -68,7 +67,7 @@ export default function HomePageClient({ applications, settings }: { application
       </section>
 
       {/* 2. TRUST / BRAND STATS */}
-      <section className="bg-[#09090b] py-16 border-b border-white/5 relative z-30 -mt-8">
+      <section className="bg-navy py-16 border-b border-silver/10 relative z-30 -mt-8">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {trustStats.map((stat, i) => (
@@ -78,13 +77,13 @@ export default function HomePageClient({ applications, settings }: { application
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-[#18181b] border border-white/5 p-8 rounded-xl hover:border-brand/50 transition-colors group"
+                className="bg-navy-dark border border-silver/20 p-8 rounded-xl hover:border-brand/50 transition-colors group shadow-lg"
               >
                 <div className="text-brand mb-6 bg-brand/10 w-16 h-16 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                   {stat.icon}
                 </div>
                 <h4 className="text-white font-bold text-xl mb-3">{stat.title}</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">{stat.desc}</p>
+                <p className="text-silver text-sm leading-relaxed">{stat.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -161,7 +160,7 @@ export default function HomePageClient({ applications, settings }: { application
       </section>
 
       {/* 4.5 COMPATIBLE BRANDS */}
-      <section className="py-16 bg-white dark:bg-[#0a0a0c] overflow-hidden border-t border-b border-border">
+      <section className="py-16 bg-surface overflow-hidden border-t border-b border-border">
         <div className="container mb-8 text-center">
           <h2 className="text-sm font-bold tracking-widest text-brand uppercase">Trusted Fitment For</h2>
         </div>
@@ -215,27 +214,27 @@ export default function HomePageClient({ applications, settings }: { application
       </section>
 
       {/* 5. DEALER / DISTRIBUTOR CTA */}
-      <section className="py-24 bg-surface relative overflow-hidden">
+      <section className="py-24 bg-navy relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full bg-brand/10 blur-[150px] pointer-events-none" />
         
         <div className="container relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="max-w-2xl">
             <h2 className="text-sm font-bold tracking-widest text-brand uppercase mb-3">Partner With Us</h2>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">GROW WITH GOODWIN</h2>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">GROW WITH GOODWIN</h2>
+            <p className="text-lg text-silver mb-8 leading-relaxed">
               Join the Goodwin network and build your business with a growing, premium battery brand. Benefit from robust marketing support, superior products, and high margins.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/dealer-distributor" className="bg-brand text-white px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-colors text-center shadow-lg shadow-brand/20">
+              <Link href="/dealer-distributor" className="bg-brand text-white px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-colors text-center">
                 Become a Dealer
               </Link>
-              <Link href="/dealer-distributor" className="bg-transparent text-white border border-white/30 px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-white/10 transition-colors text-center">
+              <Link href="/dealer-distributor" className="bg-transparent text-white border border-silver/50 px-8 py-4 rounded font-bold uppercase tracking-wider hover:bg-white/10 transition-colors text-center">
                 Become a Distributor
               </Link>
             </div>
           </div>
           
-          <div className="w-full max-w-md bg-[#121212] border border-white/10 rounded-2xl p-8 shadow-2xl">
+          <div className="w-full max-w-md bg-navy-dark border border-silver/20 rounded-2xl p-8 shadow-2xl">
             <h4 className="text-2xl font-bold text-white mb-6">Quick Enquiry</h4>
             <QuickEnquiryForm />
           </div>
@@ -243,17 +242,17 @@ export default function HomePageClient({ applications, settings }: { application
       </section>
 
       {/* 6. FINAL CTA */}
-      <section className="py-24 bg-brand text-white text-center">
+      <section className="py-24 bg-navy-dark border-t border-silver/10 text-center">
         <div className="container max-w-4xl">
-          <h2 className="text-4xl md:text-6xl font-heading font-bold mb-6">READY TO POWER YOUR JOURNEY?</h2>
-          <p className="text-xl md:text-2xl text-white/90 mb-10">
+          <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">READY TO POWER YOUR JOURNEY?</h2>
+          <p className="text-xl md:text-2xl text-silver mb-10">
             Find the right Goodwin battery for your vehicle or application today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/battery-finder" className="bg-brand text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand-dark transition-all hover:scale-105 shadow-xl">
               Find Your Battery
             </Link>
-            <Link href="/contact" className="bg-transparent border-2 border-brand text-brand px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-brand/10 transition-colors">
+            <Link href="/contact" className="bg-transparent border border-silver text-white px-10 py-4 rounded font-bold uppercase tracking-wider hover:bg-white/10 transition-colors">
               Contact Goodwin
             </Link>
           </div>

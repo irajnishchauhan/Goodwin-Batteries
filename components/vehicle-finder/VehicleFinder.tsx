@@ -302,12 +302,12 @@ export default function VehicleFinder() {
   const whatsappUrl = `https://wa.me/${settings?.whatsapp_main || "919667724411"}?text=${whatsappMessage}`;
 
   return (
-    <div className="bg-surface rounded-xl shadow-2xl border border-border overflow-hidden min-h-[400px] flex flex-col relative">
+    <div className="bg-navy rounded-2xl shadow-2xl border border-silver/20 overflow-hidden min-h-[400px] flex flex-col relative">
       {/* Header */}
-      <div className="bg-brand text-white p-6 md:p-8 flex items-center justify-between shrink-0 relative">
+      <div className="bg-transparent text-white p-6 md:p-8 flex items-center justify-between shrink-0 relative border-b border-silver/10">
         <div>
-          <h3 className="text-2xl font-heading font-bold mb-1">Find Your Battery</h3>
-          <p className="text-white/80 text-sm">Select your vehicle to find a verified Goodwin battery recommendation.</p>
+          <h3 className="text-2xl font-heading font-bold mb-1 tracking-wide uppercase">System Diagnostic</h3>
+          <p className="text-silver text-sm">Select vehicle parameters to find a verified Goodwin battery recommendation.</p>
         </div>
         
         {/* Search */}
@@ -351,30 +351,30 @@ export default function VehicleFinder() {
       </div>
 
       {/* Breadcrumbs & Reset */}
-      <div className="flex items-center justify-between bg-surface-hover px-4 py-3 border-b border-border">
-        <div className="flex text-xs font-bold uppercase tracking-wider text-gray-500 overflow-x-auto whitespace-nowrap hide-scrollbar shrink-0">
-          <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 1 ? "text-brand" : "")} onClick={() => setStep(1)}>Type</span>
-          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
-          <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 2 ? "text-brand" : "")} onClick={() => step >= 2 && setStep(2)}>Brand</span>
-          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
-          <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 3 ? "text-brand" : "")} onClick={() => step >= 3 && setStep(3)}>Model</span>
-          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
-          <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 4 ? "text-brand" : "")} onClick={() => step >= 4 && setStep(4)}>Variant</span>
-          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
-          <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 5 ? "text-brand" : "")} onClick={() => step >= 5 && setStep(5)}>Fuel</span>
-          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
-          <span className={clsx("cursor-pointer transition-colors hover:text-foreground", step >= 6 ? "text-brand" : "")} onClick={() => step >= 6 && setStep(6)}>Year</span>
-          <ChevronRight aria-hidden="true" size={14} className="mx-2 shrink-0" />
+      <div className="flex items-center justify-between bg-navy-dark px-6 py-4 border-b border-silver/20">
+        <div className="flex text-xs font-bold uppercase tracking-widest text-silver overflow-x-auto whitespace-nowrap hide-scrollbar shrink-0 items-center">
+          <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 1 ? "text-brand" : "")} onClick={() => setStep(1)}>Type</span>
+          <span className="w-4 h-px bg-silver/30 mx-2" />
+          <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 2 ? "text-brand" : "")} onClick={() => step >= 2 && setStep(2)}>Brand</span>
+          <span className="w-4 h-px bg-silver/30 mx-2" />
+          <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 3 ? "text-brand" : "")} onClick={() => step >= 3 && setStep(3)}>Model</span>
+          <span className="w-4 h-px bg-silver/30 mx-2" />
+          <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 4 ? "text-brand" : "")} onClick={() => step >= 4 && setStep(4)}>Variant</span>
+          <span className="w-4 h-px bg-silver/30 mx-2" />
+          <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 5 ? "text-brand" : "")} onClick={() => step >= 5 && setStep(5)}>Fuel</span>
+          <span className="w-4 h-px bg-silver/30 mx-2" />
+          <span className={clsx("cursor-pointer transition-colors hover:text-white", step >= 6 ? "text-brand" : "")} onClick={() => step >= 6 && setStep(6)}>Year</span>
+          <span className="w-4 h-px bg-silver/30 mx-2" />
           <span className={clsx(step === 7 ? "text-brand" : "")}>Result</span>
         </div>
         
-        <button onClick={resetFinder} className="text-gray-500 hover:text-brand flex items-center gap-1 text-xs font-bold uppercase tracking-widest transition-colors shrink-0 ml-4">
-          <RotateCcw size={14} /> Start Over
+        <button onClick={resetFinder} className="text-silver hover:text-white flex items-center gap-1 text-xs font-bold uppercase tracking-widest transition-colors shrink-0 ml-4">
+          <RotateCcw size={14} /> Restart
         </button>
       </div>
 
       {/* Main Content Area */}
-      <div className="p-6 md:p-8 flex-1 flex flex-col relative min-h-[350px]">
+      <div className="bg-surface m-0 md:m-4 md:rounded-xl p-6 md:p-8 flex-1 flex flex-col relative min-h-[350px]">
         {loading && (
           <div className="absolute inset-0 z-10 bg-surface/80 backdrop-blur-sm flex flex-col items-center justify-center">
             <Loader2 size={40} className="animate-spin text-brand mb-4" />
@@ -391,9 +391,9 @@ export default function VehicleFinder() {
                 <button
                   key={vt.id}
                   onClick={() => handleTypeSelect(vt.id, vt.name)}
-                  className="flex flex-col items-center justify-center p-6 border-2 border-border rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-foreground group"
+                  className="flex flex-col items-center justify-center p-6 border border-silver/30 rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-foreground group bg-background"
                 >
-                  <div className="text-gray-400 group-hover:text-brand transition-colors mb-3">
+                  <div className="text-silver group-hover:text-brand transition-colors mb-3">
                     {getIconForType(vt.name)}
                   </div>
                   <span className="font-semibold text-sm text-center">{vt.name}</span>
@@ -415,7 +415,7 @@ export default function VehicleFinder() {
                 <button
                   key={brand.id}
                   onClick={() => handleBrandSelect(brand.id, brand.name)}
-                  className="py-4 px-6 border-2 border-border rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground flex flex-col items-center justify-center"
+                  className="py-4 px-6 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground flex flex-col items-center justify-center"
                 >
                   <span>{brand.name}</span>
                 </button>
@@ -436,7 +436,7 @@ export default function VehicleFinder() {
                 <button
                   key={model.id}
                   onClick={() => handleModelSelect(model.id, model.name)}
-                  className="py-4 px-6 border-2 border-border rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground"
+                  className="py-4 px-6 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground"
                 >
                   {model.name}
                 </button>
@@ -457,7 +457,7 @@ export default function VehicleFinder() {
                 <button
                   key={variant.id}
                   onClick={() => handleVariantSelect(variant.id, variant.name)}
-                  className="py-4 px-6 border-2 border-border rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground flex flex-col"
+                  className="py-4 px-6 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground flex flex-col"
                 >
                   <span>{variant.name}</span>
                 </button>
@@ -478,7 +478,7 @@ export default function VehicleFinder() {
                 <button
                   key={fuel.id}
                   onClick={() => handleFuelSelect(fuel.id, fuel.name)}
-                  className="py-4 px-6 border-2 border-border rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground"
+                  className="py-4 px-6 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground"
                 >
                   {fuel.name}
                 </button>
@@ -496,7 +496,7 @@ export default function VehicleFinder() {
                 <button
                   key={year}
                   onClick={() => handleYearSelect(year)}
-                  className="py-3 px-4 border-2 border-border rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground text-sm"
+                  className="py-3 px-4 border border-silver/30 bg-background rounded-xl hover:border-brand hover:bg-brand/5 transition-all text-center font-bold text-foreground text-sm"
                 >
                   {year}
                 </button>
@@ -510,7 +510,7 @@ export default function VehicleFinder() {
           <div className="animate-in zoom-in-95 duration-500 flex flex-col items-center">
             <h4 className="text-xl font-bold mb-6 text-center text-foreground uppercase tracking-widest text-sm">Your Recommended Goodwin Battery</h4>
             
-            <div className="w-full max-w-2xl bg-background border-2 border-brand/20 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-8 shadow-xl relative overflow-hidden">
+            <div className="w-full max-w-2xl bg-background border border-silver rounded-2xl p-6 flex flex-col md:flex-row items-center gap-8 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-brand text-white px-4 py-1 text-xs font-bold rounded-bl-lg">VERIFIED MATCH</div>
               
               <div className="w-48 h-48 bg-surface rounded-xl flex items-center justify-center shrink-0 border border-border p-4 relative z-10">

@@ -9,7 +9,7 @@ export default function Footer() {
   const settings = useGlobalSettings();
 
   return (
-    <footer className="bg-[#0f172a] text-gray-300 pt-20 pb-10 border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-navy pt-20 pb-10 border-t border-silver/10 relative overflow-hidden">
       {/* Decorative gradient */}
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-brand/5 blur-[120px] rounded-full pointer-events-none" />
       

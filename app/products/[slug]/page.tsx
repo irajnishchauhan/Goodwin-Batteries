@@ -156,9 +156,8 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
               </div>
 
               <div className="mt-8 flex gap-4">
-                {/* @ts-ignore - Dynamic field added in lib/data */}
-                {(product as any).datasheet ? (
-                  <a href={(product as any).datasheet} download className="flex items-center gap-2 bg-brand/10 text-brand px-6 py-3 rounded-lg font-bold uppercase tracking-wider hover:bg-brand hover:text-white transition-colors">
+                {product.datasheet ? (
+                  <a href={product.datasheet} download className="flex items-center gap-2 bg-brand/10 text-brand px-6 py-3 rounded-lg font-bold uppercase tracking-wider hover:bg-brand hover:text-white transition-colors">
                     <Download size={18} /> Datasheet PDF
                   </a>
                 ) : (

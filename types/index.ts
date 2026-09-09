@@ -19,6 +19,7 @@ export interface Product {
   terminalLayout: string;
   dimensions: string;
   weight: string;
+  datasheet?: string;
 }
 
 export interface Category {

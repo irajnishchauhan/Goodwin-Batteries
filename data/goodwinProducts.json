@@ -9,7 +9,7 @@
     "technology": "SMF / Maintenance Free",
     "application": "Two Wheeler",
     "warrantyOptions": ["12 Months", "18 Months", "48 Months"],
-    "image": "/assets/products/goodwin-4smf5-torch-4v-5ah.png",
+    "image": "/assets/products/goodwin-12vgw-tz4lb.png",
     "description": "Reliable starting power designed for Indian riding conditions."
   },
   {
@@ -35,7 +35,7 @@
     "technology": "SMF / Maintenance Free",
     "application": "Two Wheeler",
     "warrantyOptions": ["12 Months", "18 Months", "48 Months"],
-    "image": "/assets/products/goodwin-4smf5-torch-4v-5ah.png",
+    "image": "/assets/products/goodwin-12gw-xl2-5lc.png",
     "description": "Compact and powerful battery optimized for kick-start and basic electricals."
   },
   {
@@ -48,7 +48,7 @@
     "technology": "SMF / Maintenance Free",
     "application": "Two Wheeler",
     "warrantyOptions": ["12 Months", "18 Months", "48 Months"],
-    "image": "/assets/products/goodwin-12vgw-tz4lb.png",
+    "image": "/assets/products/goodwin-12vgw-tz5lb.png",
     "description": "Advanced power delivery for modern two wheelers with extra electronics."
   }
 ]

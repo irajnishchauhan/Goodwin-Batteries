@@ -118,28 +118,28 @@ export default function CompatibilityManager() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
               <div>
-                <label className="block text-xs font-bold text-gray-500 mb-1">Vehicle Type *</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Vehicle Type *</label>
                 <select value={editForm.vehicle_type_id || ""} onChange={e => setEditForm({...editForm, vehicle_type_id: e.target.value, brand_id: "", model_id: "", variant_id: ""})} className="w-full bg-surface border border-border rounded p-2 text-foreground">
                   <option value="">Select Type</option>
                   {types.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 mb-1">Brand *</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Brand *</label>
                 <select value={editForm.brand_id || ""} onChange={e => setEditForm({...editForm, brand_id: e.target.value, model_id: "", variant_id: ""})} className="w-full bg-surface border border-border rounded p-2 text-foreground" disabled={!editForm.vehicle_type_id}>
                   <option value="">Select Brand</option>
                   {brands.filter(b => b.vehicle_type_id === editForm.vehicle_type_id).map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 mb-1">Model *</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Model *</label>
                 <select value={editForm.model_id || ""} onChange={e => setEditForm({...editForm, model_id: e.target.value, variant_id: ""})} className="w-full bg-surface border border-border rounded p-2 text-foreground" disabled={!editForm.brand_id}>
                   <option value="">Select Model</option>
                   {models.filter(m => m.brand_id === editForm.brand_id).map(m => <option key={m.id} value={m.id}>{m.name}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 mb-1">Variant *</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Variant *</label>
                 <select value={editForm.variant_id || ""} onChange={e => setEditForm({...editForm, variant_id: e.target.value})} className="w-full bg-surface border border-border rounded p-2 text-foreground" disabled={!editForm.model_id}>
                   <option value="">Select Variant</option>
                   {variants.filter(v => v.model_id === editForm.model_id).map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
@@ -149,33 +149,33 @@ export default function CompatibilityManager() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 pt-6 border-t border-border">
               <div className="md:col-span-3">
-                <label className="block text-xs font-bold text-gray-500 mb-1">Recommended Goodwin Battery *</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Recommended Goodwin Battery *</label>
                 <select value={editForm.product_id || ""} onChange={e => setEditForm({...editForm, product_id: e.target.value})} className="w-full bg-brand/10 border-2 border-brand/50 rounded p-3 text-foreground font-bold">
                   <option value="">Select Battery</option>
                   {products.map(p => <option key={p.id} value={p.id}>{p.name} ({p.ah})</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 mb-1">Fuel Type (Override)</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Fuel Type (Override)</label>
                 <input type="text" value={editForm.fuel_type || ""} onChange={e => setEditForm({...editForm, fuel_type: e.target.value})} placeholder="e.g. Petrol" className="w-full bg-surface border border-border rounded p-2 text-foreground" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 mb-1">Year From</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Year From</label>
                 <input type="text" value={editForm.year_from || ""} onChange={e => setEditForm({...editForm, year_from: e.target.value})} placeholder="YYYY" className="w-full bg-surface border border-border rounded p-2 text-foreground" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 mb-1">Year To</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Year To</label>
                 <input type="text" value={editForm.year_to || ""} onChange={e => setEditForm({...editForm, year_to: e.target.value})} placeholder="YYYY" className="w-full bg-surface border border-border rounded p-2 text-foreground" />
               </div>
               <div className="md:col-span-3">
-                <label className="block text-xs font-bold text-gray-500 mb-1">Fitment Notes</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Fitment Notes</label>
                 <input type="text" value={editForm.fitment_notes || ""} onChange={e => setEditForm({...editForm, fitment_notes: e.target.value})} placeholder="e.g. Polarity L, Remove base spacer" className="w-full bg-surface border border-border rounded p-2 text-foreground" />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 pt-6 border-t border-border">
               <div>
-                <label className="block text-xs font-bold text-gray-500 mb-1">Verification Status *</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Verification Status *</label>
                 <select value={editForm.verification_status || "Pending Verification"} onChange={e => setEditForm({...editForm, verification_status: e.target.value})} className={clsx(
                   "w-full rounded p-2 text-white font-bold",
                   editForm.verification_status === 'Verified' ? "bg-green-600" : editForm.verification_status === 'Inactive' ? "bg-gray-600" : "bg-yellow-600"
@@ -184,7 +184,7 @@ export default function CompatibilityManager() {
                   <option value="Pending Verification">Pending Verification (Hidden)</option>
                   <option value="Inactive">Inactive (Hidden)</option>
                 </select>
-                <p className="text-xs text-gray-500 mt-1">Only 'Verified' and 'Active' mappings appear on the website.</p>
+                <p className="text-xs text-muted-foreground mt-1">Only 'Verified' and 'Active' mappings appear on the website.</p>
               </div>
               <div className="flex items-center gap-2 mt-6">
                 <input type="checkbox" id="active" checked={editForm.active ?? true} onChange={e => setEditForm({...editForm, active: e.target.checked})} className="w-4 h-4 accent-brand" />
@@ -202,7 +202,7 @@ export default function CompatibilityManager() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead>
-              <tr className="border-b border-border text-xs uppercase tracking-wider text-gray-500">
+              <tr className="border-b border-border text-xs uppercase tracking-wider text-muted-foreground">
                 <th className="pb-3 font-bold">Vehicle Match</th>
                 <th className="pb-3 font-bold">Battery</th>
                 <th className="pb-3 font-bold text-center">Status</th>
@@ -216,7 +216,7 @@ export default function CompatibilityManager() {
                     <div className="font-bold text-foreground">
                       {comp.vehicle_brand?.name} {comp.vehicle_model?.name}
                     </div>
-                    <div className="text-xs text-gray-500 flex gap-2 items-center mt-1">
+                    <div className="text-xs text-muted-foreground flex gap-2 items-center mt-1">
                       <span className="bg-surface-hover px-1 rounded">{comp.vehicle_variant?.name}</span>
                       {comp.year_from && <span>({comp.year_from}-{comp.year_to || 'Now'})</span>}
                     </div>
@@ -246,7 +246,7 @@ export default function CompatibilityManager() {
                 </tr>
               ))}
               {compatibilities.length === 0 && (
-                <tr><td colSpan={4} className="py-10 text-center text-gray-500">No compatibility rules found.</td></tr>
+                <tr><td colSpan={4} className="py-10 text-center text-muted-foreground">No compatibility rules found.</td></tr>
               )}
             </tbody>
           </table>

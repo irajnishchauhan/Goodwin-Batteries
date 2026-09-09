@@ -11,7 +11,7 @@ export default function PrivacyPolicyPage() {
       <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-8">Privacy Policy</h1>
       
       <div className="prose prose-lg dark:prose-invert max-w-none">
-        <p className="lead text-xl text-gray-600 dark:text-gray-400 mb-8">
+        <p className="lead text-xl text-muted-foreground dark:text-muted-foreground mb-8">
           At Goodwin Batteries, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data.
         </p>
 

@@ -60,7 +60,7 @@ export default function LeadsViewer() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead>
-              <tr className="border-b border-border text-xs uppercase tracking-wider text-gray-500">
+              <tr className="border-b border-border text-xs uppercase tracking-wider text-muted-foreground">
                 <th className="pb-3 font-bold">Date / ID</th>
                 <th className="pb-3 font-bold">Customer Details</th>
                 <th className="pb-3 font-bold">Vehicle Details</th>
@@ -71,13 +71,13 @@ export default function LeadsViewer() {
               {leads.map(lead => (
                 <tr key={lead.id} className="border-b border-border/50 hover:bg-surface-hover/50">
                   <td className="py-4">
-                    <div className="font-bold text-foreground flex items-center gap-1"><Calendar size={14} className="text-gray-400" /> {new Date(lead.created_at).toLocaleDateString()}</div>
-                    <div className="text-xs text-gray-500 mt-1">{lead.enquiry_id}</div>
+                    <div className="font-bold text-foreground flex items-center gap-1"><Calendar size={14} className="text-muted-foreground" /> {new Date(lead.created_at).toLocaleDateString()}</div>
+                    <div className="text-xs text-muted-foreground mt-1">{lead.enquiry_id}</div>
                   </td>
                   <td className="py-4">
                     <div className="font-bold text-foreground">{lead.customer_name || "Guest"}</div>
                     {(lead.phone || lead.email) && (
-                      <div className="text-xs text-gray-500 mt-1">
+                      <div className="text-xs text-muted-foreground mt-1">
                         {lead.phone && <div>{lead.phone}</div>}
                         {lead.email && <div>{lead.email}</div>}
                       </div>
@@ -85,16 +85,16 @@ export default function LeadsViewer() {
                   </td>
                   <td className="py-4">
                     <span className="font-bold text-foreground">{lead.brand} {lead.model}</span>
-                    <span className="text-xs text-gray-500 block mt-1">{lead.variant} {lead.fuel ? `(${lead.fuel})` : ""} {lead.year ? `(${lead.year})` : ""}</span>
+                    <span className="text-xs text-muted-foreground block mt-1">{lead.variant} {lead.fuel ? `(${lead.fuel})` : ""} {lead.year ? `(${lead.year})` : ""}</span>
                   </td>
                   <td className="py-4">
                     <span className="font-bold text-brand">{lead.recommended_product_id ? "Battery Found" : "No Match"}</span>
-                    <span className="text-xs text-gray-500 block mt-1">{lead.recommended_product_id}</span>
+                    <span className="text-xs text-muted-foreground block mt-1">{lead.recommended_product_id}</span>
                   </td>
                 </tr>
               ))}
               {leads.length === 0 && (
-                <tr><td colSpan={4} className="py-10 text-center text-gray-500">No leads captured yet.</td></tr>
+                <tr><td colSpan={4} className="py-10 text-center text-muted-foreground">No leads captured yet.</td></tr>
               )}
             </tbody>
           </table>

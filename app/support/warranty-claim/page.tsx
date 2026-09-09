@@ -29,11 +29,11 @@ export default function WarrantyClaimPage() {
               <CheckCircle2 size={48} className="text-green-500" />
             </div>
             <h1 className="text-4xl font-heading font-bold text-foreground mb-4">Claim Submitted Successfully</h1>
-            <p className="text-gray-400 text-lg mb-8">
+            <p className="text-muted-foreground text-lg mb-8">
               Your warranty claim has been received. Our support team will review it and contact you shortly.
             </p>
             <div className="bg-surface border border-border rounded-xl p-8 mb-8 inline-block shadow-lg">
-              <p className="text-sm text-gray-500 uppercase tracking-widest font-bold mb-2">Your Claim ID</p>
+              <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold mb-2">Your Claim ID</p>
               <p className="text-3xl font-mono font-bold text-brand">{claimId}</p>
             </div>
             <div className="flex justify-center gap-4">
@@ -56,7 +56,7 @@ export default function WarrantyClaimPage() {
       <section className="bg-surface py-20 border-b border-border relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/3 h-full bg-brand/10 blur-[100px] pointer-events-none" />
         <div className="container relative z-10">
-          <div className="flex items-center gap-2 text-sm text-gray-500 font-bold mb-6 tracking-wider uppercase">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground font-bold mb-6 tracking-wider uppercase">
             <Link href="/support" className="hover:text-brand transition-colors">Support</Link>
             <ChevronRight size={14} />
             <span className="text-foreground">Warranty Claim</span>
@@ -64,7 +64,7 @@ export default function WarrantyClaimPage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
             WARRANTY <span className="text-brand">CLAIM</span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl">
+          <p className="text-muted-foreground text-lg max-w-2xl">
             Experiencing an issue? Submit a warranty claim and our team will resolve it promptly.
           </p>
         </div>
@@ -78,7 +78,7 @@ export default function WarrantyClaimPage() {
               <AlertTriangle size={32} className="text-brand" />
               <div>
                 <h2 className="text-2xl font-bold text-foreground">Submit a New Claim</h2>
-                <p className="text-sm text-gray-500">Please provide accurate details to expedite the process.</p>
+                <p className="text-sm text-muted-foreground">Please provide accurate details to expedite the process.</p>
               </div>
             </div>
 
@@ -88,11 +88,11 @@ export default function WarrantyClaimPage() {
                 <h3 className="text-lg font-bold text-foreground mb-4 uppercase tracking-wider text-sm">Battery Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-400 mb-2">Warranty ID (Optional)</label>
+                    <label className="block text-sm font-semibold text-muted-foreground mb-2">Warranty ID (Optional)</label>
                     <input type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors uppercase" placeholder="e.g. GW-WTY-..." />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-400 mb-2">Battery Serial Number *</label>
+                    <label className="block text-sm font-semibold text-muted-foreground mb-2">Battery Serial Number *</label>
                     <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors uppercase" placeholder="e.g. GW-12345678" />
                   </div>
                 </div>
@@ -103,15 +103,15 @@ export default function WarrantyClaimPage() {
                 <h3 className="text-lg font-bold text-foreground mb-4 uppercase tracking-wider text-sm">Customer Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-gray-400 mb-2">Full Name *</label>
+                    <label className="block text-sm font-semibold text-muted-foreground mb-2">Full Name *</label>
                     <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="e.g. Rahul Sharma" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-400 mb-2">Mobile Number *</label>
+                    <label className="block text-sm font-semibold text-muted-foreground mb-2">Mobile Number *</label>
                     <input required type="tel" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="+91" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-400 mb-2">Dealer Name *</label>
+                    <label className="block text-sm font-semibold text-muted-foreground mb-2">Dealer Name *</label>
                     <input required type="text" className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="Name of the shop/dealer" />
                   </div>
                 </div>
@@ -122,7 +122,7 @@ export default function WarrantyClaimPage() {
                 <h3 className="text-lg font-bold text-foreground mb-4 uppercase tracking-wider text-sm">Issue Description</h3>
                 <div className="grid grid-cols-1 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-400 mb-2">Describe the Problem *</label>
+                    <label className="block text-sm font-semibold text-muted-foreground mb-2">Describe the Problem *</label>
                     <textarea required rows={4} className="w-full bg-background border border-border rounded p-3 text-foreground focus:outline-none focus:border-brand transition-colors" placeholder="Please describe the issue you are facing with the battery..."></textarea>
                   </div>
                 </div>
@@ -133,14 +133,14 @@ export default function WarrantyClaimPage() {
                 <h3 className="text-lg font-bold text-foreground mb-4 uppercase tracking-wider text-sm">Supporting Documents</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-brand transition-colors cursor-pointer bg-background">
-                    <Upload size={24} className="mx-auto mb-2 text-gray-500" />
+                    <Upload size={24} className="mx-auto mb-2 text-muted-foreground" />
                     <p className="text-sm font-semibold text-foreground mb-1">Upload Original Invoice *</p>
-                    <p className="text-xs text-gray-500">Required if not registered online</p>
+                    <p className="text-xs text-muted-foreground">Required if not registered online</p>
                   </div>
                   <div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-brand transition-colors cursor-pointer bg-background">
-                    <Upload size={24} className="mx-auto mb-2 text-gray-500" />
+                    <Upload size={24} className="mx-auto mb-2 text-muted-foreground" />
                     <p className="text-sm font-semibold text-foreground mb-1">Upload Photo/Video of Issue</p>
-                    <p className="text-xs text-gray-500">Optional but helps speed up the process</p>
+                    <p className="text-xs text-muted-foreground">Optional but helps speed up the process</p>
                   </div>
                 </div>
               </div>

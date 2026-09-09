@@ -232,7 +232,7 @@ export default function VehicleFinder() {
           {searchQuery.length >= 2 && (
             <div className="absolute top-full mt-2 w-full bg-surface border border-border rounded-lg shadow-xl overflow-hidden max-h-60 overflow-y-auto">
               {isSearching ? (
-                <div className="p-4 text-center text-gray-400 text-sm">Searching...</div>
+                <div className="p-4 text-center text-muted-foreground text-sm">Searching...</div>
               ) : searchResults.length > 0 ? (
                 searchResults.map(res => (
                   <button 
@@ -244,7 +244,7 @@ export default function VehicleFinder() {
                   </button>
                 ))
               ) : (
-                <div className="p-4 text-center text-gray-400 text-sm">No matches found</div>
+                <div className="p-4 text-center text-muted-foreground text-sm">No matches found</div>
               )}
             </div>
           )}
@@ -298,7 +298,7 @@ export default function VehicleFinder() {
               ))}
             </div>
             {types.length === 0 && !loading && (
-              <div className="text-center py-10 text-gray-500">Database is currently empty.</div>
+              <div className="text-center py-10 text-muted-foreground">Database is currently empty.</div>
             )}
           </div>
         )}
@@ -319,7 +319,7 @@ export default function VehicleFinder() {
               ))}
             </div>
             {brands.length === 0 && !loading && (
-              <div className="text-center py-10 text-gray-500 font-bold bg-surface-hover rounded-xl border border-border">No brands found for {selections.typeName}.</div>
+              <div className="text-center py-10 text-muted-foreground font-bold bg-surface-hover rounded-xl border border-border">No brands found for {selections.typeName}.</div>
             )}
           </div>
         )}
@@ -340,7 +340,7 @@ export default function VehicleFinder() {
               ))}
             </div>
             {models.length === 0 && !loading && (
-              <div className="text-center py-10 text-gray-500 font-bold bg-surface-hover rounded-xl border border-border">No models found for {selections.brandName}.</div>
+              <div className="text-center py-10 text-muted-foreground font-bold bg-surface-hover rounded-xl border border-border">No models found for {selections.brandName}.</div>
             )}
           </div>
         )}
@@ -361,7 +361,7 @@ export default function VehicleFinder() {
               ))}
             </div>
             {variants.length === 0 && !loading && (
-              <div className="text-center py-10 text-gray-500 font-bold bg-surface-hover rounded-xl border border-border">No variants found for {selections.modelName}.</div>
+              <div className="text-center py-10 text-muted-foreground font-bold bg-surface-hover rounded-xl border border-border">No variants found for {selections.modelName}.</div>
             )}
           </div>
         )}
@@ -378,7 +378,7 @@ export default function VehicleFinder() {
                 {recommendedProduct.image ? (
                   <img src={recommendedProduct.image} alt={recommendedProduct.name} className="w-full h-full object-contain" />
                 ) : (
-                  <Battery size={64} className="text-gray-400" />
+                  <Battery size={64} className="text-muted-foreground" />
                 )}
               </div>
               
@@ -388,11 +388,11 @@ export default function VehicleFinder() {
                 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                   <div className="bg-surface px-3 py-2 rounded-lg border border-border text-center">
-                    <span className="text-xs text-gray-500 block mb-0.5 uppercase tracking-wider">Capacity</span>
+                    <span className="text-xs text-muted-foreground block mb-0.5 uppercase tracking-wider">Capacity</span>
                     <span className="font-bold text-foreground">{recommendedProduct.ah || "N/A"}</span>
                   </div>
                   <div className="bg-surface px-3 py-2 rounded-lg border border-border text-center">
-                    <span className="text-xs text-gray-500 block mb-0.5 uppercase tracking-wider">Voltage</span>
+                    <span className="text-xs text-muted-foreground block mb-0.5 uppercase tracking-wider">Voltage</span>
                     <span className="font-bold text-foreground">{recommendedProduct.voltage || "N/A"}</span>
                   </div>
                   <div className="bg-brand/10 px-3 py-2 rounded-lg border border-brand/20 text-center sm:col-span-1 col-span-2">
@@ -401,7 +401,7 @@ export default function VehicleFinder() {
                   </div>
                 </div>
 
-                <div className="bg-surface-hover rounded p-3 mb-6 border border-border text-xs text-gray-500 text-left">
+                <div className="bg-surface-hover rounded p-3 mb-6 border border-border text-xs text-muted-foreground text-left">
                   <span className="font-bold block text-foreground mb-1">Recommended for:</span>
                   {selections.brandName} {selections.modelName} {selections.variantName}
                 </div>
@@ -421,7 +421,7 @@ export default function VehicleFinder() {
             {!leadSubmitted && (
               <div className="w-full max-w-2xl mt-8 bg-surface border border-border rounded-2xl p-6">
                 <h5 className="font-bold text-foreground mb-2">Want help with your battery?</h5>
-                <p className="text-sm text-gray-500 mb-4">Leave your details and a Goodwin expert will guide you.</p>
+                <p className="text-sm text-muted-foreground mb-4">Leave your details and a Goodwin expert will guide you.</p>
                 <form onSubmit={submitLead} className="flex flex-col sm:flex-row gap-3">
                   <input type="text" placeholder="Name" required value={leadForm.name} onChange={e=>setLeadForm({...leadForm, name: e.target.value})} className="flex-1 bg-background border border-border rounded-lg p-3 text-sm text-foreground" />
                   <input type="tel" placeholder="Phone Number" required value={leadForm.phone} onChange={e=>setLeadForm({...leadForm, phone: e.target.value})} className="flex-1 bg-background border border-border rounded-lg p-3 text-sm text-foreground" />
@@ -447,7 +447,7 @@ export default function VehicleFinder() {
               <Info size={32} className="text-brand" />
             </div>
             <h4 className="text-2xl font-heading font-bold mb-4 text-center text-foreground uppercase tracking-wider">We couldn't find a verified match</h4>
-            <p className="text-gray-500 mb-8 max-w-md text-center leading-relaxed">
+            <p className="text-muted-foreground mb-8 max-w-md text-center leading-relaxed">
               We don't want to recommend the wrong battery. Please contact Goodwin Batteries and our team will confirm the correct battery for your <strong>{selections.brandName} {selections.modelName} {selections.variantName}</strong>.
             </p>
             

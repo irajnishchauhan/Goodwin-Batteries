@@ -39,7 +39,7 @@ export default function AdminProductsPage() {
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-heading font-bold text-foreground">Products</h1>
-          <p className="text-gray-500">Manage battery models and specifications.</p>
+          <p className="text-muted-foreground">Manage battery models and specifications.</p>
         </div>
         <Link href="/admin/products/new" className="bg-brand text-white font-bold px-4 py-2 rounded-lg hover:bg-brand-dark flex items-center gap-2">
           <Plus size={18} /> Add Product
@@ -51,11 +51,11 @@ export default function AdminProductsPage() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-background border-b border-border">
-                <th className="p-4 font-bold text-sm uppercase text-gray-500 tracking-wider">Model</th>
-                <th className="p-4 font-bold text-sm uppercase text-gray-500 tracking-wider">Category</th>
-                <th className="p-4 font-bold text-sm uppercase text-gray-500 tracking-wider">Specs (Ah/CCA)</th>
-                <th className="p-4 font-bold text-sm uppercase text-gray-500 tracking-wider">Status</th>
-                <th className="p-4 font-bold text-sm uppercase text-gray-500 tracking-wider text-right">Actions</th>
+                <th className="p-4 font-bold text-sm uppercase text-muted-foreground tracking-wider">Model</th>
+                <th className="p-4 font-bold text-sm uppercase text-muted-foreground tracking-wider">Category</th>
+                <th className="p-4 font-bold text-sm uppercase text-muted-foreground tracking-wider">Specs (Ah/CCA)</th>
+                <th className="p-4 font-bold text-sm uppercase text-muted-foreground tracking-wider">Status</th>
+                <th className="p-4 font-bold text-sm uppercase text-muted-foreground tracking-wider text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -72,14 +72,14 @@ export default function AdminProductsPage() {
                       </div>
                     </div>
                   </td>
-                  <td className="p-4 text-gray-300">{product.categories?.name}</td>
-                  <td className="p-4 text-gray-300">{product.ah} / {product.cca}</td>
+                  <td className="p-4 text-muted-foreground">{product.categories?.name}</td>
+                  <td className="p-4 text-muted-foreground">{product.ah} / {product.cca}</td>
                   <td className="p-4">
                     <button onClick={() => togglePublish(product.id, product.is_published)} className="flex items-center gap-2">
                       {product.is_published ? (
                         <span className="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1"><CheckCircle size={14} /> Published</span>
                       ) : (
-                        <span className="bg-gray-500/10 text-gray-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1"><XCircle size={14} /> Draft</span>
+                        <span className="bg-gray-500/10 text-muted-foreground px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1"><XCircle size={14} /> Draft</span>
                       )}
                     </button>
                   </td>
@@ -93,7 +93,7 @@ export default function AdminProductsPage() {
               ))}
               {products.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="p-8 text-center text-gray-500">No products found. Add your first product.</td>
+                  <td colSpan={5} className="p-8 text-center text-muted-foreground">No products found. Add your first product.</td>
                 </tr>
               )}
             </tbody>

@@ -30,7 +30,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
         </Link>
         <div>
           <h1 className="text-3xl font-heading font-bold text-foreground">Edit Product</h1>
-          <p className="text-gray-500">Update specifications for {product.name}.</p>
+          <p className="text-muted-foreground">Update specifications for {product.name}.</p>
         </div>
       </div>
       

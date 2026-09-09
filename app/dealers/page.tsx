@@ -10,7 +10,7 @@ export default async function DealersLocatorPage() {
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
             FIND <span className="text-brand">GOODWIN</span> NEAR YOU
           </h1>
-          <p className="text-gray-500 text-lg">
+          <p className="text-muted-foreground text-lg">
             Locate authorized Goodwin dealers and service centers in your city.
           </p>
         </div>
@@ -29,7 +29,7 @@ export default async function DealersLocatorPage() {
                     placeholder="Search by City, Pincode or State" 
                     className="w-full bg-surface border border-border rounded-lg pl-12 pr-4 py-4 text-foreground focus:outline-none focus:border-brand"
                   />
-                  <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                  <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
                 </div>
               </div>
 
@@ -40,15 +40,15 @@ export default async function DealersLocatorPage() {
                       {dealer.name}
                       <span className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 text-[10px] px-2 py-0.5 rounded uppercase tracking-wider font-bold">Verified</span>
                     </h3>
-                    <div className="flex items-start gap-3 text-sm text-gray-500 mb-2">
+                    <div className="flex items-start gap-3 text-sm text-muted-foreground mb-2">
                       <MapPin size={16} className="text-brand shrink-0 mt-0.5" />
                       <span>{dealer.address}, {dealer.city}, {dealer.state} - {dealer.pincode}</span>
                     </div>
-                    <div className="flex items-center gap-3 text-sm text-gray-500 mb-2">
+                    <div className="flex items-center gap-3 text-sm text-muted-foreground mb-2">
                       <Phone size={16} className="text-brand shrink-0" />
                       <span>{dealer.phone}</span>
                     </div>
-                    <div className="flex items-start gap-3 text-sm text-gray-500 mb-4">
+                    <div className="flex items-start gap-3 text-sm text-muted-foreground mb-4">
                       <Clock size={16} className="text-brand shrink-0 mt-0.5" />
                       <span>{dealer.openingHours}</span>
                     </div>
@@ -74,7 +74,7 @@ export default async function DealersLocatorPage() {
               <div className="relative z-10 text-center bg-background/80 p-8 rounded-2xl backdrop-blur-md border border-border shadow-xl">
                 <MapPin size={48} className="text-brand mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-foreground mb-2">Interactive Map</h3>
-                <p className="text-gray-500 text-sm">Select a dealer from the list to view their exact location.</p>
+                <p className="text-muted-foreground text-sm">Select a dealer from the list to view their exact location.</p>
               </div>
             </div>
 

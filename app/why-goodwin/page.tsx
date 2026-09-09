@@ -35,7 +35,7 @@ export default function WhyGoodwinPage() {
                   {reason.icon}
                 </div>
                 <h3 className="text-xl font-heading font-bold text-foreground mb-4">{reason.title}</h3>
-                <p className="text-gray-500 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   {reason.desc}
                 </p>
               </div>

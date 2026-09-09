@@ -48,7 +48,7 @@ export default function AdminDashboard() {
     <div>
       <div className="mb-8">
         <h1 className="text-3xl font-heading font-bold text-foreground">Dashboard Overview</h1>
-        <p className="text-gray-500">Welcome to the Goodwin Batteries CMS. Here's a summary of your platform.</p>
+        <p className="text-muted-foreground">Welcome to the Goodwin Batteries CMS. Here's a summary of your platform.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -88,7 +88,7 @@ export default function AdminDashboard() {
             <h3 className="font-bold text-lg">Recent Enquiries</h3>
             <button className="text-brand text-sm font-bold hover:underline">View All</button>
           </div>
-          <div className="flex flex-col items-center justify-center py-12 text-gray-500">
+          <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
             <Activity size={48} className="mb-4 opacity-20" />
             <p>Connect database to view live enquiries</p>
           </div>
@@ -99,7 +99,7 @@ export default function AdminDashboard() {
             <h3 className="font-bold text-lg">Recent Warranty Claims</h3>
             <button className="text-brand text-sm font-bold hover:underline">View All</button>
           </div>
-          <div className="flex flex-col items-center justify-center py-12 text-gray-500">
+          <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
             <Activity size={48} className="mb-4 opacity-20" />
             <p>Connect database to view live claims</p>
           </div>
@@ -114,14 +114,14 @@ function StatCard({ title, value, icon, trend, color }: any) {
     <div className="bg-surface border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex justify-between items-start mb-4">
         <div>
-          <p className="text-gray-500 text-sm font-bold uppercase tracking-wider mb-1">{title}</p>
+          <p className="text-muted-foreground text-sm font-bold uppercase tracking-wider mb-1">{title}</p>
           <h4 className="text-3xl font-bold text-foreground">{value}</h4>
         </div>
         <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white ${color} shadow-lg`}>
           {icon}
         </div>
       </div>
-      <p className="text-sm text-gray-400">{trend}</p>
+      <p className="text-sm text-muted-foreground">{trend}</p>
     </div>
   );
 }

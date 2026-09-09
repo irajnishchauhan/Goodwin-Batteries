@@ -73,7 +73,7 @@ export default function GlobalSettingsPage() {
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-heading font-bold text-foreground">Global Settings</h1>
-          <p className="text-gray-500">Manage company information, contact details, and social links.</p>
+          <p className="text-muted-foreground">Manage company information, contact details, and social links.</p>
         </div>
       </div>
 
@@ -89,11 +89,11 @@ export default function GlobalSettingsPage() {
           <h2 className="text-xl font-bold mb-4 border-b border-border pb-2">Brand Identity</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">Company Name</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">Company Name</label>
               <input type="text" name="company_name" value={settings.company_name || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">Official Tagline</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">Official Tagline</label>
               <input type="text" name="tagline" value={settings.tagline || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" />
             </div>
           </div>
@@ -104,17 +104,17 @@ export default function GlobalSettingsPage() {
           <h2 className="text-xl font-bold mb-4 border-b border-border pb-2">Contact Numbers (10 digits)</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">Sales Phone</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">Sales Phone</label>
               <input type="text" name="phone_sales" value={settings.phone_sales || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">Support Phone</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">Support Phone</label>
               <input type="text" name="phone_support" value={settings.phone_support || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" />
             </div>
             <div>
               <label className="block text-sm font-bold text-brand mb-2">Main WhatsApp</label>
               <input type="text" name="whatsapp_main" value={settings.whatsapp_main || ""} onChange={handleChange} className="w-full bg-background border border-brand/50 rounded-xl p-3 text-foreground" />
-              <p className="text-xs text-gray-500 mt-1">Used for Quick Enquiries</p>
+              <p className="text-xs text-muted-foreground mt-1">Used for Quick Enquiries</p>
             </div>
           </div>
         </div>
@@ -124,11 +124,11 @@ export default function GlobalSettingsPage() {
           <h2 className="text-xl font-bold mb-4 border-b border-border pb-2">Email Addresses</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">Sales Email</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">Sales Email</label>
               <input type="email" name="email_sales" value={settings.email_sales || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">Support Email</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">Support Email</label>
               <input type="email" name="email_support" value={settings.email_support || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" />
             </div>
           </div>
@@ -139,23 +139,23 @@ export default function GlobalSettingsPage() {
           <h2 className="text-xl font-bold mb-4 border-b border-border pb-2">Head Office Location</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
-              <label className="block text-sm font-bold text-gray-400 mb-2">Street Address / Area</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">Street Address / Area</label>
               <textarea name="address" value={settings.address || ""} onChange={handleChange} rows={2} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">City</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">City</label>
               <input type="text" name="city" value={settings.city || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">State</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">State</label>
               <input type="text" name="state" value={settings.state || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">Pincode</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">Pincode</label>
               <input type="text" name="pincode" value={settings.pincode || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">Google Maps URL</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">Google Maps URL</label>
               <input type="text" name="google_maps_url" value={settings.google_maps_url || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" />
             </div>
           </div>
@@ -166,15 +166,15 @@ export default function GlobalSettingsPage() {
           <h2 className="text-xl font-bold mb-4 border-b border-border pb-2">Social Media & Links</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">Facebook URL</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">Facebook URL</label>
               <input type="text" name="facebook_url" value={settings.facebook_url || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" placeholder="Leave blank to hide" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">Instagram URL</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">Instagram URL</label>
               <input type="text" name="instagram_url" value={settings.instagram_url || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" placeholder="Leave blank to hide" />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-2">YouTube URL</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-2">YouTube URL</label>
               <input type="text" name="youtube_url" value={settings.youtube_url || ""} onChange={handleChange} className="w-full bg-background border border-border rounded-xl p-3 text-foreground" placeholder="Leave blank to hide" />
             </div>
           </div>

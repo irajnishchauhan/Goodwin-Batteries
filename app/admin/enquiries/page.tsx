@@ -32,10 +32,10 @@ export default function AdminEnquiriesPage() {
       <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-heading font-bold text-foreground">Enquiries & Leads</h1>
-          <p className="text-gray-500">View incoming messages from Contact and Quick Enquiry forms.</p>
+          <p className="text-muted-foreground">View incoming messages from Contact and Quick Enquiry forms.</p>
         </div>
         <div className="bg-surface border border-border rounded-lg flex items-center px-4 py-2 w-full md:w-auto">
-          <Search size={18} className="text-gray-500 mr-2 shrink-0" />
+          <Search size={18} className="text-muted-foreground mr-2 shrink-0" />
           <input type="text" placeholder="Search enquiries..." className="bg-transparent text-foreground focus:outline-none w-full" />
         </div>
       </div>
@@ -60,24 +60,24 @@ export default function AdminEnquiriesPage() {
                 </div>
                 <h4 className="text-brand font-semibold text-sm uppercase tracking-wider">{enquiry.subject}</h4>
               </div>
-              <div className="flex items-center gap-2 text-xs text-gray-500 font-mono bg-background border border-border px-3 py-1.5 rounded">
+              <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono bg-background border border-border px-3 py-1.5 rounded">
                 <Calendar size={14} />
                 {new Date(enquiry.created_at).toLocaleString()}
               </div>
             </div>
 
-            <div className="p-4 bg-background border border-border rounded-lg text-gray-300 mb-4 whitespace-pre-wrap leading-relaxed">
+            <div className="p-4 bg-background border border-border rounded-lg text-muted-foreground mb-4 whitespace-pre-wrap leading-relaxed">
               {enquiry.message || "No message content."}
             </div>
 
             <div className="flex flex-wrap gap-6 border-t border-border pt-4">
-              <a href={`tel:+91${enquiry.mobile}`} className="flex items-center gap-2 text-sm text-gray-400 hover:text-brand transition-colors font-mono">
-                <Phone size={16} className="text-gray-500" />
+              <a href={`tel:+91${enquiry.mobile}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-brand transition-colors font-mono">
+                <Phone size={16} className="text-muted-foreground" />
                 +91 {enquiry.mobile}
               </a>
               {enquiry.email && (
-                <a href={`mailto:${enquiry.email}`} className="flex items-center gap-2 text-sm text-gray-400 hover:text-brand transition-colors">
-                  <Mail size={16} className="text-gray-500" />
+                <a href={`mailto:${enquiry.email}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-brand transition-colors">
+                  <Mail size={16} className="text-muted-foreground" />
                   {enquiry.email}
                 </a>
               )}
@@ -86,7 +86,7 @@ export default function AdminEnquiriesPage() {
         ))}
 
         {enquiries.length === 0 && (
-          <div className="bg-surface border border-border rounded-xl p-12 text-center text-gray-500">
+          <div className="bg-surface border border-border rounded-xl p-12 text-center text-muted-foreground">
             <Mail size={48} className="mx-auto mb-4 opacity-20" />
             <p>No enquiries found.</p>
           </div>

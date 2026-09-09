@@ -38,23 +38,23 @@ export default function UnmatchedReport() {
       <div className="flex justify-between items-center mb-6">
         <div>
           <h2 className="text-2xl font-bold text-foreground">Unmatched Vehicles Report</h2>
-          <p className="text-gray-500">Vehicles scraped from references that don't map to a Goodwin product.</p>
+          <p className="text-muted-foreground">Vehicles scraped from references that don't map to a Goodwin product.</p>
         </div>
       </div>
 
       <div className="bg-surface border border-border rounded-xl shadow-sm overflow-hidden">
         {loading ? (
-          <div className="p-12 text-center text-gray-500">Loading unmatched records...</div>
+          <div className="p-12 text-center text-muted-foreground">Loading unmatched records...</div>
         ) : fitments.length === 0 ? (
           <div className="p-12 text-center flex flex-col items-center justify-center">
             <CheckCircle2 size={48} className="text-green-500 mb-4" />
             <h3 className="text-xl font-bold text-foreground mb-2">All Caught Up!</h3>
-            <p className="text-gray-500">All scraped vehicles have been successfully mapped to a Goodwin battery.</p>
+            <p className="text-muted-foreground">All scraped vehicles have been successfully mapped to a Goodwin battery.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
-              <thead className="bg-background border-b border-border text-gray-500 uppercase text-xs">
+              <thead className="bg-background border-b border-border text-muted-foreground uppercase text-xs">
                 <tr>
                   <th className="px-6 py-4 font-semibold">Vehicle</th>
                   <th className="px-6 py-4 font-semibold">Reference (e.g. Amaron)</th>
@@ -69,7 +69,7 @@ export default function UnmatchedReport() {
                       <div className="font-bold text-foreground">
                         {fitment.brand?.name} {fitment.model?.name}
                       </div>
-                      <div className="text-xs text-gray-500">{fitment.variant?.name}</div>
+                      <div className="text-xs text-muted-foreground">{fitment.variant?.name}</div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">

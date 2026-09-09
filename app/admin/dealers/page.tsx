@@ -38,7 +38,7 @@ export default function AdminDealersPage() {
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-heading font-bold text-foreground">Dealers & Network</h1>
-          <p className="text-gray-500">Manage your dealer and distributor locations.</p>
+          <p className="text-muted-foreground">Manage your dealer and distributor locations.</p>
         </div>
         <button className="bg-brand text-white font-bold px-4 py-2 rounded-lg hover:bg-brand-dark flex items-center gap-2">
           <Plus size={18} /> Add Dealer
@@ -50,11 +50,11 @@ export default function AdminDealersPage() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-background border-b border-border">
-                <th className="p-4 font-bold text-sm uppercase text-gray-500 tracking-wider">Dealer Name</th>
-                <th className="p-4 font-bold text-sm uppercase text-gray-500 tracking-wider">Location</th>
-                <th className="p-4 font-bold text-sm uppercase text-gray-500 tracking-wider">Contact</th>
-                <th className="p-4 font-bold text-sm uppercase text-gray-500 tracking-wider">Status</th>
-                <th className="p-4 font-bold text-sm uppercase text-gray-500 tracking-wider text-right">Actions</th>
+                <th className="p-4 font-bold text-sm uppercase text-muted-foreground tracking-wider">Dealer Name</th>
+                <th className="p-4 font-bold text-sm uppercase text-muted-foreground tracking-wider">Location</th>
+                <th className="p-4 font-bold text-sm uppercase text-muted-foreground tracking-wider">Contact</th>
+                <th className="p-4 font-bold text-sm uppercase text-muted-foreground tracking-wider">Status</th>
+                <th className="p-4 font-bold text-sm uppercase text-muted-foreground tracking-wider text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -62,22 +62,22 @@ export default function AdminDealersPage() {
                 <tr key={dealer.id} className="border-b border-border hover:bg-white/5 transition-colors">
                   <td className="p-4">
                     <div className="font-bold text-foreground">{dealer.name}</div>
-                    <div className="text-xs text-gray-400 mt-1">{dealer.address}</div>
+                    <div className="text-xs text-muted-foreground mt-1">{dealer.address}</div>
                   </td>
-                  <td className="p-4 text-gray-300">
+                  <td className="p-4 text-muted-foreground">
                     <div className="font-semibold">{dealer.city}, {dealer.state}</div>
-                    <div className="text-xs text-gray-500">{dealer.pincode}</div>
+                    <div className="text-xs text-muted-foreground">{dealer.pincode}</div>
                   </td>
-                  <td className="p-4 text-gray-300">
+                  <td className="p-4 text-muted-foreground">
                     <div className="font-mono text-sm">{dealer.phone}</div>
-                    <div className="text-xs text-gray-500">{dealer.opening_hours}</div>
+                    <div className="text-xs text-muted-foreground">{dealer.opening_hours}</div>
                   </td>
                   <td className="p-4">
                     <button onClick={() => togglePublish(dealer.id, dealer.is_published)} className="flex items-center gap-2">
                       {dealer.is_published ? (
                         <span className="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1"><CheckCircle size={14} /> Published</span>
                       ) : (
-                        <span className="bg-gray-500/10 text-gray-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1"><XCircle size={14} /> Draft</span>
+                        <span className="bg-gray-500/10 text-muted-foreground px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1"><XCircle size={14} /> Draft</span>
                       )}
                     </button>
                   </td>
@@ -91,7 +91,7 @@ export default function AdminDealersPage() {
               ))}
               {dealers.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="p-8 text-center text-gray-500">No dealers found. Add your first dealer.</td>
+                  <td colSpan={5} className="p-8 text-center text-muted-foreground">No dealers found. Add your first dealer.</td>
                 </tr>
               )}
             </tbody>

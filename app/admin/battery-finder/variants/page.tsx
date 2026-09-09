@@ -75,19 +75,19 @@ export default function VariantsManager() {
             <h3 className="font-bold mb-4">{isEditing === "new" ? "Add Variant" : "Edit Variant"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
               <div className="lg:col-span-3">
-                <label className="block text-xs font-bold text-gray-500 mb-1">Model *</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Model *</label>
                 <select value={editForm.model_id || ""} onChange={e => setEditForm({...editForm, model_id: e.target.value})} className="w-full bg-surface border border-border rounded p-2 text-foreground">
                   <option value="">Select Model</option>
                   {models.map(m => <option key={m.id} value={m.id}>{m.vehicle_brand?.name} - {m.name}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 mb-1">Variant Name *</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Variant Name *</label>
                 <input type="text" value={editForm.name || ""} onChange={e => setEditForm({...editForm, name: e.target.value})} placeholder="e.g. 1.2L Kappa" className="w-full bg-surface border border-border rounded p-2 text-foreground" />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-gray-500 mb-1">Display Order</label>
+                <label className="block text-xs font-bold text-muted-foreground mb-1">Display Order</label>
                 <input type="number" value={editForm.display_order || 0} onChange={e => setEditForm({...editForm, display_order: parseInt(e.target.value)})} className="w-full bg-surface border border-border rounded p-2 text-foreground" />
               </div>
               
@@ -106,7 +106,7 @@ export default function VariantsManager() {
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-border text-xs uppercase tracking-wider text-gray-500">
+              <tr className="border-b border-border text-xs uppercase tracking-wider text-muted-foreground">
                 <th className="pb-3 font-bold">Variant Details</th>
                 <th className="pb-3 font-bold">Model</th>
                 <th className="pb-3 font-bold">Model</th>
@@ -120,18 +120,18 @@ export default function VariantsManager() {
                 <tr key={variant.id} className="border-b border-border/50 hover:bg-surface-hover/50">
                   <td className="py-4">
                     <div className="font-bold text-foreground">{variant.name}</div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-muted-foreground">
                     </div>
                   </td>
                   <td className="py-4">
                     <span className="font-semibold">{variant.vehicle_model?.name}</span>
-                    <span className="text-xs text-gray-500 block">{variant.vehicle_model?.vehicle_brand?.name}</span>
+                    <span className="text-xs text-muted-foreground block">{variant.vehicle_model?.vehicle_brand?.name}</span>
                   </td>
 
                   <td className="py-4 text-center font-semibold">{variant.display_order}</td>
                   <td className="py-4">
                     <div className="flex justify-center">
-                      {variant.active ? <CheckCircle2 size={18} className="text-green-500" /> : <XCircle size={18} className="text-gray-400" />}
+                      {variant.active ? <CheckCircle2 size={18} className="text-green-500" /> : <XCircle size={18} className="text-muted-foreground" />}
                     </div>
                   </td>
                   <td className="py-4 text-right">
@@ -143,7 +143,7 @@ export default function VariantsManager() {
                 </tr>
               ))}
               {variants.length === 0 && (
-                <tr><td colSpan={6} className="py-10 text-center text-gray-500">No variants found.</td></tr>
+                <tr><td colSpan={6} className="py-10 text-center text-muted-foreground">No variants found.</td></tr>
               )}
             </tbody>
           </table>

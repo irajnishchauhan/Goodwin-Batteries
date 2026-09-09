@@ -41,7 +41,7 @@ export default function ImportPage() {
       <div className="flex justify-between items-center mb-6">
         <div>
           <h2 className="text-2xl font-bold text-foreground">Import Reference Data</h2>
-          <p className="text-gray-500">Upload CSV containing vehicle fitment reference data (e.g., Amaron reference charts).</p>
+          <p className="text-muted-foreground">Upload CSV containing vehicle fitment reference data (e.g., Amaron reference charts).</p>
         </div>
       </div>
 
@@ -49,7 +49,7 @@ export default function ImportPage() {
         <div className="md:col-span-2 bg-surface border border-border rounded-xl p-6 shadow-sm">
           <div className="mb-4">
             <h3 className="font-bold text-foreground mb-2 flex items-center gap-2"><Upload size={18} /> Paste CSV Data</h3>
-            <p className="text-sm text-gray-500 mb-4">Paste your CSV content directly below. Ensure it matches the required format.</p>
+            <p className="text-sm text-muted-foreground mb-4">Paste your CSV content directly below. Ensure it matches the required format.</p>
             <textarea
               className="w-full h-64 bg-background border border-border rounded-lg p-4 font-mono text-xs text-foreground focus:outline-none focus:border-brand"
               placeholder="Vehicle Type,Brand,Model,Variant,Fuel,Year Start,Year End,Reference Brand,Reference Product,Reference URL,Candidate Goodwin Model,Fitment Status,Confidence,Admin Verified,Public Visible,Notes"
@@ -81,7 +81,7 @@ export default function ImportPage() {
 
         <div className="bg-surface border border-border rounded-xl p-6 shadow-sm">
           <h3 className="font-bold text-foreground mb-4 flex items-center gap-2"><FileText size={18} /> Required CSV Format</h3>
-          <ul className="text-sm text-gray-400 space-y-2 font-mono">
+          <ul className="text-sm text-muted-foreground space-y-2 font-mono">
             <li>Vehicle Type</li>
             <li>Brand</li>
             <li>Model</li>

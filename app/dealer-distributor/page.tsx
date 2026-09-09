@@ -7,7 +7,7 @@ export default function DealerDistributorPage() {
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-foreground mb-6">
             GROW WITH <span className="text-brand">GOODWIN</span>
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
             Join the Goodwin network and build your business with a growing, premium battery brand.
           </p>
         </div>
@@ -21,40 +21,40 @@ export default function DealerDistributorPage() {
             <form className="flex flex-col gap-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Full Name</label>
+                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Full Name</label>
                   <input type="text" className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" required />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Company Name</label>
+                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Company Name</label>
                   <input type="text" className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" required />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Phone / Mobile</label>
+                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Phone / Mobile</label>
                   <input type="tel" className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" required />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Email Address</label>
+                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Email Address</label>
                   <input type="email" className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" required />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">City</label>
+                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">City</label>
                   <input type="text" className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" required />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">State</label>
+                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">State</label>
                   <input type="text" className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" required />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Business Type</label>
+                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Business Type</label>
                   <select className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand">
                     <option value="">Select Type</option>
                     <option value="dealer">Become a Dealer</option>
@@ -62,18 +62,18 @@ export default function DealerDistributorPage() {
                   </select>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Years in Business</label>
+                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Years in Business</label>
                   <input type="number" className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Current Brands Handled</label>
+                <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Current Brands Handled</label>
                 <input type="text" className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Message / Enquiry Details</label>
+                <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Message / Enquiry Details</label>
                 <textarea rows={4} className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand"></textarea>
               </div>
 

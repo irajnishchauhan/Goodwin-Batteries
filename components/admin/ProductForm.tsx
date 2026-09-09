@@ -104,22 +104,22 @@ export default function ProductForm({ initialData = null }: { initialData?: any 
         <h2 className="text-xl font-bold mb-4">Basic Information</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Product Name *</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Product Name *</label>
             <input required type="text" name="name" value={formData.name} onChange={handleChange} className="w-full bg-background border border-border rounded p-3 text-foreground" />
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Slug *</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Slug *</label>
             <div className="flex gap-2">
               <input required type="text" name="slug" value={formData.slug} onChange={handleChange} className="w-full bg-background border border-border rounded p-3 text-foreground" />
               <button type="button" onClick={generateSlug} className="bg-white/10 px-3 rounded text-sm hover:bg-white/20">Auto</button>
             </div>
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Series</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Series</label>
             <input type="text" name="series" value={formData.series} onChange={handleChange} className="w-full bg-background border border-border rounded p-3 text-foreground" />
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Category *</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Category *</label>
             <select required name="category_id" value={formData.category_id} onChange={handleChange} className="w-full bg-background border border-border rounded p-3 text-foreground">
               <option value="">Select Category</option>
               {categories.map((c) => (
@@ -135,27 +135,27 @@ export default function ProductForm({ initialData = null }: { initialData?: any 
         <h2 className="text-xl font-bold mb-4">Specifications</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Voltage</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Voltage</label>
             <input type="text" name="voltage" value={formData.voltage} onChange={handleChange} className="w-full bg-background border border-border rounded p-3 text-foreground" />
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Capacity (Ah)</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Capacity (Ah)</label>
             <input type="text" name="ah" value={formData.ah} onChange={handleChange} className="w-full bg-background border border-border rounded p-3 text-foreground" />
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">CCA</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">CCA</label>
             <input type="text" name="cca" value={formData.cca} onChange={handleChange} className="w-full bg-background border border-border rounded p-3 text-foreground" />
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Terminal Layout</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Terminal Layout</label>
             <input type="text" name="terminal_layout" value={formData.terminal_layout} onChange={handleChange} className="w-full bg-background border border-border rounded p-3 text-foreground" />
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Dimensions</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Dimensions</label>
             <input type="text" name="dimensions" value={formData.dimensions} onChange={handleChange} className="w-full bg-background border border-border rounded p-3 text-foreground" />
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Weight</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Weight</label>
             <input type="text" name="weight" value={formData.weight} onChange={handleChange} className="w-full bg-background border border-border rounded p-3 text-foreground" />
           </div>
         </div>
@@ -166,12 +166,12 @@ export default function ProductForm({ initialData = null }: { initialData?: any 
         <h2 className="text-xl font-bold mb-4">Warranty Configuration</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Standard Warranty</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Standard Warranty</label>
             <input type="text" name="warranty" value={formData.warranty} onChange={handleChange} placeholder="e.g. 12 Months" className="w-full bg-background border border-border rounded p-3 text-foreground" />
-            <p className="text-xs text-gray-500 mt-1">Used for single-warranty products.</p>
+            <p className="text-xs text-muted-foreground mt-1">Used for single-warranty products.</p>
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Warranty Options (Two-Wheeler)</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Warranty Options (Two-Wheeler)</label>
             <div className="flex gap-2 mb-2">
               <input type="text" value={newWarrantyOpt} onChange={(e) => setNewWarrantyOpt(e.target.value)} placeholder="e.g. 48 Months" className="flex-1 bg-background border border-border rounded p-2 text-foreground text-sm" />
               <button type="button" onClick={() => handleArrayAdd("warranty_options", newWarrantyOpt, setNewWarrantyOpt)} className="bg-white/10 px-3 rounded hover:bg-white/20"><Plus size={16} /></button>
@@ -183,7 +183,7 @@ export default function ProductForm({ initialData = null }: { initialData?: any 
                 </div>
               ))}
             </div>
-            <p className="text-xs text-gray-500 mt-1">If options exist, they will override standard warranty.</p>
+            <p className="text-xs text-muted-foreground mt-1">If options exist, they will override standard warranty.</p>
           </div>
         </div>
       </div>
@@ -193,17 +193,17 @@ export default function ProductForm({ initialData = null }: { initialData?: any 
         <h2 className="text-xl font-bold mb-4">Media & Content</h2>
         <div className="flex flex-col gap-4">
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Image Path / URL</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Image Path / URL</label>
             <input type="text" name="image" value={formData.image} onChange={handleChange} placeholder="/assets/products/name.png" className="w-full bg-background border border-border rounded p-3 text-foreground" />
           </div>
           <div>
-            <label className="block text-sm font-bold text-gray-400 mb-1">Description</label>
+            <label className="block text-sm font-bold text-muted-foreground mb-1">Description</label>
             <textarea name="description" value={formData.description} onChange={handleChange} rows={4} className="w-full bg-background border border-border rounded p-3 text-foreground"></textarea>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-1">Applications</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-1">Applications</label>
               <div className="flex gap-2 mb-2">
                 <input type="text" value={newApp} onChange={(e) => setNewApp(e.target.value)} placeholder="Add application..." className="flex-1 bg-background border border-border rounded p-2 text-foreground text-sm" />
                 <button type="button" onClick={() => handleArrayAdd("application", newApp, setNewApp)} className="bg-white/10 px-3 rounded hover:bg-white/20"><Plus size={16} /></button>
@@ -217,7 +217,7 @@ export default function ProductForm({ initialData = null }: { initialData?: any 
               </ul>
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-400 mb-1">Features / Technology</label>
+              <label className="block text-sm font-bold text-muted-foreground mb-1">Features / Technology</label>
               <div className="flex gap-2 mb-2">
                 <input type="text" value={newFeature} onChange={(e) => setNewFeature(e.target.value)} placeholder="Add feature..." className="flex-1 bg-background border border-border rounded p-2 text-foreground text-sm" />
                 <button type="button" onClick={() => handleArrayAdd("features", newFeature, setNewFeature)} className="bg-white/10 px-3 rounded hover:bg-white/20"><Plus size={16} /></button>
@@ -247,7 +247,7 @@ export default function ProductForm({ initialData = null }: { initialData?: any 
             <span className="font-bold text-foreground">Featured</span>
           </label>
           <div className="flex items-center gap-2 ml-auto">
-            <label className="text-sm font-bold text-gray-400">Display Order</label>
+            <label className="text-sm font-bold text-muted-foreground">Display Order</label>
             <input type="number" name="display_order" value={formData.display_order} onChange={handleChange} className="w-20 bg-background border border-border rounded p-2 text-foreground text-center" />
           </div>
         </div>

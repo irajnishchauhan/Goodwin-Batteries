@@ -33,7 +33,7 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.name}
         </h3>
         
-        <p className="text-gray-500 text-sm mb-4 text-center font-bold">
+        <p className="text-muted-foreground text-sm mb-4 text-center font-bold">
           {product.ah || "Details coming soon"} &bull; {product.voltage || "Details coming soon"}
         </p>
         

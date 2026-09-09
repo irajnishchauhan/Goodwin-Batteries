@@ -25,7 +25,7 @@ export default function BatteryFinderAdminLayout({ children }: { children: React
     <div className="space-y-6 animate-in fade-in duration-300">
       <div>
         <h1 className="text-3xl font-heading font-bold text-foreground">Battery Finder Configuration</h1>
-        <p className="text-gray-500 mt-2">Manage vehicle types, brands, models, and battery compatibility mapping.</p>
+        <p className="text-muted-foreground mt-2">Manage vehicle types, brands, models, and battery compatibility mapping.</p>
       </div>
 
       <div className="bg-surface border border-border p-2 rounded-xl flex flex-wrap gap-2 overflow-x-auto hide-scrollbar">
@@ -42,7 +42,7 @@ export default function BatteryFinderAdminLayout({ children }: { children: React
                 "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all whitespace-nowrap",
                 isActive 
                   ? "bg-brand text-white shadow-md shadow-brand/20" 
-                  : "text-gray-500 hover:text-foreground hover:bg-surface-hover"
+                  : "text-muted-foreground hover:text-foreground hover:bg-surface-hover"
               )}
             >
               {tab.icon}

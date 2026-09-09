@@ -52,7 +52,7 @@ export default function ContactPage() {
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-foreground mb-6">
             CONTACT <span className="text-brand">GOODWIN</span>
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
             Have a question or need support? Our team is ready to assist you.
           </p>
         </div>
@@ -74,7 +74,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Delhi Head Office</h4>
-                      <p className="text-gray-500 leading-relaxed mb-2">
+                      <p className="text-muted-foreground leading-relaxed mb-2">
                         Shop No. 51, Gokhale Market,<br />
                         Opposite Tis Hazari Court,<br />
                         Delhi – 110054
@@ -92,7 +92,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Indore Corporate Office</h4>
-                      <p className="text-gray-500 leading-relaxed mb-2">
+                      <p className="text-muted-foreground leading-relaxed mb-2">
                         202, 2nd Floor – Samiksh Landmark,<br />
                         Near Choithram Circle, A.B. Road,<br />
                         Indore – 452012
@@ -110,8 +110,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Call Us</h4>
-                      <a href="tel:9667724411" className="text-gray-500 leading-relaxed hover:text-brand transition-colors text-lg font-mono mb-1 block">Sales: 96677 24411</a>
-                      <a href="tel:9220404411" className="text-gray-500 leading-relaxed hover:text-brand transition-colors text-lg font-mono mb-1 block">Support: 92204 04411</a>
+                      <a href="tel:9667724411" className="text-muted-foreground leading-relaxed hover:text-brand transition-colors text-lg font-mono mb-1 block">Sales: 96677 24411</a>
+                      <a href="tel:9220404411" className="text-muted-foreground leading-relaxed hover:text-brand transition-colors text-lg font-mono mb-1 block">Support: 92204 04411</a>
                     </div>
                   </div>
 
@@ -122,14 +122,14 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Email Us</h4>
-                      <a href="mailto:sales@goodwinbatteries.com" className="text-gray-500 leading-relaxed hover:text-brand transition-colors block mb-1">sales@goodwinbatteries.com (Sales)</a>
-                      <a href="mailto:support@goodwinbatteries.com" className="text-gray-500 leading-relaxed hover:text-brand transition-colors block">support@goodwinbatteries.com (Support)</a>
+                      <a href="mailto:sales@goodwinbatteries.com" className="text-muted-foreground leading-relaxed hover:text-brand transition-colors block mb-1">sales@goodwinbatteries.com (Sales)</a>
+                      <a href="mailto:support@goodwinbatteries.com" className="text-muted-foreground leading-relaxed hover:text-brand transition-colors block">support@goodwinbatteries.com (Support)</a>
                     </div>
                   </div>
 
                   {/* Associated Brand Logo */}
                   <div className="mt-8 pt-8 border-t border-border">
-                    <h4 className="font-bold text-foreground mb-4 uppercase tracking-wider text-sm text-gray-500">Associated Brand</h4>
+                    <h4 className="font-bold text-foreground mb-4 uppercase tracking-wider text-sm text-muted-foreground">Associated Brand</h4>
                     <img 
                       src="/assets/brands/tirupati-tilak-logo.png" 
                       alt="Tirupati Tilak logo" 
@@ -152,7 +152,7 @@ export default function ContactPage() {
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Full Name *</label>
+                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Full Name *</label>
                   <input 
                     type="text" 
                     value={formData.name}
@@ -163,7 +163,7 @@ export default function ContactPage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Phone *</label>
+                    <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Phone *</label>
                     <input 
                       type="tel" 
                       value={formData.phone}
@@ -173,7 +173,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Email</label>
+                    <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Email</label>
                     <input 
                       type="email" 
                       value={formData.email}
@@ -183,7 +183,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Subject *</label>
+                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Subject *</label>
                   <select 
                     required 
                     value={formData.subject}
@@ -198,7 +198,7 @@ export default function ContactPage() {
                   </select>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-500 uppercase tracking-wider">Message *</label>
+                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Message *</label>
                   <textarea 
                     rows={5} 
                     value={formData.message}

@@ -11,7 +11,7 @@ export default function NewProductPage() {
         </Link>
         <div>
           <h1 className="text-3xl font-heading font-bold text-foreground">Add Product</h1>
-          <p className="text-gray-500">Create a new battery model in the catalog.</p>
+          <p className="text-muted-foreground">Create a new battery model in the catalog.</p>
         </div>
       </div>
       

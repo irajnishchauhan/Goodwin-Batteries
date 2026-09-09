@@ -16,7 +16,7 @@ export default function BatteryCarePage() {
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-white mb-6">
             BATTERY <span className="text-brand">CARE</span>
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
             Get the most out of your Goodwin battery with these expert maintenance tips and guidelines.
           </p>
         </div>
@@ -32,7 +32,7 @@ export default function BatteryCarePage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-foreground mb-3">{tip.title}</h3>
-                  <p className="text-gray-500 leading-relaxed">{tip.desc}</p>
+                  <p className="text-muted-foreground leading-relaxed">{tip.desc}</p>
                 </div>
               </div>
             ))}
@@ -40,23 +40,23 @@ export default function BatteryCarePage() {
 
           <div className="mt-16 bg-surface border border-brand/30 rounded-2xl p-8 md:p-12 text-center">
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">Warning Signs of a Failing Battery</h2>
-            <p className="text-gray-500 mb-8 max-w-2xl mx-auto">Don't wait until you're stranded. Look out for these common indicators that your battery needs replacement.</p>
+            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">Don't wait until you're stranded. Look out for these common indicators that your battery needs replacement.</p>
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="bg-background border border-border p-6 rounded-xl text-center">
                 <span className="text-brand font-bold uppercase tracking-wider text-sm block mb-2">01</span>
                 <h4 className="font-bold text-foreground mb-2">Slow Engine Crank</h4>
-                <p className="text-xs text-gray-500">The engine is sluggish and takes longer than normal to start.</p>
+                <p className="text-xs text-muted-foreground">The engine is sluggish and takes longer than normal to start.</p>
               </div>
               <div className="bg-background border border-border p-6 rounded-xl text-center">
                 <span className="text-brand font-bold uppercase tracking-wider text-sm block mb-2">02</span>
                 <h4 className="font-bold text-foreground mb-2">Check Engine Light</h4>
-                <p className="text-xs text-gray-500">The check engine or battery indicator light comes on.</p>
+                <p className="text-xs text-muted-foreground">The check engine or battery indicator light comes on.</p>
               </div>
               <div className="bg-background border border-border p-6 rounded-xl text-center">
                 <span className="text-brand font-bold uppercase tracking-wider text-sm block mb-2">03</span>
                 <h4 className="font-bold text-foreground mb-2">Swollen Case</h4>
-                <p className="text-xs text-gray-500">The battery casing appears swollen or bloated due to heat.</p>
+                <p className="text-xs text-muted-foreground">The battery casing appears swollen or bloated due to heat.</p>
               </div>
             </div>
           </div>

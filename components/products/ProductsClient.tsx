@@ -47,7 +47,7 @@ export default function ProductsClient({
             <div className="relative mb-4">
               <Search
                 size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
               />
               <input
                 type="text"
@@ -68,7 +68,7 @@ export default function ProductsClient({
                   className={`text-sm transition-colors text-left w-full font-semibold ${
                     selectedCategory === "All"
                       ? "text-brand hover:underline"
-                      : "text-gray-500 hover:text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   All Products
@@ -81,7 +81,7 @@ export default function ProductsClient({
                     className={`text-sm transition-colors text-left w-full font-semibold ${
                       selectedCategory === cat.id
                         ? "text-brand hover:underline"
-                        : "text-gray-500 hover:text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     {cat.name}
@@ -96,7 +96,7 @@ export default function ProductsClient({
       {/* Product Grid */}
       <div className="flex-1">
         <div className="flex items-center justify-between mb-6">
-          <p className="text-sm text-gray-500 font-semibold">
+          <p className="text-sm text-muted-foreground font-semibold">
             Showing {filteredProducts.length} products
           </p>
         </div>
@@ -112,7 +112,7 @@ export default function ProductsClient({
             <h3 className="text-xl font-bold text-foreground mb-2">
               No products found
             </h3>
-            <p className="text-gray-500">
+            <p className="text-muted-foreground">
               Try adjusting your search query or filters to find what you're looking for.
             </p>
             <button

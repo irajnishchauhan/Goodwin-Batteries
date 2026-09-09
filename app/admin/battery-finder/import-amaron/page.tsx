@@ -219,7 +219,7 @@ export default function ImportAmaronPage() {
       <div className="flex justify-between items-center mb-6">
         <div>
           <h2 className="text-2xl font-bold text-foreground">Import Amaron JSON</h2>
-          <p className="text-gray-500">Paste the JSON from the scraper to import directly.</p>
+          <p className="text-muted-foreground">Paste the JSON from the scraper to import directly.</p>
         </div>
       </div>
 
@@ -259,7 +259,7 @@ export default function ImportAmaronPage() {
 
         <div className="bg-surface border border-border rounded-xl p-6 shadow-sm overflow-auto h-96">
           <h3 className="font-bold text-foreground mb-4 flex items-center gap-2">Import Logs</h3>
-          <ul className="text-xs font-mono text-gray-400 space-y-1">
+          <ul className="text-xs font-mono text-muted-foreground space-y-1">
             {logs.map((log, i) => (
               <li key={i}>{log}</li>
             ))}

@@ -26,7 +26,7 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
       
       {/* Breadcrumbs */}
       <div className="bg-surface border-b border-border py-4">
-        <div className="container flex items-center text-xs font-bold uppercase tracking-wider text-gray-500">
+        <div className="container flex items-center text-xs font-bold uppercase tracking-wider text-muted-foreground">
           <Link href="/" className="hover:text-brand transition-colors">Home</Link>
           <ChevronRight size={14} className="mx-2" />
           <Link href="/products" className="hover:text-brand transition-colors">Products</Link>
@@ -62,18 +62,18 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
               <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">
                 {product.name}
               </h1>
-              <p className="text-lg text-gray-500 mb-8 leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 {product.description || "Details coming soon"}
               </p>
 
               {/* Key Highlights */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
                 <div className="bg-surface border border-border p-4 rounded-xl text-center flex flex-col justify-center">
-                  <span className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Capacity</span>
+                  <span className="block text-xs uppercase tracking-wider text-muted-foreground mb-1">Capacity</span>
                   <span className="font-bold text-xl text-foreground">{product.ah || "TBA"}</span>
                 </div>
                 <div className="bg-surface border border-border p-4 rounded-xl text-center flex flex-col justify-center">
-                  <span className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Voltage</span>
+                  <span className="block text-xs uppercase tracking-wider text-muted-foreground mb-1">Voltage</span>
                   <span className="font-bold text-xl text-foreground">{product.voltage || "TBA"}</span>
                 </div>
                 <div className="bg-brand/10 border border-brand/20 p-4 rounded-xl text-center flex flex-col justify-center">
@@ -126,31 +126,31 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
               <h2 className="text-3xl font-heading font-bold text-foreground mb-8">Technical Specifications</h2>
               <div className="bg-background border border-border rounded-xl overflow-hidden shadow-sm">
                 <div className="grid grid-cols-1 sm:grid-cols-3 border-b border-border">
-                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-gray-500 flex items-center">Model Number</div>
+                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-muted-foreground flex items-center">Model Number</div>
                   <div className="p-4 sm:p-5 font-bold text-foreground sm:col-span-2">{product.name}</div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 border-b border-border">
-                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-gray-500 flex items-center">Technology</div>
+                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-muted-foreground flex items-center">Technology</div>
                   <div className="p-4 sm:p-5 font-semibold text-foreground sm:col-span-2">Maintenance-Free Lead Acid</div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 border-b border-border">
-                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-gray-500 flex items-center">Capacity (Ah)</div>
+                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-muted-foreground flex items-center">Capacity (Ah)</div>
                   <div className="p-4 sm:p-5 font-semibold text-foreground sm:col-span-2">{product.ah || "Details coming soon"}</div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 border-b border-border">
-                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-gray-500 flex items-center">Voltage</div>
+                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-muted-foreground flex items-center">Voltage</div>
                   <div className="p-4 sm:p-5 font-semibold text-foreground sm:col-span-2">{product.voltage || "Details coming soon"}</div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 border-b border-border">
-                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-gray-500 flex items-center">Dimensions (LxWxH)</div>
+                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-muted-foreground flex items-center">Dimensions (LxWxH)</div>
                   <div className="p-4 sm:p-5 font-semibold text-foreground sm:col-span-2">{product.dimensions || "Details coming soon"}</div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 border-b border-border">
-                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-gray-500 flex items-center">Weight</div>
+                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-muted-foreground flex items-center">Weight</div>
                   <div className="p-4 sm:p-5 font-semibold text-foreground sm:col-span-2">{product.weight || "Details coming soon"}</div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3">
-                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-gray-500 flex items-center">Terminal Layout</div>
+                  <div className="p-4 sm:p-5 border-b sm:border-b-0 sm:border-r border-border bg-surface/30 font-bold text-xs uppercase tracking-wider text-muted-foreground flex items-center">Terminal Layout</div>
                   <div className="p-4 sm:p-5 font-semibold text-foreground sm:col-span-2">{product.terminalLayout || "Details coming soon"}</div>
                 </div>
               </div>
@@ -169,14 +169,14 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
                 <h3 className="font-bold text-foreground mb-4 uppercase tracking-wider text-sm flex items-center gap-2">
                   <ShieldCheck size={18} className="text-brand" /> Vehicle Compatibility
                 </h3>
-                <p className="text-sm text-gray-500 mb-4">Recommended for the following applications:</p>
+                <p className="text-sm text-muted-foreground mb-4">Recommended for the following applications:</p>
                 <div className="flex flex-wrap gap-2">
                   {product.application && product.application.length > 0 ? product.application.map((app, i) => (
                     <span key={i} className="bg-surface border border-border px-3 py-1.5 rounded-full text-sm font-semibold text-foreground">
                       {app}
                     </span>
                   )) : (
-                    <span className="text-gray-500 text-sm">No applications specified.</span>
+                    <span className="text-muted-foreground text-sm">No applications specified.</span>
                   )}
                 </div>
               </div>
@@ -185,7 +185,7 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
                 <h3 className="font-bold text-foreground mb-4 uppercase tracking-wider text-sm flex items-center gap-2">
                   <Wrench size={18} className="text-brand" /> Installation & Care
                 </h3>
-                <ul className="text-sm text-gray-500 space-y-3">
+                <ul className="text-sm text-muted-foreground space-y-3">
                   <li className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0 mt-1.5" />
                     Ensure terminals are clean and tightly connected before use.

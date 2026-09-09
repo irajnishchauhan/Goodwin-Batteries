@@ -74,7 +74,7 @@ export default function FAQPage() {
       <section className="bg-surface py-20 border-b border-border relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/3 h-full bg-brand/10 blur-[100px] pointer-events-none" />
         <div className="container relative z-10">
-          <div className="flex items-center gap-2 text-sm text-gray-500 font-bold mb-6 tracking-wider uppercase">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground font-bold mb-6 tracking-wider uppercase">
             <Link href="/support" className="hover:text-brand transition-colors">Support</Link>
             <ChevronRight size={14} />
             <span className="text-foreground">FAQ</span>
@@ -82,7 +82,7 @@ export default function FAQPage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
             FREQUENTLY ASKED <span className="text-brand">QUESTIONS</span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl">
+          <p className="text-muted-foreground text-lg max-w-2xl">
             Find answers to common questions about our products, warranties, and maintenance.
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function FAQPage() {
         <div className="container max-w-4xl">
           
           <div className="relative mb-12">
-            <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+            <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <input 
               type="text" 
               value={search}
@@ -128,7 +128,7 @@ export default function FAQPage() {
                             className="w-full flex items-center justify-between p-6 text-left hover:bg-surface-hover transition-colors"
                           >
                             <h3 className="font-bold text-foreground pr-8">{item.q}</h3>
-                            <ChevronDown size={20} className={clsx("text-gray-500 transition-transform duration-300 shrink-0", isOpen && "rotate-180")} />
+                            <ChevronDown size={20} className={clsx("text-muted-foreground transition-transform duration-300 shrink-0", isOpen && "rotate-180")} />
                           </button>
                           <div 
                             className={clsx(
@@ -136,7 +136,7 @@ export default function FAQPage() {
                               isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
                             )}
                           >
-                            <p className="p-6 pt-0 text-gray-400 leading-relaxed border-t border-border/50 mt-2">
+                            <p className="p-6 pt-0 text-muted-foreground leading-relaxed border-t border-border/50 mt-2">
                               {item.a}
                             </p>
                           </div>
@@ -151,7 +151,7 @@ export default function FAQPage() {
           
           <div className="mt-16 bg-surface-hover border border-border rounded-2xl p-8 text-center">
             <h3 className="text-xl font-bold text-foreground mb-2">Still have questions?</h3>
-            <p className="text-gray-500 mb-6">Our customer support team is here to help.</p>
+            <p className="text-muted-foreground mb-6">Our customer support team is here to help.</p>
             <div className="flex justify-center gap-4">
               <Link href="/contact" className="bg-surface border border-border text-foreground hover:border-brand px-6 py-3 rounded font-bold transition-colors">
                 Contact Us

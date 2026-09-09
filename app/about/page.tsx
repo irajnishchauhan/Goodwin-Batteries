@@ -38,7 +38,7 @@ export default function AboutPage() {
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
                 Power is the backbone of progress
               </h2>
-              <div className="prose prose-lg dark:prose-invert text-gray-500">
+              <div className="prose prose-lg dark:prose-invert text-muted-foreground">
                 <p>
                   At Goodwin Batteries, we believe that power is the backbone of progress. Founded with a clear vision to provide reliable and long-lasting battery solutions, we have grown into a trusted name in the power industry. Whether it’s for your vehicle, home, office, or industrial needs, our wide range of batteries is designed to keep you going without interruption.
                 </p>
@@ -64,7 +64,7 @@ export default function AboutPage() {
               </div>
               <span className="text-brand font-bold uppercase tracking-widest text-sm block mb-4 relative z-10">Our Mission</span>
               <h3 className="text-2xl font-heading font-bold text-foreground mb-4 relative z-10">Moving Forward</h3>
-              <p className="text-gray-500 leading-relaxed text-lg relative z-10">
+              <p className="text-muted-foreground leading-relaxed text-lg relative z-10">
                 To deliver powerful, safe, and eco-friendly battery solutions that keep people and businesses moving forward.
               </p>
             </div>
@@ -75,7 +75,7 @@ export default function AboutPage() {
               </div>
               <span className="text-brand font-bold uppercase tracking-widest text-sm block mb-4 relative z-10">Our Vision</span>
               <h3 className="text-2xl font-heading font-bold text-foreground mb-4 relative z-10">A Part of Every Household</h3>
-              <p className="text-gray-500 leading-relaxed text-lg relative z-10">
+              <p className="text-muted-foreground leading-relaxed text-lg relative z-10">
                 To be a leading name in the battery industry known for trust, quality, and innovation — and to make Goodwin Batteries a part of every household. Experience the power of reliability and service. Choose Goodwin Batteries — where energy meets excellence, and every home matters.
               </p>
             </div>
@@ -105,7 +105,7 @@ export default function AboutPage() {
             <div className="w-full md:w-1/2 p-10 md:p-12 flex flex-col justify-center">
               <span className="text-brand font-bold uppercase tracking-widest text-sm mb-2 block">Leadership</span>
               <h3 className="text-3xl font-heading font-bold text-foreground mb-4">Driving Our Vision</h3>
-              <p className="text-gray-500 leading-relaxed mb-6">
+              <p className="text-muted-foreground leading-relaxed mb-6">
                 Under strong leadership, Goodwin Batteries has continuously pushed the boundaries of power storage technology. Our focus remains on delivering uncompromised quality, building long-lasting relationships with our dealers, and ensuring every customer has a reliable power source.
               </p>
               <div className="pt-6 border-t border-border">
@@ -127,7 +127,7 @@ export default function AboutPage() {
                 <ShieldCheck size={32} />
               </div>
               <h4 className="text-xl font-bold text-foreground mb-3">Uncompromising Quality</h4>
-              <p className="text-gray-500 text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 Every battery undergoes rigorous testing to ensure it meets our strict standards for durability and performance in Indian conditions.
               </p>
             </div>
@@ -136,7 +136,7 @@ export default function AboutPage() {
                 <Users size={32} />
               </div>
               <h4 className="text-xl font-bold text-foreground mb-3">Customer First</h4>
-              <p className="text-gray-500 text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 From selection to installation and after-sales support, our dedicated team is always ready to assist you.
               </p>
             </div>
@@ -145,7 +145,7 @@ export default function AboutPage() {
                 <Zap size={32} />
               </div>
               <h4 className="text-xl font-bold text-foreground mb-3">Continuous Innovation</h4>
-              <p className="text-gray-500 text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 We invest in advanced technologies to ensure our batteries deliver higher cranking power and longer life.
               </p>
             </div>

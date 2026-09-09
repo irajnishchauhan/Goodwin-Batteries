@@ -11,7 +11,7 @@ export default function TermsAndConditionsPage() {
       <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-8">Terms &amp; Conditions</h1>
       
       <div className="prose prose-lg dark:prose-invert max-w-none">
-        <p className="lead text-xl text-gray-600 dark:text-gray-400 mb-8">
+        <p className="lead text-xl text-muted-foreground dark:text-muted-foreground mb-8">
           Welcome to Goodwin Batteries. These terms and conditions outline the rules and regulations for the use of Goodwin Batteries&apos; Website, located at goodwinbatteries.in.
         </p>
 

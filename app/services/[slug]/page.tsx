@@ -86,7 +86,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     <div className="flex flex-col w-full min-h-screen pt-20 bg-background">
       {/* Breadcrumbs */}
       <div className="bg-surface border-b border-border py-4">
-        <div className="container flex items-center text-xs font-bold uppercase tracking-wider text-gray-500">
+        <div className="container flex items-center text-xs font-bold uppercase tracking-wider text-muted-foreground">
           <Link href="/" className="hover:text-brand transition-colors">Home</Link>
           <ChevronRight size={14} className="mx-2" />
           <span className="text-foreground">Services</span>
@@ -107,7 +107,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
                 {service.title}
               </h1>
-              <p className="text-lg text-gray-500 mb-10 leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
                 {service.description}
               </p>
 
@@ -138,7 +138,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             {/* Quick Enquiry Form Sidebar */}
             <div className="bg-[#121212] border border-white/10 rounded-2xl p-8 shadow-2xl sticky top-24">
               <h3 className="text-2xl font-bold text-white mb-2">Request this Service</h3>
-              <p className="text-gray-400 text-sm mb-6">Fill out the form below and our team will get back to you immediately.</p>
+              <p className="text-muted-foreground text-sm mb-6">Fill out the form below and our team will get back to you immediately.</p>
               <QuickEnquiryForm />
             </div>
 

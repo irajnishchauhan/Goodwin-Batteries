@@ -89,7 +89,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 href={item.href}
                 className={clsx(
                   "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors font-medium text-sm",
-                  isActive ? "bg-brand/10 text-brand" : "text-gray-400 hover:text-foreground hover:bg-surface-hover"
+                  isActive ? "bg-brand/10 text-brand" : "text-muted-foreground hover:text-foreground hover:bg-surface-hover"
                 )}
               >
                 {item.icon}

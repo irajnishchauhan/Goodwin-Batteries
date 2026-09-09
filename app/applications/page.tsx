@@ -11,7 +11,7 @@ export default function ApplicationsPage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
             BATTERY <span className="text-brand">APPLICATIONS</span>
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-muted-foreground text-lg">
             From everyday passenger vehicles to heavy-duty industrial machinery, Goodwin provides reliable power solutions engineered for specific demands.
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function ApplicationsPage() {
                     <Settings size={24} className="text-white" />
                   </div>
                   <h3 className="text-white font-heading font-bold text-3xl mb-3">{cat.name}</h3>
-                  <p className="text-gray-300 text-sm mb-6 line-clamp-3">
+                  <p className="text-muted-foreground text-sm mb-6 line-clamp-3">
                     {cat.description}
                   </p>
                   <Link 

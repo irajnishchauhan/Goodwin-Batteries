@@ -13,7 +13,7 @@ export default function SupportPage() {
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-foreground mb-6">
             CUSTOMER <span className="text-brand">SUPPORT</span>
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
             We&apos;re here to help. Register your warranty, check your claim status, or find answers to common questions. Access our warranty portal, track claims, and find answers.
           </p>
         </div>
@@ -24,7 +24,7 @@ export default function SupportPage() {
           
           <div className="mb-12">
             <h2 className="text-3xl font-heading font-bold text-foreground mb-2">Warranty Portal</h2>
-            <p className="text-gray-500">Manage your Goodwin Battery warranty and claims in one place.</p>
+            <p className="text-muted-foreground">Manage your Goodwin Battery warranty and claims in one place.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
@@ -37,7 +37,7 @@ export default function SupportPage() {
                 <FileSignature size={28} className="text-brand" />
               </div>
               <h3 className="font-bold text-2xl text-foreground mb-3 relative z-10">Register Warranty</h3>
-              <p className="text-sm text-gray-500 mb-6 relative z-10">Activate your warranty online within 15 days of purchase for hassle-free support.</p>
+              <p className="text-sm text-muted-foreground mb-6 relative z-10">Activate your warranty online within 15 days of purchase for hassle-free support.</p>
               <div className="mt-auto flex items-center gap-2 text-brand font-bold text-sm tracking-widest uppercase relative z-10">
                 Register Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </div>
@@ -52,7 +52,7 @@ export default function SupportPage() {
                 <ShieldCheck size={28} className="text-brand" />
               </div>
               <h3 className="font-bold text-2xl text-foreground mb-3 relative z-10">Submit a Claim</h3>
-              <p className="text-sm text-gray-500 mb-6 relative z-10">Facing an issue? Submit a warranty claim to request an inspection or replacement.</p>
+              <p className="text-sm text-muted-foreground mb-6 relative z-10">Facing an issue? Submit a warranty claim to request an inspection or replacement.</p>
               <div className="mt-auto flex items-center gap-2 text-brand font-bold text-sm tracking-widest uppercase relative z-10">
                 Start Claim <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </div>
@@ -67,7 +67,7 @@ export default function SupportPage() {
                 <Search size={28} className="text-brand" />
               </div>
               <h3 className="font-bold text-2xl text-foreground mb-3 relative z-10">Track Status</h3>
-              <p className="text-sm text-gray-500 mb-6 relative z-10">Check the real-time status of your warranty registration or an active claim.</p>
+              <p className="text-sm text-muted-foreground mb-6 relative z-10">Check the real-time status of your warranty registration or an active claim.</p>
               <div className="mt-auto flex items-center gap-2 text-brand font-bold text-sm tracking-widest uppercase relative z-10">
                 Track Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </div>
@@ -83,7 +83,7 @@ export default function SupportPage() {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg text-foreground mb-1 group-hover:text-brand transition-colors">FAQs</h3>
-                  <p className="text-sm text-gray-500">Answers to common questions about selection, installation, and maintenance.</p>
+                  <p className="text-sm text-muted-foreground">Answers to common questions about selection, installation, and maintenance.</p>
                 </div>
               </Link>
               <Link href="/contact" className="bg-surface-hover border border-border p-6 rounded-xl flex items-center gap-6 hover:border-brand transition-colors group">
@@ -92,7 +92,7 @@ export default function SupportPage() {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg text-foreground mb-1 group-hover:text-brand transition-colors">Contact Support</h3>
-                  <p className="text-sm text-gray-500">Reach out directly to our dedicated customer support team.</p>
+                  <p className="text-sm text-muted-foreground">Reach out directly to our dedicated customer support team.</p>
                 </div>
               </Link>
             </div>

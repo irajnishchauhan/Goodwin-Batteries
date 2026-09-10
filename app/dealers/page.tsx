@@ -1,83 +1,80 @@
-import { getDealers } from "@/lib/data";
-import { Search, MapPin, Phone, Clock, Navigation } from "lucide-react";
+"use client";
 
-export default async function DealersLocatorPage() {
-  const dealers = await getDealers();
+import { useState } from "react";
+import { Search, MapPin, Loader2 } from "lucide-react";
+import { useGlobalSettings } from "@/components/GlobalSettingsProvider";
+
+export default function DealersLocatorPage() {
+  const settings = useGlobalSettings();
+  const [loading, setLoading] = useState(false);
+  const [location, setLocation] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!location) return;
+    
+    setLoading(true);
+
+    setTimeout(() => {
+      const text = `Hello Goodwin Batteries,\nI am looking for a dealer near: ${location}\nPlease help me find the nearest authorized dealer.`;
+      const whatsappNum = settings?.whatsapp_main?.replace(/\D/g, "") || "9667724411";
+      window.open(`https://wa.me/91${whatsappNum}?text=${encodeURIComponent(text)}`, "_blank");
+      setLoading(false);
+    }, 600);
+  };
+
   return (
     <div className="flex flex-col w-full min-h-screen pt-20">
       <section className="bg-background py-16 border-b border-border">
         <div className="container text-center max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
-            FIND <span className="text-brand">GOODWIN</span> NEAR YOU
+            FIND <span className="text-primary">GOODWIN</span> NEAR YOU
           </h1>
           <p className="text-muted-foreground text-lg">
-            Locate authorized Goodwin dealers and service centers in your city.
+            Connect with our team to find the nearest authorized Goodwin dealers and service centers in your city.
           </p>
         </div>
       </section>
 
-      <section className="py-12 bg-surface flex-1">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <section className="py-24 bg-surface flex-1 flex items-center justify-center relative overflow-hidden">
+        {/* Decorative Grid Background */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        
+        <div className="container max-w-xl relative z-10">
+          <div className="bg-background border border-border/50 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden text-center">
+            {/* Decorative glow */}
+            <div className="absolute top-0 right-0 w-full h-full bg-primary/5 blur-[100px] pointer-events-none mix-blend-screen" />
+             
+            <div className="w-20 h-20 bg-surface border border-border/50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/10">
+              <MapPin size={36} className="text-primary" />
+            </div>
             
-            {/* Search and List */}
-            <div className="lg:col-span-1 flex flex-col h-[600px]">
-              <div className="bg-background border border-border rounded-xl p-6 mb-6 shadow-sm">
-                <div className="relative">
-                  <input 
-                    type="text" 
-                    placeholder="Search by City, Pincode or State" 
-                    className="w-full bg-surface border border-border rounded-lg pl-12 pr-4 py-4 text-foreground focus:outline-none focus:border-brand"
-                  />
-                  <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                </div>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4 relative z-10">Find Your Nearest Dealer</h2>
+            <p className="text-muted-foreground mb-10 text-sm md:text-base relative z-10 leading-relaxed">
+              Enter your City or Pincode below and we will instantly connect you with the best authorized dealer near you.
+            </p>
+            
+            <form onSubmit={handleSearch} className="flex flex-col gap-6 relative z-10">
+              <div className="relative">
+                <input 
+                  type="text" 
+                  required
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="Enter City or Pincode..." 
+                  className="w-full bg-surface border border-border/50 rounded-xl pl-14 pr-4 py-5 text-white focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(0,255,102,0.2)] transition-all font-medium text-lg"
+                />
+                <Search size={24} className="absolute left-5 top-1/2 -translate-y-1/2 text-muted-foreground" />
               </div>
-
-              <div className="flex-1 overflow-y-auto pr-2 space-y-4">
-                {dealers.map(dealer => (
-                  <div key={dealer.id} className="bg-background border border-border rounded-xl p-6 hover:border-brand/50 transition-colors cursor-pointer shadow-sm">
-                    <h3 className="font-bold text-lg text-foreground mb-2 flex items-center gap-2">
-                      {dealer.name}
-                      <span className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 text-[10px] px-2 py-0.5 rounded uppercase tracking-wider font-bold">Verified</span>
-                    </h3>
-                    <div className="flex items-start gap-3 text-sm text-muted-foreground mb-2">
-                      <MapPin size={16} className="text-brand shrink-0 mt-0.5" />
-                      <span>{dealer.address}, {dealer.city}, {dealer.state} - {dealer.pincode}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm text-muted-foreground mb-2">
-                      <Phone size={16} className="text-brand shrink-0" />
-                      <span>{dealer.phone}</span>
-                    </div>
-                    <div className="flex items-start gap-3 text-sm text-muted-foreground mb-4">
-                      <Clock size={16} className="text-brand shrink-0 mt-0.5" />
-                      <span>{dealer.openingHours}</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-2">
-                      <a href={`tel:+91${dealer.phone}`} className="bg-surface border border-border hover:bg-surface-hover py-2 rounded text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1 transition-colors">
-                        <Phone size={14} /> Call
-                      </a>
-                      <a href={`https://wa.me/91${dealer.whatsapp || dealer.phone}`} target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white hover:bg-[#128C7E] py-2 rounded text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1 transition-colors">
-                        WhatsApp
-                      </a>
-                      <a href={`https://maps.google.com/?q=${dealer.latitude},${dealer.longitude}`} target="_blank" rel="noopener noreferrer" className="bg-brand text-white hover:bg-brand-dark py-2 rounded text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1 transition-colors">
-                        <Navigation size={14} /> Map
-                      </a>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Map Area */}
-            <div className="lg:col-span-2 h-[600px] bg-background border border-border rounded-xl flex items-center justify-center shadow-sm relative overflow-hidden">
-              <div className="absolute inset-0 bg-surface flex items-center justify-center bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-50"></div>
-              <div className="relative z-10 text-center bg-background/80 p-8 rounded-2xl backdrop-blur-md border border-border shadow-xl">
-                <MapPin size={48} className="text-brand mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-2">Interactive Map</h3>
-                <p className="text-muted-foreground text-sm">Select a dealer from the list to view their exact location.</p>
-              </div>
-            </div>
-
+              
+              <button 
+                type="submit" 
+                disabled={loading}
+                className="w-full bg-primary text-black font-bold uppercase tracking-wider py-5 rounded-xl hover:bg-primary/80 transition-colors flex items-center justify-center gap-2 disabled:opacity-70 border-glow shadow-lg shadow-primary/20 text-lg"
+              >
+                {loading ? <Loader2 size={24} className="animate-spin" /> : "Connect on WhatsApp"}
+              </button>
+            </form>
           </div>
         </div>
       </section>

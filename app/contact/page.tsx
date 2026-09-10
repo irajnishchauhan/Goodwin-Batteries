@@ -148,7 +148,7 @@ export default function ContactPage() {
                   <div className="mt-8">
                     <h4 className="font-bold text-foreground mb-4 uppercase tracking-wider text-sm text-muted-foreground">Location Map</h4>
                     <iframe 
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x390cfd170a48b79b%3A0xbccf0a719c2dc4b1!2sGokhale%20Market%2C%20Tis%20Hazari%2C%20New%20Delhi%2C%20Delhi%20110054!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                      src="https://maps.google.com/maps?q=Gokhale%20Market%2C%20Tis%20Hazari%20Court%2C%20Delhi%20110054&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                       width="100%" 
                       height="300" 
                       style={{ border: 0 }} 

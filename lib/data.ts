@@ -64,31 +64,7 @@ export const getProducts = unstable_cache(
       weight: row.weight,
     }));
     
-    // Add local JSON products
-    const localProducts = goodwinProducts.map(p => ({
-      id: p.id,
-      name: p.name,
-      slug: p.slug,
-      series: p.series,
-      category: "",
-      voltage: p.voltage,
-      ah: p.capacity,
-      cca: "",
-      warranty: p.warrantyOptions.join(" / "),
-      warranty_options: p.warrantyOptions,
-      is_featured: true,
-      is_published: true,
-      application: [p.application],
-      image: p.image,
-      description: p.description,
-      features: [],
-      terminalLayout: (p as any).terminalLayout || "",
-      dimensions: (p as any).dimensions || "",
-      weight: (p as any).weight || "",
-      datasheet: (p as any).datasheet || ""
-    }));
-    
-    return [...localProducts, ...dbProducts];
+    return dbProducts;
   },
   ['products'],
   { revalidate: 3600, tags: ['products'] }
@@ -96,33 +72,7 @@ export const getProducts = unstable_cache(
 
 export const getProductBySlug = unstable_cache(
   async (slug: string): Promise<Product | null> => {
-    // Check local JSON first
-    const localProduct = goodwinProducts.find(p => p.slug === slug);
-    if (localProduct) {
-      return {
-        id: localProduct.id,
-        name: localProduct.name,
-        slug: localProduct.slug,
-        series: localProduct.series,
-        category: "",
-        voltage: localProduct.voltage,
-        ah: localProduct.capacity,
-        cca: "",
-        warranty: localProduct.warrantyOptions.join(" / "),
-        warranty_options: localProduct.warrantyOptions,
-        is_featured: true,
-        is_published: true,
-        application: [localProduct.application], 
-        image: localProduct.image,
-        description: localProduct.description,
-        features: [],
-        terminalLayout: (localProduct as any).terminalLayout || "",
-        dimensions: (localProduct as any).dimensions || "",
-        weight: (localProduct as any).weight || "",
-        datasheet: (localProduct as any).datasheet || ""
-      };
-    }
-
+    // Removed local JSON fallback; fetch entirely from Supabase
     const { data, error } = await supabase.from("products").select("*").eq("slug", slug).eq("is_published", true).single();
     if (error) {
       console.error("Error fetching product:", error);

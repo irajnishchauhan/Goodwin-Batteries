@@ -52,7 +52,7 @@ export default function ClaimModal({ isOpen, onClose, claim, onSuccess }: ClaimM
         .update({
           customer_name: formData.customer_name,
           mobile: formData.mobile,
-          warranty_id: formData.warranty_id,
+          warranty_id: formData.warranty_id ? formData.warranty_id : null,
           serial_number: formData.serial_number,
           dealer_name: formData.dealer_name,
           issue_description: formData.issue_description,

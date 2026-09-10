@@ -34,7 +34,7 @@ export default function Footer() {
               />
             </Link>
             
-            <p className="text-sm font-bold text-brand uppercase tracking-wider">
+            <p className="text-sm font-bold text-primary uppercase tracking-wider">
               {settings?.tagline || "YOUR TRUSTED POWER SOURCE"}
             </p>
 
@@ -43,19 +43,19 @@ export default function Footer() {
             </p>
 
             <div className="flex flex-wrap gap-2">
-              <a href="https://facebook.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading" title="Facebook">
+              <a href="https://facebook.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-xs font-bold font-heading" title="Facebook">
                 Fb
               </a>
-              <a href="https://instagram.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading" title="Instagram">
+              <a href="https://instagram.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-xs font-bold font-heading" title="Instagram">
                 Ig
               </a>
-              <a href="https://youtube.com/@goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading" title="YouTube">
+              <a href="https://youtube.com/@goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-xs font-bold font-heading" title="YouTube">
                 Yt
               </a>
-              <a href="https://twitter.com/goodwinbattery" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading" title="Twitter/X">
+              <a href="https://twitter.com/goodwinbattery" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-xs font-bold font-heading" title="Twitter/X">
                 X
               </a>
-              <a href="https://linkedin.com/company/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-brand hover:text-white transition-colors text-xs font-bold font-heading" title="LinkedIn">
+              <a href="https://linkedin.com/company/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-surface-hover flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-xs font-bold font-heading" title="LinkedIn">
                 In
               </a>
             </div>
@@ -66,20 +66,20 @@ export default function Footer() {
             <div>
               <h4 className="text-foreground font-heading font-bold mb-4 text-lg">Shop Online</h4>
               <ul className="flex flex-col gap-3">
-                <li><a href="https://www.amazon.in/s?k=goodwin+batteries" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-brand hover:text-brand-dark transition-colors flex items-center gap-2 group">Amazon Store <ArrowRight size={14} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/></a></li>
-                <li><a href="https://www.flipkart.com/search?q=goodwin%20batteries" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-brand hover:text-brand-dark transition-colors flex items-center gap-2 group">Flipkart Store <ArrowRight size={14} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/></a></li>
-                <li><a href="https://www.indiamart.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-brand hover:text-brand-dark transition-colors flex items-center gap-2 group">IndiaMart Profile <ArrowRight size={14} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/></a></li>
+                <li><a href="https://www.amazon.in/s?k=goodwin+batteries" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-primary hover:text-primary-dark transition-colors flex items-center gap-2 group">Amazon Store <ArrowRight size={14} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/></a></li>
+                <li><a href="https://www.flipkart.com/search?q=goodwin%20batteries" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-primary hover:text-primary-dark transition-colors flex items-center gap-2 group">Flipkart Store <ArrowRight size={14} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/></a></li>
+                <li><a href="https://www.indiamart.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-primary hover:text-primary-dark transition-colors flex items-center gap-2 group">IndiaMart Profile <ArrowRight size={14} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/></a></li>
               </ul>
             </div>
             
             <div>
               <h4 className="text-foreground font-heading font-bold mb-4 text-lg">Explore</h4>
               <ul className="flex flex-col gap-3">
-              <li><Link href="/products" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Products</Link></li>
-              <li><Link href="/battery-finder" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find Your Battery</Link></li>
-              <li><Link href="/applications" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Applications</Link></li>
-              <li><Link href="/why-goodwin" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Why Goodwin</Link></li>
-              <li><Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> About Us</Link></li>
+              <li><Link href="/products" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-primary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Products</Link></li>
+              <li><Link href="/battery-finder" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-primary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find Your Battery</Link></li>
+              <li><Link href="/applications" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-primary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Applications</Link></li>
+              <li><Link href="/why-goodwin" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-primary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Why Goodwin</Link></li>
+              <li><Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-primary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> About Us</Link></li>
             </ul>
           </div>
           </div>
@@ -88,11 +88,11 @@ export default function Footer() {
           <div>
             <h4 className="text-foreground font-heading font-bold mb-6 text-lg">Support & Network</h4>
             <ul className="flex flex-col gap-3">
-              <li><Link href="/dealer-distributor" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Become a Dealer</Link></li>
-              <li><Link href="/dealers" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find a Dealer</Link></li>
-              <li><Link href="/support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Warranty Support</Link></li>
-              <li><Link href="/battery-care" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Battery Care</Link></li>
-              <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-brand opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Contact Us</Link></li>
+              <li><Link href="/dealer-distributor" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-primary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Become a Dealer</Link></li>
+              <li><Link href="/dealers" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-primary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Find a Dealer</Link></li>
+              <li><Link href="/support" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-primary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Warranty Support</Link></li>
+              <li><Link href="/battery-care" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-primary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Battery Care</Link></li>
+              <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-primary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"/> Contact Us</Link></li>
             </ul>
           </div>
 
@@ -101,7 +101,7 @@ export default function Footer() {
             <h4 className="text-foreground font-heading font-bold mb-6 text-lg">Contact Us</h4>
             <ul className="flex flex-col gap-4">
               <li className="flex items-start gap-3">
-                <MapPin size={18} className="text-brand shrink-0 mt-0.5" />
+                <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
                   <strong className="text-foreground">Head Office:</strong><br />
                   Shop No. 51, Gokhale Market,<br />
@@ -109,7 +109,7 @@ export default function Footer() {
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={18} className="text-brand shrink-0 mt-0.5" />
+                <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
                   <strong className="text-foreground">Corporate Office:</strong><br />
                   202, 2nd Floor – Samiksh Landmark,<br />
@@ -117,14 +117,14 @@ export default function Footer() {
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={18} className="text-brand shrink-0" />
+                <Phone size={18} className="text-primary shrink-0" />
                 <div className="flex flex-col text-sm text-muted-foreground">
                   <span><strong className="text-foreground">Sales:</strong> <a href="tel:9667724411" className="hover:text-foreground transition-colors">96677 24411</a></span>
                   <span className="mt-1"><strong className="text-foreground">Support:</strong> <a href="tel:9220404411" className="hover:text-foreground transition-colors">92204 04411</a></span>
                 </div>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={18} className="text-brand shrink-0" />
+                <Mail size={18} className="text-primary shrink-0" />
                 <div className="flex flex-col text-sm text-muted-foreground">
                   <span><strong className="text-foreground">Sales:</strong> <a href="mailto:sales@goodwinbatteries.com" className="hover:text-foreground transition-colors">sales@goodwinbatteries.com</a></span>
                   <span className="mt-1"><strong className="text-foreground">Support:</strong> <a href="mailto:support@goodwinbatteries.com" className="hover:text-foreground transition-colors">support@goodwinbatteries.com</a></span>

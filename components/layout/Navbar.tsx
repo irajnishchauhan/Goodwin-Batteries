@@ -14,6 +14,7 @@ const navLinks = [
   { name: "PRODUCTS", href: "/products" },
   { name: "APPLICATIONS", href: "/applications" },
   { name: "WHY GOODWIN", href: "/why-goodwin" },
+  { name: "BLOGS", href: "/blogs" },
   { name: "ABOUT US", href: "/about" },
   { name: "SUPPORT", href: "/support" },
 ];

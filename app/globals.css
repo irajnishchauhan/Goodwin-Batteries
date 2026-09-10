@@ -34,31 +34,31 @@
 }
 
 :root {
-  --background: #F5F5F5; /* Light Grey */
-  --surface: #FFFFFF; /* White */
-  --surface-hover: #F0F0F0;
-  --border: #E5E7EB;
+  --background: #050A09; /* Ultra dark cyber green/black */
+  --surface: #0A1412; /* Slightly lighter */
+  --surface-hover: #0F1E1B;
+  --border: #162D28;
   
-  --foreground: #111111; /* Black / Near Black */
-  --muted: #F5F5F5;
-  --muted-foreground: #333333; /* Dark Grey */
+  --foreground: #F5F5F5; /* Off-white text */
+  --muted: #0A1412;
+  --muted-foreground: #8FAEA8;
   
-  --card: #FFFFFF;
-  --card-foreground: #111111;
-  --popover: #FFFFFF;
-  --popover-foreground: #111111;
+  --card: #0A1412;
+  --card-foreground: #F5F5F5;
+  --popover: #0A1412;
+  --popover-foreground: #F5F5F5;
   
-  --primary: #00843D; /* Green */
-  --primary-foreground: #FFFFFF;
-  --secondary: #333333; /* Dark Grey */
-  --secondary-foreground: #FFFFFF;
+  --primary: #00FF66; /* Neon Green */
+  --primary-foreground: #000000;
+  --secondary: #0A1412;
+  --secondary-foreground: #F5F5F5;
   
-  --accent: #F9C900; /* Yellow / Gold */
-  --accent-foreground: #111111;
+  --accent: #00FF66; /* Neon Green */
+  --accent-foreground: #000000;
   
   --destructive: #EF4444;
-  --input: #E5E7EB;
-  --ring: #00843D;
+  --input: #162D28;
+  --ring: #00FF66;
   
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -66,16 +66,16 @@
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   
-  --radius: 0.625rem;
+  --radius: 0.75rem;
   
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #111111;
-  --sidebar-primary: #00843D;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F5F5F5;
-  --sidebar-accent-foreground: #111111;
-  --sidebar-border: #E5E7EB;
-  --sidebar-ring: #00843D;
+  --sidebar: #0A1412;
+  --sidebar-foreground: #F5F5F5;
+  --sidebar-primary: #00FF66;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #0F1E1B;
+  --sidebar-accent-foreground: #F5F5F5;
+  --sidebar-border: #162D28;
+  --sidebar-ring: #00FF66;
 }
 
 
@@ -104,10 +104,27 @@ body {
 
 /* Premium utility classes */
 .glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 20, 18, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 255, 102, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.glass-glow {
+  background: rgba(10, 20, 18, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 102, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.15), inset 0 0 20px rgba(0, 255, 102, 0.05);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(0, 255, 102, 0.5);
+}
+
+.border-glow {
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
 }
 
 

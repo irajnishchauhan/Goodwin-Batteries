@@ -9,9 +9,9 @@ export default function Footer() {
   const settings = useGlobalSettings();
 
   return (
-    <footer className="bg-surface pt-20 pb-10 border-t border-border relative overflow-hidden">
+    <footer className="bg-background/95 pt-20 pb-10 border-t border-primary/20 relative overflow-hidden">
       {/* Decorative gradient */}
-      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-brand/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/10 blur-[150px] rounded-full pointer-events-none mix-blend-screen" />
       
       <div className="container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">

@@ -37,7 +37,7 @@ export default function Navbar() {
       className={clsx(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out border-b border-transparent",
         {
-          "bg-surface/95 backdrop-blur-md shadow-lg border-border py-3": isScrolled,
+          "glass-glow py-3": isScrolled,
           "bg-transparent py-5": !isScrolled,
         }
       )}
@@ -96,7 +96,7 @@ export default function Navbar() {
           
           <Link
             href="/dealer-distributor"
-            className="text-xs font-bold uppercase tracking-wider text-foreground border border-border hover:border-white/50 px-4 py-2 rounded flex items-center gap-2 transition-all hover:bg-white/5"
+            className="text-xs font-bold uppercase tracking-wider text-white border border-primary/30 hover:border-primary px-4 py-2 rounded-full flex items-center gap-2 transition-all hover:bg-primary/10"
           >
             <Briefcase size={14} />
             Become a Dealer
@@ -104,7 +104,7 @@ export default function Navbar() {
           
           <Link
             href="/battery-finder"
-            className="text-xs font-bold uppercase tracking-wider bg-brand text-white px-5 py-2.5 rounded flex items-center gap-2 shadow-lg shadow-brand/20 hover:bg-brand-dark transition-all hover:-translate-y-0.5"
+            className="text-xs font-bold uppercase tracking-wider bg-primary text-black px-5 py-2.5 rounded-full flex items-center gap-2 shadow-[0_0_15px_rgba(0,255,102,0.3)] hover:scale-105 transition-all"
           >
             <BatteryCharging size={16} />
             Find Your Battery

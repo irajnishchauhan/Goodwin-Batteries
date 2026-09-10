@@ -110,12 +110,12 @@ export default function HomePageClient({ applications, settings }: { application
         <div className="absolute inset-0 bg-primary/5 blur-3xl pointer-events-none" />
         <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
           <ul className="flex items-center justify-center md:justify-start [&_li]:mx-12 [&_img]:max-w-none animate-infinite-scroll">
-             {["MARUTI SUZUKI", "HYUNDAI", "TATA", "MAHINDRA", "TOYOTA", "HONDA", "FORD", "KIA"].map((brand, i) => (
+             {["HERO", "HONDA", "BAJAJ", "TVS", "YAMAHA", "SUZUKI", "ROYAL ENFIELD", "KTM"].map((brand, i) => (
                <li key={i} className="text-3xl md:text-5xl font-heading font-black text-muted-foreground/20 uppercase tracking-widest hover:text-primary transition-all duration-500 cursor-default whitespace-nowrap hover:text-glow">
                  {brand}
                </li>
              ))}
-             {["MARUTI SUZUKI", "HYUNDAI", "TATA", "MAHINDRA", "TOYOTA", "HONDA", "FORD", "KIA"].map((brand, i) => (
+             {["HERO", "HONDA", "BAJAJ", "TVS", "YAMAHA", "SUZUKI", "ROYAL ENFIELD", "KTM"].map((brand, i) => (
                <li key={i+10} className="text-3xl md:text-5xl font-heading font-black text-muted-foreground/20 uppercase tracking-widest hover:text-primary transition-all duration-500 cursor-default whitespace-nowrap hover:text-glow" aria-hidden="true">
                  {brand}
                </li>

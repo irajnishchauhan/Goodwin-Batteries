@@ -47,10 +47,10 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col w-full min-h-screen pt-20">
       <section className="bg-surface py-20 border-b border-border relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-1/2 h-full bg-brand/10 blur-[100px] pointer-events-none" />
+        <div className="absolute right-0 top-0 w-1/2 h-full bg-primary/10 blur-[100px] pointer-events-none mix-blend-screen" />
         <div className="container relative z-10 text-center max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-foreground mb-6">
-            CONTACT <span className="text-brand">GOODWIN</span>
+            CONTACT <span className="text-primary">GOODWIN</span>
           </h1>
           <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
             Have a question or need support? Our team is ready to assist you.
@@ -69,8 +69,8 @@ export default function ContactPage() {
                 <div className="flex flex-col gap-8">
                   {/* Delhi Head Office */}
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-surface border border-border rounded-xl flex items-center justify-center shrink-0">
-                      <MapPin size={24} className="text-brand" />
+                    <div className="w-12 h-12 bg-surface border border-border/50 rounded-xl flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,255,102,0.1)]">
+                      <MapPin size={24} className="text-primary" />
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Delhi Head Office</h4>
@@ -79,7 +79,7 @@ export default function ContactPage() {
                         Opposite Tis Hazari Court,<br />
                         Delhi – 110054
                       </p>
-                      <a href="https://maps.google.com/?q=Gokhale+Market+Tis+Hazari+Court+Delhi+110054" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-brand font-bold text-sm hover:underline">
+                      <a href="https://maps.google.com/?q=Gokhale+Market+Tis+Hazari+Court+Delhi+110054" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline">
                         View on Google Maps <ExternalLink size={14} />
                       </a>
                     </div>
@@ -87,8 +87,8 @@ export default function ContactPage() {
 
                   {/* Indore Corporate Office */}
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-surface border border-border rounded-xl flex items-center justify-center shrink-0">
-                      <MapPin size={24} className="text-brand" />
+                    <div className="w-12 h-12 bg-surface border border-border/50 rounded-xl flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,255,102,0.1)]">
+                      <MapPin size={24} className="text-primary" />
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Indore Corporate Office</h4>
@@ -97,7 +97,7 @@ export default function ContactPage() {
                         Near Choithram Circle, A.B. Road,<br />
                         Indore – 452012
                       </p>
-                      <a href="https://maps.google.com/?q=Samiksh+Landmark+Choithram+Circle+Indore" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-brand font-bold text-sm hover:underline">
+                      <a href="https://maps.google.com/?q=Samiksh+Landmark+Choithram+Circle+Indore" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline">
                         View on Google Maps <ExternalLink size={14} />
                       </a>
                     </div>
@@ -105,91 +105,85 @@ export default function ContactPage() {
 
                   {/* Phone */}
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-surface border border-border rounded-xl flex items-center justify-center shrink-0">
-                      <Phone size={24} className="text-brand" />
+                    <div className="w-12 h-12 bg-surface border border-border/50 rounded-xl flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,255,102,0.1)]">
+                      <Phone size={24} className="text-primary" />
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Call Us</h4>
-                      <a href="tel:9667724411" className="text-muted-foreground leading-relaxed hover:text-brand transition-colors text-lg font-mono mb-1 block">Sales: 96677 24411</a>
-                      <a href="tel:9220404411" className="text-muted-foreground leading-relaxed hover:text-brand transition-colors text-lg font-mono mb-1 block">Support: 92204 04411</a>
+                      <a href="tel:9667724411" className="text-muted-foreground leading-relaxed hover:text-primary transition-colors text-lg font-mono mb-1 block">Sales: 96677 24411</a>
+                      <a href="tel:9220404411" className="text-muted-foreground leading-relaxed hover:text-primary transition-colors text-lg font-mono mb-1 block">Support: 92204 04411</a>
                     </div>
                   </div>
 
                   {/* Email */}
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-surface border border-border rounded-xl flex items-center justify-center shrink-0">
-                      <Mail size={24} className="text-brand" />
+                    <div className="w-12 h-12 bg-surface border border-border/50 rounded-xl flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,255,102,0.1)]">
+                      <Mail size={24} className="text-primary" />
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground mb-1">Email Us</h4>
-                      <a href="mailto:sales@goodwinbatteries.com" className="text-muted-foreground leading-relaxed hover:text-brand transition-colors block mb-1">sales@goodwinbatteries.com (Sales)</a>
-                      <a href="mailto:support@goodwinbatteries.com" className="text-muted-foreground leading-relaxed hover:text-brand transition-colors block">support@goodwinbatteries.com (Support)</a>
+                      <a href="mailto:sales@goodwinbatteries.com" className="text-muted-foreground leading-relaxed hover:text-primary transition-colors block mb-1">sales@goodwinbatteries.com (Sales)</a>
+                      <a href="mailto:support@goodwinbatteries.com" className="text-muted-foreground leading-relaxed hover:text-primary transition-colors block">support@goodwinbatteries.com (Support)</a>
                     </div>
                   </div>
 
                   {/* Social Links */}
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-surface border border-border rounded-xl flex items-center justify-center shrink-0">
-                      <ExternalLink size={24} className="text-brand" />
+                    <div className="w-12 h-12 bg-surface border border-border/50 rounded-xl flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,255,102,0.1)]">
+                      <ExternalLink size={24} className="text-primary" />
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground mb-3">Connect With Us</h4>
                       <div className="flex flex-wrap gap-2">
-                        <a href="https://facebook.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border rounded-lg text-sm font-bold hover:bg-brand hover:text-white transition-colors">Facebook</a>
-                        <a href="https://instagram.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border rounded-lg text-sm font-bold hover:bg-brand hover:text-white transition-colors">Instagram</a>
-                        <a href="https://youtube.com/@goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border rounded-lg text-sm font-bold hover:bg-brand hover:text-white transition-colors">YouTube</a>
-                        <a href="https://twitter.com/goodwinbattery" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border rounded-lg text-sm font-bold hover:bg-brand hover:text-white transition-colors">Twitter (X)</a>
-                        <a href="https://linkedin.com/company/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border rounded-lg text-sm font-bold hover:bg-brand hover:text-white transition-colors">LinkedIn</a>
+                        <a href="https://facebook.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border/50 rounded-lg text-sm font-bold hover:bg-primary/10 hover:text-primary hover:border-primary transition-colors">Facebook</a>
+                        <a href="https://instagram.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border/50 rounded-lg text-sm font-bold hover:bg-primary/10 hover:text-primary hover:border-primary transition-colors">Instagram</a>
+                        <a href="https://youtube.com/@goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border/50 rounded-lg text-sm font-bold hover:bg-primary/10 hover:text-primary hover:border-primary transition-colors">YouTube</a>
+                        <a href="https://twitter.com/goodwinbattery" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border/50 rounded-lg text-sm font-bold hover:bg-primary/10 hover:text-primary hover:border-primary transition-colors">Twitter (X)</a>
+                        <a href="https://linkedin.com/company/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-surface border border-border/50 rounded-lg text-sm font-bold hover:bg-primary/10 hover:text-primary hover:border-primary transition-colors">LinkedIn</a>
                       </div>
                     </div>
                   </div>
-
-                  {/* Shop Online */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-surface border border-border rounded-xl flex items-center justify-center shrink-0">
-                      <ExternalLink size={24} className="text-brand" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-foreground mb-3">Shop Online</h4>
-                      <div className="flex flex-col gap-2">
-                        <a href="https://www.amazon.in/s?k=goodwin+batteries" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-brand transition-colors text-sm font-bold flex items-center gap-2">Amazon Store <ArrowRight size={14} /></a>
-                        <a href="https://www.flipkart.com/search?q=goodwin%20batteries" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-brand transition-colors text-sm font-bold flex items-center gap-2">Flipkart Store <ArrowRight size={14} /></a>
-                        <a href="https://www.indiamart.com/goodwinbatteries" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-brand transition-colors text-sm font-bold flex items-center gap-2">IndiaMart Profile <ArrowRight size={14} /></a>
-                      </div>
-                    </div>
+                  
+                  {/* Google Map */}
+                  <div className="mt-8">
+                    <h4 className="font-bold text-foreground mb-4 uppercase tracking-wider text-sm text-muted-foreground">Location Map</h4>
+                    <iframe 
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x390cfd170a48b79b%3A0xbccf0a719c2dc4b1!2sGokhale%20Market%2C%20Tis%20Hazari%2C%20New%20Delhi%2C%20Delhi%20110054!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                      width="100%" 
+                      height="300" 
+                      style={{ border: 0 }} 
+                      allowFullScreen 
+                      loading="lazy" 
+                      referrerPolicy="no-referrer-when-downgrade" 
+                      className="rounded-xl border border-border/50 shadow-lg grayscale invert opacity-80"
+                    ></iframe>
                   </div>
 
-                  {/* Associated Brand Logo */}
-                  <div className="mt-8 pt-8 border-t border-border">
-                    <h4 className="font-bold text-foreground mb-4 uppercase tracking-wider text-sm text-muted-foreground">Associated Brand</h4>
-                    <img 
-                      src="/assets/brands/tirupati-tilak-logo.png" 
-                      alt="Tirupati Tilak logo" 
-                      className="w-[160px] md:w-[200px] h-auto object-contain"
-                    />
-                  </div>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="bg-surface border border-border rounded-2xl p-8 md:p-10 shadow-xl h-fit">
-              <h3 className="text-2xl font-bold text-foreground mb-6">Send us a message</h3>
+            <div className="bg-surface border border-border/50 rounded-2xl p-8 md:p-10 shadow-2xl h-fit relative overflow-hidden">
+               {/* Decorative glow */}
+               <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/5 blur-[100px] pointer-events-none mix-blend-screen" />
+               
+              <h3 className="text-2xl font-bold text-foreground mb-6 relative z-10">Send us a message</h3>
               
               {message.text && (
-                <div className={`p-4 rounded-xl mb-6 ${message.type === 'success' ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'}`}>
+                <div className={`p-4 rounded-xl mb-6 relative z-10 ${message.type === 'success' ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'}`}>
                   {message.text}
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5 relative z-10">
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider">Full Name *</label>
                   <input 
                     type="text" 
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" 
+                    className="bg-background border border-border/50 rounded-lg p-4 text-white focus:outline-none focus:border-primary focus:shadow-[0_0_10px_rgba(0,255,102,0.2)] transition-all" 
                     required 
                   />
                 </div>
@@ -200,7 +194,7 @@ export default function ContactPage() {
                       type="tel" 
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" 
+                      className="bg-background border border-border/50 rounded-lg p-4 text-white focus:outline-none focus:border-primary focus:shadow-[0_0_10px_rgba(0,255,102,0.2)] transition-all" 
                       required 
                     />
                   </div>
@@ -210,7 +204,7 @@ export default function ContactPage() {
                       type="email" 
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" 
+                      className="bg-background border border-border/50 rounded-lg p-4 text-white focus:outline-none focus:border-primary focus:shadow-[0_0_10px_rgba(0,255,102,0.2)] transition-all" 
                     />
                   </div>
                 </div>
@@ -220,7 +214,7 @@ export default function ContactPage() {
                     required 
                     value={formData.subject}
                     onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                    className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand"
+                    className="bg-background border border-border/50 rounded-lg p-4 text-white focus:outline-none focus:border-primary focus:shadow-[0_0_10px_rgba(0,255,102,0.2)] transition-all appearance-none"
                   >
                     <option value="">Select a Subject</option>
                     <option value="sales">Sales Enquiry</option>
@@ -235,14 +229,14 @@ export default function ContactPage() {
                     rows={5} 
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="bg-background border border-border rounded-lg p-4 text-foreground focus:outline-none focus:border-brand" 
+                    className="bg-background border border-border/50 rounded-lg p-4 text-white focus:outline-none focus:border-primary focus:shadow-[0_0_10px_rgba(0,255,102,0.2)] transition-all resize-none" 
                     required
                   />
                 </div>
                 <button 
                   type="submit" 
                   disabled={loading}
-                  className="mt-4 bg-brand text-white font-bold uppercase tracking-wider py-4 rounded-lg hover:bg-brand-dark transition-colors shadow-lg shadow-brand/20 flex items-center justify-center gap-2 disabled:opacity-70"
+                  className="mt-4 w-full bg-primary text-black font-bold uppercase tracking-wider p-4 rounded-lg hover:bg-primary/80 transition-colors flex items-center justify-center gap-2 disabled:opacity-70 border-glow shadow-lg shadow-primary/20"
                 >
                   {loading ? <Loader2 size={20} className="animate-spin" /> : "Send Enquiry"}
                 </button>

@@ -44,7 +44,8 @@ export default function WarrantyStatusPage() {
           registration: regData,
           type: claimData ? 'Claim' : 'Registration',
           id: claimData?.id || regData?.id,
-          status: claimData?.status || regData?.status || 'Active'
+          status: claimData?.status || regData?.status || 'Active',
+          admin_notes: claimData?.admin_notes || regData?.admin_notes || null
         });
         setStatus("found");
       } else {
@@ -137,6 +138,17 @@ export default function WarrantyStatusPage() {
                 <div className="p-8">
                   <h4 className="text-lg font-bold text-foreground mb-6">Status Timeline</h4>
                   
+                  {result.admin_notes && (
+                    <div className="mb-8 p-5 bg-yellow-500/5 border border-yellow-500/20 rounded-xl relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-1 h-full bg-yellow-500"></div>
+                      <h5 className="font-bold text-foreground mb-2 flex items-center gap-2">
+                        <Activity size={16} className="text-yellow-500" />
+                        Message from Support
+                      </h5>
+                      <p className="text-muted-foreground whitespace-pre-wrap text-sm">{result.admin_notes}</p>
+                    </div>
+                  )}
+
                   <div className="relative border-l-2 border-border ml-4 space-y-8">
                     {result.registration && (
                       <div className="relative pl-8">

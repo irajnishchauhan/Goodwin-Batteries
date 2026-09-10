@@ -19,7 +19,8 @@ export default function ClaimModal({ isOpen, onClose, claim, onSuccess }: ClaimM
     serial_number: "",
     dealer_name: "",
     issue_description: "",
-    status: ""
+    status: "",
+    admin_notes: ""
   });
 
   useEffect(() => {
@@ -31,7 +32,8 @@ export default function ClaimModal({ isOpen, onClose, claim, onSuccess }: ClaimM
         serial_number: claim.serial_number || "",
         dealer_name: claim.dealer_name || "",
         issue_description: claim.issue_description || "",
-        status: claim.status || "Pending Review"
+        status: claim.status || "Pending Review",
+        admin_notes: claim.admin_notes || ""
       });
     }
     setError("");
@@ -54,7 +56,8 @@ export default function ClaimModal({ isOpen, onClose, claim, onSuccess }: ClaimM
           serial_number: formData.serial_number,
           dealer_name: formData.dealer_name,
           issue_description: formData.issue_description,
-          status: formData.status
+          status: formData.status,
+          admin_notes: formData.admin_notes
         })
         .eq("id", claim.id);
 
@@ -120,6 +123,10 @@ export default function ClaimModal({ isOpen, onClose, claim, onSuccess }: ClaimM
             <div className="md:col-span-2">
               <label className="block text-sm font-bold text-muted-foreground mb-1">Issue Description</label>
               <textarea required rows={4} value={formData.issue_description} onChange={(e) => setFormData({...formData, issue_description: e.target.value})} className="w-full bg-background border border-border rounded p-2 text-foreground" />
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-bold text-muted-foreground mb-1">Admin Notes (Reason for Rejection, Internal Comments)</label>
+              <textarea rows={3} value={formData.admin_notes} onChange={(e) => setFormData({...formData, admin_notes: e.target.value})} className="w-full bg-background border border-border rounded p-2 text-foreground" placeholder="These notes will be visible to the customer when checking status." />
             </div>
           </div>
 

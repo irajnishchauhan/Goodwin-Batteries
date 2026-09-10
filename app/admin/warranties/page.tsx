@@ -118,6 +118,13 @@ export default function AdminWarrantiesPage() {
                 </div>
               </div>
 
+              {reg.admin_notes && (
+                <div className="p-4 bg-yellow-500/5 border border-yellow-500/20 rounded-lg text-foreground mb-6">
+                  <p className="text-xs text-yellow-600 uppercase tracking-widest font-bold mb-2">Admin Notes</p>
+                  <p className="whitespace-pre-wrap text-sm">{reg.admin_notes}</p>
+                </div>
+              )}
+
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold mb-1">Serial Number</p>
@@ -203,6 +210,13 @@ export default function AdminWarrantiesPage() {
                 <p className="text-xs text-red-500 uppercase tracking-widest font-bold mb-2">Issue Description</p>
                 <p className="whitespace-pre-wrap">{claim.issue_description}</p>
               </div>
+
+              {claim.admin_notes && (
+                <div className="p-4 bg-yellow-500/5 border border-yellow-500/20 rounded-lg text-foreground mb-6">
+                  <p className="text-xs text-yellow-600 uppercase tracking-widest font-bold mb-2">Admin Notes</p>
+                  <p className="whitespace-pre-wrap text-sm">{claim.admin_notes}</p>
+                </div>
+              )}
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>

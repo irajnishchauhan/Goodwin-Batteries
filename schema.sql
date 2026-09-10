@@ -174,6 +174,7 @@ CREATE TABLE warranty_registrations (
     vehicle_make_model TEXT,
     invoice_url TEXT,
     status TEXT DEFAULT 'Registered', -- Registered, Verified, Rejected
+    admin_notes TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
@@ -188,6 +189,7 @@ CREATE TABLE warranty_claims (
     invoice_url TEXT,
     photo_url TEXT,
     status TEXT DEFAULT 'Pending Review', -- Pending Review, Under Inspection, Approved, Rejected
+    admin_notes TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 

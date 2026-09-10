@@ -23,7 +23,8 @@ export default function WarrantyModal({ isOpen, onClose, registration, onSuccess
     dealer_name: "",
     vehicle_reg_number: "",
     vehicle_make_model: "",
-    status: ""
+    status: "",
+    admin_notes: ""
   });
 
   useEffect(() => {
@@ -39,7 +40,8 @@ export default function WarrantyModal({ isOpen, onClose, registration, onSuccess
         dealer_name: registration.dealer_name || "",
         vehicle_reg_number: registration.vehicle_reg_number || "",
         vehicle_make_model: registration.vehicle_make_model || "",
-        status: registration.status || "Registered"
+        status: registration.status || "Registered",
+        admin_notes: registration.admin_notes || ""
       });
     }
     setError("");
@@ -135,6 +137,10 @@ export default function WarrantyModal({ isOpen, onClose, registration, onSuccess
             <div>
               <label className="block text-sm font-bold text-muted-foreground mb-1">Vehicle Make/Model</label>
               <input type="text" value={formData.vehicle_make_model} onChange={(e) => setFormData({...formData, vehicle_make_model: e.target.value})} className="w-full bg-background border border-border rounded p-2 text-foreground" />
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-bold text-muted-foreground mb-1">Admin Notes (Reason for Rejection, Internal Comments)</label>
+              <textarea rows={3} value={formData.admin_notes} onChange={(e) => setFormData({...formData, admin_notes: e.target.value})} className="w-full bg-background border border-border rounded p-2 text-foreground" placeholder="These notes will be visible to the customer when checking status." />
             </div>
           </div>
 

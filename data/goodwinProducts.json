@@ -341,33 +341,33 @@
     ]
   },
   {
-    "id": "prod-gold-erickshaw",
-    "name": "GW-GOLD E-RICKSHAW",
+    "id": "prod-gold-14ah",
+    "name": "GW-GOLD 14AH",
     "series": "Goodwin Gold",
-    "slug": "gw-gold-erickshaw",
+    "slug": "gw-gold-14ah",
     "voltage": "12V",
-    "ah": "100Ah",
+    "ah": "14Ah",
     "cca": "N/A",
-    "category": "cat-e-rickshaw",
-    "technology": "Deep Cycle / Tubular",
+    "category": "cat-vrla",
+    "technology": "SMF / VRLA",
     "application": [
-      "E-Rickshaw",
-      "E-Vehicle"
+      "E-Bikes",
+      "Agricultural & Sprayers"
     ],
-    "warranty": "12 Months",
+    "warranty": "6 Months",
     "warranty_options": [
-      "12 Months"
+      "6 Months"
     ],
     "image": "/assets/products/Gold Series.png",
-    "description": "Premium heavy-duty tubular battery specifically engineered for E-Rickshaws ensuring longer mileage.",
-    "dimensions": "410 x 175 x 280 mm",
-    "weight": "28.5 kg",
-    "terminalLayout": "L-Type",
+    "description": "Premium Gold Series 12V 14Ah VRLA battery engineered for E-Bikes and Agricultural Sprayers.",
+    "dimensions": "151 x 98 x 95 mm",
+    "weight": "3.80 kg",
+    "terminalLayout": "F2 Faston",
     "datasheet": "",
     "is_published": true,
     "features": [
-      "Tubular Technology",
-      "Extra Mileage",
+      "Gold Series Durability",
+      "VRLA Technology",
       "Deep Discharge Recovery"
     ]
   },

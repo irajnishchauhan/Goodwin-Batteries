@@ -73,7 +73,7 @@ Please contact me regarding my enquiry.`;
         placeholder="Your Name" 
         value={formData.name}
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        className="w-full bg-white border border-gray-300 rounded p-3 text-gray-900 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" 
+        className="w-full bg-white border-2 border-gray-300 rounded p-3 text-black placeholder:text-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" 
       />
       <input 
         type="tel" 
@@ -81,26 +81,26 @@ Please contact me regarding my enquiry.`;
         placeholder="Phone Number" 
         value={formData.mobile}
         onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-        className="w-full bg-white border border-gray-300 rounded p-3 text-gray-900 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" 
+        className="w-full bg-white border-2 border-gray-300 rounded p-3 text-black placeholder:text-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" 
       />
       <input 
         type="text" 
         placeholder="City" 
         value={formData.city}
         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-        className="w-full bg-white border border-gray-300 rounded p-3 text-gray-900 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" 
+        className="w-full bg-white border-2 border-gray-300 rounded p-3 text-black placeholder:text-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" 
       />
       <input 
         type="text" 
         placeholder="Vehicle Make/Model (Optional)" 
         value={formData.vehicle}
         onChange={(e) => setFormData({ ...formData, vehicle: e.target.value })}
-        className="w-full bg-white border border-gray-300 rounded p-3 text-gray-900 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" 
+        className="w-full bg-white border-2 border-gray-300 rounded p-3 text-black placeholder:text-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" 
       />
       <select
         value={formData.callbackTime}
         onChange={(e) => setFormData({ ...formData, callbackTime: e.target.value })}
-        className="w-full bg-white border border-gray-300 rounded p-3 text-gray-900 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+        className="w-full bg-white border-2 border-gray-300 rounded p-3 text-black focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
       >
         <option value="" disabled>Preferred Callback Time</option>
         <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
@@ -112,7 +112,7 @@ Please contact me regarding my enquiry.`;
         placeholder="What are you looking for?" 
         value={formData.requirement}
         onChange={(e) => setFormData({ ...formData, requirement: e.target.value })}
-        className="w-full bg-white border border-gray-300 rounded p-3 text-gray-900 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none h-24" 
+        className="w-full bg-white border-2 border-gray-300 rounded p-3 text-black placeholder:text-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none h-24" 
       />
       <button 
         type="submit" 

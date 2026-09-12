@@ -19,8 +19,8 @@ export default function Footer() {
               <Image 
                 src="/assets/logo/tilak.svg" 
                 alt="Tirupati Tilak" 
-                width={28} 
-                height={32} 
+                width={42} 
+                height={48} 
                 className="object-contain"
               />
               <Image 

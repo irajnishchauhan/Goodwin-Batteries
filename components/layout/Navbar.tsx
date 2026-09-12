@@ -16,6 +16,7 @@ const navLinks = [
   { name: "Why Goodwin", href: "/why-goodwin" },
   { name: "About", href: "/about" },
   { name: "Support", href: "/support" },
+  { name: "Admin", href: "/admin/login" },
 ];
 
 export default function Navbar() {
@@ -58,8 +59,8 @@ export default function Navbar() {
             <Image 
               src="/assets/logo/tilak.svg" 
               alt="Tirupati Tilak" 
-              width={24} 
-              height={28} 
+              width={38} 
+              height={44} 
               className="object-contain"
               priority
             />

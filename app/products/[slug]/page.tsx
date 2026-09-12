@@ -155,16 +155,13 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
                 </div>
               </div>
 
-              <div className="mt-8 flex gap-4">
-                {product.datasheet ? (
-                  <a href={product.datasheet} download className="flex items-center gap-2 bg-brand/10 text-brand px-6 py-3 rounded-lg font-bold uppercase tracking-wider hover:bg-brand hover:text-white transition-colors">
-                    <Download size={18} /> Datasheet PDF
-                  </a>
-                ) : (
-                  <button disabled className="flex items-center gap-2 bg-gray-100 text-gray-400 px-6 py-3 rounded-lg font-bold uppercase tracking-wider cursor-not-allowed">
-                    <Download size={18} /> Datasheet Unavailable
-                  </button>
-                )}
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <a href={`/api/datasheet/${product.slug}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-white border border-border text-foreground px-6 py-3 rounded-lg font-bold uppercase tracking-wider hover:border-brand hover:text-brand transition-all">
+                  <FileText size={18} /> View Datasheet
+                </a>
+                <a href={`/api/datasheet/${product.slug}?download=true`} download className="flex items-center justify-center gap-2 bg-brand/10 text-brand px-6 py-3 rounded-lg font-bold uppercase tracking-wider hover:bg-brand hover:text-white transition-colors">
+                  <Download size={18} /> Download Datasheet
+                </a>
               </div>
             </div>
 

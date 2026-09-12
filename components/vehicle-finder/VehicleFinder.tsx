@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Battery, Car, Truck, Bike, Tractor, Search, Phone, Loader2, Info, ArrowLeft, RotateCcw } from "lucide-react";
+import { Battery, Car, Truck, Bike, Tractor, Search, Phone, Loader2, Info, ArrowLeft, RotateCcw, Download } from "lucide-react";
 import clsx from "clsx";
 import Link from "next/link";
 import { useGlobalSettings } from "@/components/GlobalSettingsProvider";
@@ -491,6 +491,9 @@ export default function VehicleFinder() {
                   <Link href={`/products/${recommendedProduct.slug}`} className="bg-white border-2 border-border text-foreground hover:border-primary hover:text-primary px-6 py-3 rounded-lg font-bold w-full transition-all text-center flex-1">
                     View Battery
                   </Link>
+                  <a href={`/api/datasheet/${recommendedProduct.slug}?download=true`} download className="bg-primary/10 text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-bold w-full transition-all flex items-center justify-center gap-2 flex-1 border border-primary/20">
+                    <Download size={18} /> Datasheet
+                  </a>
                   <a href={whatsappUrl} target="_blank" rel="noreferrer" className="bg-primary text-white hover:bg-primary/90 px-6 py-3 rounded-lg font-bold w-full transition-all flex items-center justify-center gap-2 flex-1 shadow-md hover:shadow-lg active:scale-95">
                     <Phone size={18} /> WhatsApp
                   </a>

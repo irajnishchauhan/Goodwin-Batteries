@@ -2,6 +2,7 @@ import { supabase } from "./supabase";
 import { Product, Category, VehicleType, VehicleBrand, VehicleModel, VehicleVariant, Dealer } from "@/types";
 import { unstable_cache } from "next/cache";
 import goodwinProducts from "@/data/goodwinProducts.json";
+import goodwinCategories from "@/data/goodwinCategories.json";
 
 // ==========================================
 // GLOBAL SETTINGS
@@ -20,34 +21,20 @@ export const getGlobalSettings = unstable_cache(
 );
 
 // ==========================================
-// PRODUCTS & CATEGORIES
+// PRODUCTS & CATEGORIES (Local Static JSON Strategy)
 // ==========================================
-export const getCategories = unstable_cache(
-  async (): Promise<Category[]> => {
-    const { data, error } = await supabase.from("categories").select("*").order("display_order", { ascending: true });
-    if (error) {
-      console.error("Error fetching categories:", error);
-      return [];
-    }
-    return data || [];
-  },
-  ['categories'],
-  { revalidate: 3600, tags: ['categories'] }
-);
+export const getCategories = async (): Promise<Category[]> => {
+  return goodwinCategories as Category[];
+};
 
-export const getProducts = unstable_cache(
-  async (): Promise<Product[]> => {
-    const { data, error } = await supabase.from("products").select("*").eq("is_published", true).order("display_order", { ascending: true });
-    if (error) {
-      console.error("Error fetching products:", error);
-      return [];
-    }
-    const dbProducts = (data || []).map((row) => ({
+export const getProducts = async (): Promise<Product[]> => {
+  // Return typed products from the unified JSON catalog
+  return (goodwinProducts as any[]).map(row => ({
       id: row.id,
       name: row.name,
       slug: row.slug,
       series: row.series,
-      category: row.category_id,
+      category: row.category,
       voltage: row.voltage,
       ah: row.ah,
       cca: row.cca,
@@ -55,54 +42,21 @@ export const getProducts = unstable_cache(
       warranty_options: row.warranty_options,
       is_featured: row.is_featured,
       is_published: row.is_published,
-      application: [], // We'll simplify this or fetch from an assoc table if needed
+      application: row.application || [],
       image: row.image,
       description: row.description,
       features: row.features || [],
-      terminalLayout: row.terminal_layout,
+      terminalLayout: row.terminalLayout,
       dimensions: row.dimensions,
       weight: row.weight,
-    }));
-    
-    return dbProducts;
-  },
-  ['products'],
-  { revalidate: 3600, tags: ['products'] }
-);
+  })) as Product[];
+};
 
-export const getProductBySlug = unstable_cache(
-  async (slug: string): Promise<Product | null> => {
-    // Removed local JSON fallback; fetch entirely from Supabase
-    const { data, error } = await supabase.from("products").select("*").eq("slug", slug).eq("is_published", true).single();
-    if (error) {
-      console.error("Error fetching product:", error);
-      return null;
-    }
-    return data ? { 
-      id: data.id,
-      name: data.name,
-      slug: data.slug,
-      series: data.series,
-      category: data.category_id,
-      voltage: data.voltage,
-      ah: data.ah,
-      cca: data.cca,
-      warranty: data.warranty,
-      warranty_options: data.warranty_options,
-      is_featured: data.is_featured,
-      is_published: data.is_published,
-      application: [], 
-      image: data.image,
-      description: data.description,
-      features: data.features || [],
-      terminalLayout: data.terminal_layout,
-      dimensions: data.dimensions,
-      weight: data.weight
-    } : null;
-  },
-  ['product-by-slug'],
-  { revalidate: 3600, tags: ['products'] }
-);
+export const getProductBySlug = async (slug: string): Promise<Product | null> => {
+  const products = await getProducts();
+  const product = products.find(p => p.slug === slug);
+  return product || null;
+};
 
 export const getApplications = unstable_cache(
   async () => {

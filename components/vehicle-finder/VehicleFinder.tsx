@@ -470,7 +470,7 @@ export default function VehicleFinder() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                   <div className="bg-surface px-3 py-2 rounded-lg border border-border text-center">
                     <span className="text-xs text-muted-foreground block mb-0.5 uppercase tracking-wider">Capacity</span>
-                    <span className="font-bold text-foreground">{recommendedProduct.capacity || "N/A"}</span>
+                    <span className="font-bold text-foreground">{recommendedProduct.ah || "N/A"}</span>
                   </div>
                   <div className="bg-surface px-3 py-2 rounded-lg border border-border text-center">
                     <span className="text-xs text-muted-foreground block mb-0.5 uppercase tracking-wider">Voltage</span>
@@ -478,7 +478,7 @@ export default function VehicleFinder() {
                   </div>
                   <div className="bg-primary/10 px-3 py-2 rounded-lg border border-primary/20 text-center sm:col-span-1 col-span-2">
                     <span className="text-xs text-primary block mb-0.5 uppercase tracking-wider">Warranty</span>
-                    <span className="font-bold text-primary">{recommendedProduct.warrantyOptions?.length ? recommendedProduct.warrantyOptions.join(" / ") : "N/A"}</span>
+                    <span className="font-bold text-primary">{recommendedProduct.warranty_options?.length ? recommendedProduct.warranty_options.join(" / ") : recommendedProduct.warranty || "N/A"}</span>
                   </div>
                 </div>
 

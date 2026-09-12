@@ -1,0 +1,51 @@
+[
+  {
+    "id": "cat-automotive",
+    "name": "Automotive",
+    "slug": "automotive",
+    "description": "High-performance batteries for cars and SUVs.",
+    "image": "/assets/categories/passenger-vehicles.jpg"
+  },
+  {
+    "id": "cat-two-wheeler",
+    "name": "Two Wheeler",
+    "slug": "two-wheeler",
+    "description": "Reliable power for motorcycles and scooters.",
+    "image": "/assets/categories/two-wheelers.jpg"
+  },
+  {
+    "id": "cat-commercial",
+    "name": "Commercial Heavy Duty",
+    "slug": "commercial",
+    "description": "Heavy-duty batteries for trucks and commercial vehicles.",
+    "image": "/assets/categories/commercial-heavy-duty.jpg"
+  },
+  {
+    "id": "cat-agriculture",
+    "name": "Agricultural & Tractors",
+    "slug": "agriculture",
+    "description": "Durable batteries designed for agricultural machinery.",
+    "image": "/assets/categories/agricultural-tractors.jpg"
+  },
+  {
+    "id": "cat-inverter",
+    "name": "Inverter & UPS",
+    "slug": "inverter",
+    "description": "Long-lasting power backup for homes and businesses.",
+    "image": "/assets/products/Inverter Batteries.png"
+  },
+  {
+    "id": "cat-lithium",
+    "name": "Lithium-Ion",
+    "slug": "lithium-ion",
+    "description": "Advanced lithium technology for modern applications.",
+    "image": "/assets/products/goodwin-lithium-agro-12v-14ah.png"
+  },
+  {
+    "id": "cat-vrla",
+    "name": "VRLA & SMF",
+    "slug": "vrla-smf",
+    "description": "Sealed maintenance-free batteries for versatile applications.",
+    "image": "/assets/products/goodwin-12smf8-ups-12v-8ah.png"
+  }
+]

@@ -8,9 +8,14 @@ import QuickEnquiryForm from "@/components/forms/QuickEnquiryForm";
 import Image from "next/image";
 import { GlobalSettings } from "@/components/GlobalSettingsProvider";
 
-export default function HomePageClient({ applications, settings }: { applications: any[], settings: GlobalSettings | null }) {
+export default function HomePageClient({ applications, products = [], settings }: { applications: any[], products?: any[], settings: GlobalSettings | null }) {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
+  // Get top 3 featured products (or just the first 3 if none are featured)
+  const featuredProducts = products.filter(p => p.is_featured).length >= 3 
+    ? products.filter(p => p.is_featured).slice(0, 3) 
+    : products.slice(0, 3);
 
   return (
     <div className="flex flex-col w-full bg-background overflow-hidden">
@@ -28,13 +33,13 @@ export default function HomePageClient({ applications, settings }: { application
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex flex-col items-start w-full lg:w-1/2 max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-8">
-              <span className="w-2 h-2 rounded-full bg-primary" />
-              <span className="text-primary text-xs font-bold tracking-widest uppercase">Reliable Power for Every Journey</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand/20 bg-brand/5 mb-8">
+              <span className="w-2 h-2 rounded-full bg-brand" />
+              <span className="text-brand text-xs font-bold tracking-widest uppercase">Reliable Power for Every Journey</span>
             </div>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-black text-foreground leading-[1.1] tracking-tight mb-6 uppercase">
-              Power That Keeps <br /> <span className="text-primary">You Moving.</span>
+              Power That Keeps <br /> <span className="text-brand">You Moving.</span>
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-xl">
@@ -42,7 +47,7 @@ export default function HomePageClient({ applications, settings }: { application
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Link href="#battery-finder" className="bg-primary text-white px-8 py-4 rounded-full font-bold tracking-wide hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-[0.98]">
+              <Link href="#battery-finder" className="bg-brand text-white px-8 py-4 rounded-full font-bold tracking-wide hover:bg-brand-dark transition-colors flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-[0.98]">
                 Find Your Battery
               </Link>
               <Link href="/products" className="bg-white border border-border text-foreground px-8 py-4 rounded-full font-bold tracking-wide hover:bg-surface-hover transition-colors flex items-center justify-center gap-2 active:scale-[0.98]">
@@ -58,10 +63,9 @@ export default function HomePageClient({ applications, settings }: { application
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
             className="w-full lg:w-1/2 relative h-[400px] lg:h-[600px] flex items-center justify-center"
           >
-            {/* Soft backdrop instead of neon glow */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-full blur-[80px]" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-brand/10 to-transparent rounded-full blur-[80px]" />
             <Image 
-              src="/assets/pixis/pixis_hero_battery.jpg" 
+              src="/assets/products/goodwin-12vgw-tz5lb.png" 
               alt="Goodwin Premium Battery" 
               fill 
               className="object-contain drop-shadow-2xl z-10" 
@@ -85,9 +89,9 @@ export default function HomePageClient({ applications, settings }: { application
               { name: "Tractor", icon: "🚜" },
               { name: "Inverter", icon: "⚡" },
             ].map((app, i) => (
-              <Link key={i} href="#battery-finder" className="flex flex-col items-center justify-center p-6 rounded-xl border border-border bg-surface hover:border-primary hover:bg-primary/5 transition-colors group cursor-pointer">
+              <Link key={i} href="#battery-finder" className="flex flex-col items-center justify-center p-6 rounded-xl border border-border bg-surface hover:border-brand hover:bg-brand/5 transition-colors group cursor-pointer">
                 <span className="text-3xl mb-3 grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100">{app.icon}</span>
-                <span className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors">{app.name}</span>
+                <span className="font-semibold text-sm text-foreground group-hover:text-brand transition-colors">{app.name}</span>
               </Link>
             ))}
           </div>
@@ -100,7 +104,7 @@ export default function HomePageClient({ applications, settings }: { application
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             
             <div className="w-full lg:w-1/2">
-              <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-3">The Goodwin Standard</h2>
+              <h2 className="text-sm font-bold tracking-widest text-brand uppercase mb-3">The Goodwin Standard</h2>
               <h3 className="text-4xl md:text-5xl font-heading font-black text-foreground leading-[1.1] mb-8">
                 BUILT FOR EVERYDAY RELIABILITY.
               </h3>
@@ -110,8 +114,8 @@ export default function HomePageClient({ applications, settings }: { application
               
               <ul className="flex flex-col gap-6">
                 <li className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="text-primary" size={24} />
+                  <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="text-brand" size={24} />
                   </div>
                   <div>
                     <h4 className="font-bold text-foreground text-lg mb-1">Quality Manufacturing</h4>
@@ -119,8 +123,8 @@ export default function HomePageClient({ applications, settings }: { application
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <Cog className="text-primary" size={24} />
+                  <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
+                    <Cog className="text-brand" size={24} />
                   </div>
                   <div>
                     <h4 className="font-bold text-foreground text-lg mb-1">Wide Application Coverage</h4>
@@ -128,8 +132,8 @@ export default function HomePageClient({ applications, settings }: { application
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <MapPin className="text-primary" size={24} />
+                  <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
+                    <MapPin className="text-brand" size={24} />
                   </div>
                   <div>
                     <h4 className="font-bold text-foreground text-lg mb-1">Dedicated Support</h4>
@@ -150,7 +154,7 @@ export default function HomePageClient({ applications, settings }: { application
               </div>
               <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-2xl shadow-xl border border-border max-w-xs hidden md:block">
                 <div className="flex items-center gap-3 mb-2">
-                  <CheckCircle2 className="text-primary" size={28} />
+                  <CheckCircle2 className="text-brand" size={28} />
                   <span className="font-heading font-black text-2xl text-foreground">100%</span>
                 </div>
                 <p className="text-sm text-muted-foreground font-semibold">Factory Tested for Maximum Performance</p>
@@ -161,50 +165,38 @@ export default function HomePageClient({ applications, settings }: { application
         </div>
       </section>
 
-      {/* 4. PRODUCT CATEGORIES */}
+      {/* 4. PRODUCT DISCOVERY */}
       <section className="py-24 bg-surface border-y border-border">
         <div className="container">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
-              <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-3">Our Core Range</h2>
-              <h3 className="text-4xl md:text-5xl font-heading font-black text-foreground uppercase">Power For Every Application</h3>
+              <h2 className="text-sm font-bold tracking-widest text-brand uppercase mb-3">Premium Selection</h2>
+              <h3 className="text-4xl md:text-5xl font-heading font-black text-foreground uppercase">Featured Products</h3>
             </div>
-            <Link href="/products" className="text-primary font-bold hover:text-primary-dark flex items-center gap-2 whitespace-nowrap transition-colors group">
-              View All Categories <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <Link href="/products" className="text-brand font-bold hover:text-brand-dark flex items-center gap-2 whitespace-nowrap transition-colors group">
+              View All Products <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {applications.map((app, i) => (
-              <Link
-                key={app.id}
-                href={`/products`}
-                className="group flex flex-col bg-white border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all active:scale-[0.98]"
-              >
-                <div className="relative h-64 w-full bg-surface-hover overflow-hidden">
-                  {app.image ? (
-                    <Image
-                      src={app.image}
-                      alt={app.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center bg-surface text-muted-foreground">
-                      <BatteryCharging size={48} opacity={0.2} />
-                    </div>
-                  )}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredProducts.map((product, i) => (
+              <div key={product.id} className="bg-white border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col group">
+                <div className="relative h-64 p-6 flex items-center justify-center bg-gray-50 border-b border-border overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-brand/5 to-transparent pointer-events-none" />
+                  <img src={product.image} alt={product.name} className="max-h-full max-w-full object-contain relative z-10 group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-6 flex flex-col flex-1">
-                  <h4 className="text-foreground font-heading font-bold text-2xl mb-2 group-hover:text-primary transition-colors">{app.name}</h4>
-                  <p className="text-muted-foreground text-sm mb-6 line-clamp-2">
-                    {app.description || `High performance batteries designed specifically for ${app.name.toLowerCase()}.`}
-                  </p>
-                  <div className="mt-auto flex items-center text-primary font-bold text-sm uppercase tracking-wide">
-                    Explore Range <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  <h4 className="font-heading font-bold text-2xl text-foreground mb-1">{product.name}</h4>
+                  <p className="text-sm text-brand font-bold uppercase tracking-wider mb-4">{product.series || product.category}</p>
+                  
+                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
+                    <span className="text-muted-foreground text-sm font-bold">{product.ah} &bull; {product.voltage}</span>
+                    <Link href={`/products/${product.slug}`} className="text-sm font-bold text-foreground flex items-center gap-1 hover:text-brand transition-colors">
+                      Details <ArrowRight size={16} />
+                    </Link>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>

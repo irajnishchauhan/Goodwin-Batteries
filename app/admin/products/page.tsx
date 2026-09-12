@@ -45,9 +45,9 @@ export default function AdminProductsPage() {
         slug: p.slug,
         series: p.series,
         voltage: p.voltage,
-        ah: p.capacity, // Mapping capacity to ah
-        warranty: p.warrantyOptions.join(" / "),
-        warranty_options: p.warrantyOptions,
+        ah: (p as any).ah, 
+        warranty: (p as any).warranty_options ? (p as any).warranty_options.join(" / ") : (p as any).warranty,
+        warranty_options: (p as any).warranty_options || [],
         application: [p.application],
         image: p.image,
         description: p.description,

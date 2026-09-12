@@ -2,8 +2,6 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-
-
 @theme {
   /* Goodwin Automotive Palette */
   --color-brand: #00843D; /* Primary brand colour */
@@ -34,31 +32,31 @@
 }
 
 :root {
-  --background: #050A09; /* Ultra dark cyber green/black */
-  --surface: #0A1412; /* Slightly lighter */
-  --surface-hover: #0F1E1B;
-  --border: #162D28;
+  --background: #FFFFFF;
+  --surface: #F8F9FA;
+  --surface-hover: #F1F3F5;
+  --border: #E9ECEF;
   
-  --foreground: #F5F5F5; /* Off-white text */
-  --muted: #0A1412;
-  --muted-foreground: #8FAEA8;
+  --foreground: #1A1D20;
+  --muted: #F8F9FA;
+  --muted-foreground: #6C757D;
   
-  --card: #0A1412;
-  --card-foreground: #F5F5F5;
-  --popover: #0A1412;
-  --popover-foreground: #F5F5F5;
+  --card: #FFFFFF;
+  --card-foreground: #1A1D20;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1D20;
   
-  --primary: #00FF66; /* Neon Green */
-  --primary-foreground: #000000;
-  --secondary: #0A1412;
-  --secondary-foreground: #F5F5F5;
+  --primary: #00843D; /* Goodwin Green */
+  --primary-foreground: #FFFFFF;
+  --secondary: #212529; /* Industrial Dark */
+  --secondary-foreground: #FFFFFF;
   
-  --accent: #00FF66; /* Neon Green */
-  --accent-foreground: #000000;
+  --accent: #F9C900; /* Goodwin Yellow/Gold */
+  --accent-foreground: #1A1D20;
   
   --destructive: #EF4444;
-  --input: #162D28;
-  --ring: #00FF66;
+  --input: #E9ECEF;
+  --ring: #00843D;
   
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -66,25 +64,23 @@
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   
-  --radius: 0.75rem;
+  --radius: 0.5rem;
   
-  --sidebar: #0A1412;
-  --sidebar-foreground: #F5F5F5;
-  --sidebar-primary: #00FF66;
-  --sidebar-primary-foreground: #000000;
-  --sidebar-accent: #0F1E1B;
-  --sidebar-accent-foreground: #F5F5F5;
-  --sidebar-border: #162D28;
-  --sidebar-ring: #00FF66;
+  --sidebar: #F8F9FA;
+  --sidebar-foreground: #1A1D20;
+  --sidebar-primary: #00843D;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E9ECEF;
+  --sidebar-accent-foreground: #1A1D20;
+  --sidebar-border: #E9ECEF;
+  --sidebar-ring: #00843D;
 }
-
-
-
-
 
 body {
   font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 /* Custom premium scrollbar */
@@ -95,7 +91,7 @@ body {
   background: var(--background); 
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--muted-foreground); 
+  background: var(--border); 
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -104,30 +100,12 @@ body {
 
 /* Premium utility classes */
 .glass {
-  background: rgba(10, 20, 18, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 255, 102, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
 }
-
-.glass-glow {
-  background: rgba(10, 20, 18, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 255, 102, 0.3);
-  box-shadow: 0 0 20px rgba(0, 255, 102, 0.15), inset 0 0 20px rgba(0, 255, 102, 0.05);
-}
-
-.text-glow {
-  text-shadow: 0 0 20px rgba(0, 255, 102, 0.5);
-}
-
-.border-glow {
-  box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
-}
-
-
 
 .heading {
   font-family: var(--font-heading), sans-serif;

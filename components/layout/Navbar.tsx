@@ -10,13 +10,12 @@ import Image from "next/image";
 import { useGlobalSettings } from "@/components/GlobalSettingsProvider";
 
 const navLinks = [
-  { name: "HOME", href: "/" },
-  { name: "PRODUCTS", href: "/products" },
-  { name: "APPLICATIONS", href: "/applications" },
-  { name: "WHY GOODWIN", href: "/why-goodwin" },
-  { name: "BLOGS", href: "/blogs" },
-  { name: "ABOUT US", href: "/about" },
-  { name: "SUPPORT", href: "/support" },
+  { name: "Home", href: "/" },
+  { name: "Products", href: "/products" },
+  { name: "Applications", href: "/applications" },
+  { name: "Why Goodwin", href: "/why-goodwin" },
+  { name: "About", href: "/about" },
+  { name: "Support", href: "/support" },
 ];
 
 export default function Navbar() {
@@ -33,138 +32,167 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [mobileMenuOpen]);
+
   return (
-    <header
-      className={clsx(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out border-b border-transparent",
-        {
-          "glass-glow py-3": isScrolled,
-          "bg-transparent py-5": !isScrolled,
-        }
-      )}
-    >
-      <div className="container flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 z-50">
-          <Image 
-            src="/assets/logo/tilak.svg" 
-            alt="Tirupati Tilak" 
-            width={24} 
-            height={28} 
-            className="object-contain"
-            priority
-          />
-          <Image 
-            src="/assets/logo/Goodwin.png" 
-            alt={settings?.company_name || "Goodwin Batteries"} 
-            width={160} 
-            height={50} 
-            className="object-contain"
-            priority
-          />
-        </Link>
+    <>
+      <header
+        className={clsx(
+          "fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out border-b",
+          {
+            "bg-white/95 backdrop-blur-md border-border shadow-sm py-4": isScrolled,
+            "bg-white border-transparent py-5": !isScrolled,
+          }
+        )}
+      >
+        <div className="container flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3 z-50">
+            <Image 
+              src="/assets/logo/tilak.svg" 
+              alt="Tirupati Tilak" 
+              width={24} 
+              height={28} 
+              className="object-contain"
+              priority
+            />
+            <Image 
+              src="/assets/logo/Goodwin.png" 
+              alt={settings?.company_name || "Goodwin Batteries"} 
+              width={160} 
+              height={50} 
+              className="object-contain"
+              priority
+            />
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          <ul className="flex items-center gap-6">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className={clsx(
-                    "text-sm font-semibold tracking-wide transition-colors relative group",
-                    pathname === link.href ? "text-brand" : "text-gray-200 hover:text-foreground"
-                  )}
-                >
-                  {link.name}
-                  <span
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8">
+            <ul className="flex items-center gap-8">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
                     className={clsx(
-                      "absolute -bottom-1 left-0 h-0.5 bg-brand transition-all duration-300",
-                      pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+                      "text-sm font-semibold tracking-wide transition-colors relative group",
+                      pathname === link.href ? "text-primary" : "text-foreground hover:text-primary"
                     )}
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+                  >
+                    {link.name}
+                    <span
+                      className={clsx(
+                        "absolute -bottom-2 left-0 h-[2px] bg-primary transition-all duration-300",
+                        pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+                      )}
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        {/* Actions */}
-        <div className="hidden lg:flex items-center gap-4">
-          <button className="text-gray-200 hover:text-foreground p-2 rounded-full hover:bg-white/10 transition-colors">
-            <Search size={20} />
+          {/* Actions */}
+          <div className="hidden lg:flex items-center gap-4">
+            <button 
+              className="text-foreground hover:text-primary p-2 rounded-full hover:bg-surface-hover transition-colors"
+              aria-label="Search"
+            >
+              <Search size={20} />
+            </button>
+            
+            <Link
+              href="/dealer-distributor"
+              className="text-sm font-semibold text-secondary border border-border hover:border-primary hover:text-primary px-5 py-2.5 rounded-full flex items-center gap-2 transition-all hover:bg-surface"
+            >
+              <Briefcase size={16} />
+              Become a Dealer
+            </Link>
+            
+            <Link
+              href="/battery-finder"
+              className="text-sm font-bold bg-primary text-white hover:bg-primary/90 px-6 py-2.5 rounded-full flex items-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-[0.98]"
+            >
+              <BatteryCharging size={18} />
+              Find Your Battery
+            </Link>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="lg:hidden z-50 text-foreground p-2 rounded-md hover:bg-surface-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
-          
-          <Link
-            href="/dealer-distributor"
-            className="text-xs font-bold uppercase tracking-wider text-white border border-primary/30 hover:border-primary px-4 py-2 rounded-full flex items-center gap-2 transition-all hover:bg-primary/10"
-          >
-            <Briefcase size={14} />
-            Become a Dealer
-          </Link>
-          
-          <Link
-            href="/battery-finder"
-            className="text-xs font-bold uppercase tracking-wider bg-primary text-black px-5 py-2.5 rounded-full flex items-center gap-2 shadow-[0_0_15px_rgba(0,255,102,0.3)] hover:scale-105 transition-all"
-          >
-            <BatteryCharging size={16} />
-            Find Your Battery
-          </Link>
         </div>
+      </header>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="lg:hidden z-50 text-foreground p-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
+      {/* Mobile Full-Screen Navigation */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 w-full lg:hidden flex flex-col"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-0 z-40 bg-white lg:hidden flex flex-col pt-24 pb-8 px-6 overflow-y-auto"
           >
-            <div className="container py-6 flex flex-col gap-4 bg-surface border-b border-border shadow-2xl">
-              <nav className="flex flex-col gap-2">
-                {navLinks.map((link) => (
+            <nav className="flex flex-col gap-6 flex-1">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 + 0.1 }}
+                >
                   <Link
-                    key={link.name}
                     href={link.href}
-                    className="py-3 text-lg font-bold border-b border-border text-foreground hover:text-brand transition-colors"
+                    className={clsx(
+                      "text-3xl font-heading font-bold transition-colors block",
+                      pathname === link.href ? "text-primary" : "text-foreground hover:text-primary"
+                    )}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.name}
                   </Link>
-                ))}
-              </nav>
-              
-              <div className="flex flex-col gap-3 mt-4">
-                <Link
-                  href="/dealer-distributor"
-                  className="py-3 px-4 border border-border text-foreground text-center rounded font-bold uppercase text-sm hover:bg-white/10 transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Become a Dealer
-                </Link>
-                <Link
-                  href="/battery-finder"
-                  className="py-3 px-4 bg-brand text-white text-center rounded font-bold uppercase text-sm"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Find Your Battery
-                </Link>
-              </div>
-            </div>
+                </motion.div>
+              ))}
+            </nav>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="flex flex-col gap-4 mt-8 pt-8 border-t border-border"
+            >
+              <Link
+                href="/battery-finder"
+                className="w-full py-4 bg-primary text-white text-center rounded-xl font-bold text-lg flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <BatteryCharging size={24} />
+                Find Your Battery
+              </Link>
+              <Link
+                href="/dealer-distributor"
+                className="w-full py-4 border-2 border-border text-foreground text-center rounded-xl font-bold text-lg flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Briefcase size={24} />
+                Become a Dealer
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
